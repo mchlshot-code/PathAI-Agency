@@ -15,8 +15,8 @@ export default async function handler(req, res) {
 
   try {
     const data = await resend.emails.send({
-      from: 'PathAI Agency <onboarding@resend.dev>',
-      to: ['adewalemchel@gmail.com'], // User's email from send_emails.py
+      from: 'PathAI Agency <growth@pathai.name.ng>',
+      to: ['adewalemchel@gmail.com'], 
       subject: `New Lead: ${name} is ready to Scale`,
       html: `
         <h1>New Lead Protocol Initiated</h1>

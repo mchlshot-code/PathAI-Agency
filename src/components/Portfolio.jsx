@@ -10,6 +10,12 @@ const projects = [
     tags: ['AI', 'FinTech', 'Data Analytics']
   },
   {
+    title: 'Lone Star Contractors',
+    description: 'A concept-to-deployment overhaul for specialized service providers, featuring AI lead-capture and sub-second load times.',
+    link: '#',
+    tags: ['ServiceTech', 'Lead Gen', 'Edge SEO']
+  },
+  {
     title: 'AudiologyLink',
     description: 'A specialized digital ecosystem connecting hearing care professionals with advanced patient management tools.',
     link: 'https://audiology-link.vercel.app',
