@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from './components/Hero';
 import Portfolio from './components/Portfolio';
 import Services from './components/Services';
+import Trust from './components/Trust';
 import Contact from './components/Contact';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <div className="app-container">
       <Hero />
       <Services />
+      <Trust />
       <Portfolio />
       <Contact />
       
