@@ -1,27 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Target, Cpu, Layout } from 'lucide-react';
+import { Layout, Code, Bot } from 'lucide-react';
 
 const services = [
   {
-    title: 'Rapid AI Prototyping',
-    desc: 'Transforming concepts into high-fidelity, interactive applications in record time using advanced AI workflows.',
-    icon: <Zap color="#00f3ff" />
-  },
-  {
-    title: 'Autonomous Systems',
-    desc: 'Engineering self-operating lead generation and outreach engines that work while you sleep.',
-    icon: <Cpu color="#00f3ff" />
-  },
-  {
-    title: 'Precision Lead Targeting',
-    desc: 'Leveraging deep data scraping to identify high-value market gaps and untapped business opportunities.',
-    icon: <Target color="#00f3ff" />
-  },
-  {
-    title: 'Premium Brand Identity',
-    desc: 'Crafting visually stunning, high-converting digital presences that establish immediate market authority.',
+    title: 'Hyper-Speed Landing Pages',
+    desc: 'Visually stunning, mobile-first landing pages engineered for sub-second performance and maximum lead conversion.',
     icon: <Layout color="#00f3ff" />
+  },
+  {
+    title: 'Custom Web Applications',
+    desc: 'Scalable, high-performance web applications built with React and Vite to solve complex business challenges.',
+    icon: <Code color="#00f3ff" />
+  },
+  {
+    title: 'Autonomous AI Agents',
+    desc: 'Custom AI agents that automate your lead generation, customer support, and outreach workflows 24/7.',
+    icon: <Bot color="#00f3ff" />
   }
 ];
 

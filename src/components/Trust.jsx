@@ -17,7 +17,7 @@ const Trust = () => {
           <h3 style={{ fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '4px', color: 'var(--accent-color)', marginBottom: '10px' }}>
             Trusted by the Bold
           </h3>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '50px', opacity: 0.5, flexWrap: 'wrap', filter: 'grayscale(100%)' }}>
+          <div className="trust-brand-row">
             <span style={{ fontSize: '1.5rem', fontWeight: '800' }}>QUANTUM.</span>
             <span style={{ fontSize: '1.5rem', fontWeight: '800' }}>VERTEX</span>
             <span style={{ fontSize: '1.5rem', fontWeight: '800' }}>NEURALAB</span>
@@ -25,7 +25,7 @@ const Trust = () => {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '30px' }}>
+        <div className="stats-grid">
           {stats.map((stat, index) => (
             <motion.div
               key={index}

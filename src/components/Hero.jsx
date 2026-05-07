@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <section className="bg-gradient" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'space-between', overflow: 'hidden' }}>
-      <div style={{ zIndex: 1, maxWidth: '600px' }}>
+    <section className="bg-gradient hero-layout">
+      <div className="hero-text">
         <motion.h1 
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -32,7 +32,7 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      <div style={{ width: '50%', height: '100%', position: 'absolute', right: 0, top: 0 }}>
+      <div className="hero-canvas-wrapper">
         <Canvas>
           <Suspense fallback={null}>
             <OrbitControls enableZoom={false} />

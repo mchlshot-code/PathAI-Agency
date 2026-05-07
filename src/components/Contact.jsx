@@ -64,14 +64,13 @@ const Contact = () => {
             </button>
           </motion.div>
         ) : (
-          <form onSubmit={handleSubmit} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', textAlign: 'left', maxWidth: '600px', margin: '0 auto' }}>
+          <form onSubmit={handleSubmit} className="contact-form-grid">
             <input 
               type="text" 
               placeholder="Full Name" 
               required
               value={formData.name}
               onChange={(e) => setFormData({...formData, name: e.target.value})}
-              style={{ background: '#111', border: '1px solid #333', padding: '15px', borderRadius: '10px', color: '#fff' }} 
             />
             <input 
               type="email" 
@@ -79,20 +78,18 @@ const Contact = () => {
               required
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
-              style={{ background: '#111', border: '1px solid #333', padding: '15px', borderRadius: '10px', color: '#fff' }} 
             />
             <textarea 
               placeholder="Tell us about your vision" 
               required
               value={formData.vision}
               onChange={(e) => setFormData({...formData, vision: e.target.value})}
-              style={{ gridColumn: 'span 2', background: '#111', border: '1px solid #333', padding: '15px', borderRadius: '10px', color: '#fff', height: '150px' }}
             ></textarea>
             <button 
               type="submit" 
               disabled={status === 'loading'}
-              className="btn-primary" 
-              style={{ gridColumn: 'span 2', border: 'none', cursor: status === 'loading' ? 'not-allowed' : 'pointer', opacity: status === 'loading' ? 0.7 : 1 }}
+              className="btn-primary btn-full" 
+              style={{ border: 'none', cursor: status === 'loading' ? 'not-allowed' : 'pointer', opacity: status === 'loading' ? 0.7 : 1 }}
             >
               {status === 'loading' ? 'Initiating...' : 'Initiate Protocol'}
             </button>

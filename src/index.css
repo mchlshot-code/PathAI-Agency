@@ -91,3 +91,190 @@ section {
   transform: translateY(-2px);
   box-shadow: 0 15px 30px rgba(0, 243, 255, 0.4);
 }
+
+/* ===========================
+   MOBILE RESPONSIVENESS
+   =========================== */
+
+/* Hero Section Mobile */
+.hero-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-text {
+  z-index: 1;
+  max-width: 600px;
+  position: relative;
+}
+
+.hero-canvas-wrapper {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* Contact Form Grid */
+.contact-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form-grid input,
+.contact-form-grid textarea {
+  background: #111;
+  border: 1px solid #333;
+  padding: 15px;
+  border-radius: 10px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form-grid input:focus,
+.contact-form-grid textarea:focus {
+  border-color: var(--accent-color);
+}
+
+.contact-form-grid textarea {
+  grid-column: span 2;
+  height: 150px;
+  resize: vertical;
+}
+
+.contact-form-grid .btn-full {
+  grid-column: span 2;
+}
+
+/* Trust Brand Row */
+.trust-brand-row {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  opacity: 0.5;
+  flex-wrap: wrap;
+  filter: grayscale(100%);
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+
+/* ===========================
+   TABLET (max-width: 768px)
+   =========================== */
+@media (max-width: 768px) {
+  section {
+    padding: 70px 5%;
+  }
+
+  /* Hero — stack vertically, canvas becomes background */
+  .hero-layout {
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 60px;
+    height: 100vh;
+  }
+
+  .hero-text {
+    max-width: 100%;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .hero-canvas-wrapper {
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.35;
+    /* Fade canvas into background on mobile for readability */
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+  }
+
+  /* Hero typography */
+  .hero-layout h1 {
+    font-size: 3rem !important;
+  }
+
+  .hero-layout p {
+    font-size: 1rem !important;
+    max-width: 100% !important;
+  }
+
+  /* Contact form — single column on mobile */
+  .contact-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-grid textarea {
+    grid-column: span 1;
+  }
+
+  .contact-form-grid .btn-full {
+    grid-column: span 1;
+  }
+
+  /* Trust brands spacing */
+  .trust-brand-row {
+    gap: 25px;
+  }
+
+  /* Headings scale down */
+  h2 {
+    font-size: 2.2rem !important;
+  }
+
+  h1 {
+    font-size: 2.8rem !important;
+  }
+}
+
+/* ===========================
+   SMALL MOBILE (max-width: 480px)
+   =========================== */
+@media (max-width: 480px) {
+  section {
+    padding: 60px 5%;
+  }
+
+  .hero-layout h1 {
+    font-size: 2.4rem !important;
+  }
+
+  .btn-primary {
+    padding: 14px 24px;
+    font-size: 0.95rem;
+  }
+
+  .glass {
+    border-radius: 16px;
+  }
+
+  /* Stats grid 2 columns on small mobile */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .trust-brand-row span {
+    font-size: 1.1rem !important;
+  }
+}
