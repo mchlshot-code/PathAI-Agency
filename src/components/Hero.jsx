@@ -28,9 +28,9 @@ const Hero = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          style={{ fontSize: '1.2rem', color: '#888', marginBottom: '40px', maxWidth: '500px' }}
+          style={{ fontSize: '1.2rem', color: '#888', marginBottom: '40px', maxWidth: '600px', lineHeight: '1.6' }}
         >
-          PathAI transforms businesses into digital powerhouses with rapid AI-driven development and autonomous systems.
+          PathAI helps SaaS founders and service businesses ship AI-powered web products and agents in under 14 days.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}

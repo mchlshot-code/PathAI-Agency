@@ -29,7 +29,7 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="reveal" ref={sectionRef}>
+    <section id="about" className="reveal" ref={sectionRef} style={{ padding: '160px 5%' }}>
       <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '80px', maxWidth: '1200px', margin: '0 auto', alignItems: 'center' }}>
         <div>
           <h3 style={{ color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '3px', fontSize: '0.8rem', marginBottom: '20px' }}>

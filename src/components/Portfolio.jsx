@@ -5,28 +5,23 @@ import { ExternalLink } from 'lucide-react';
 const projects = [
   {
     title: 'RemitAI',
+    role: 'Architecture + Full-stack build',
     description: 'A sophisticated AI-driven platform for comparing and optimizing global remittance rates in real-time.',
+    before: 'Manual comparison of remittance providers across multiple portals.',
+    after: 'Real-time optimization <200ms, sub-second execution.',
     link: 'https://remitaiapp.com',
     tags: ['AI', 'FinTech', 'Data Analytics'],
-    metric: 'Optimization Speed: < 200ms',
     watermark: '💸',
     bg: 'rgba(0, 243, 255, 0.05)'
   },
   {
-    title: 'Lone Star Contractors',
-    description: 'A concept-to-deployment overhaul for specialized service providers, featuring AI lead-capture and sub-second load times.',
-    link: '#',
-    tags: ['ServiceTech', 'Lead Gen', 'Edge SEO'],
-    metric: 'Lead volume ×3 within 48hrs',
-    watermark: '🏗️',
-    bg: 'rgba(112, 0, 255, 0.05)'
-  },
-  {
     title: 'AudiologyLink',
+    role: 'Agent design + Full-stack integration',
     description: 'A specialized digital ecosystem connecting hearing care professionals with advanced patient management tools.',
+    before: 'Fragmented patient management and manual coordination.',
+    after: 'Seamless digital ecosystem, +45% patient retention increase.',
     link: 'https://audiology-link.vercel.app',
     tags: ['HealthTech', 'React', 'Connectivity'],
-    metric: 'Patient Retention: +45%',
     watermark: '👂',
     bg: 'rgba(255, 255, 255, 0.03)'
   }
@@ -34,7 +29,7 @@ const projects = [
 
 const Portfolio = () => {
   return (
-    <section id="portfolio" style={{ background: '#080808' }}>
+    <section id="portfolio" style={{ background: '#080808', padding: '160px 5%' }}>
       <div style={{ textAlign: 'center', marginBottom: '60px' }}>
         <h2 style={{ fontSize: '3rem', marginBottom: '10px' }}>Proven <span className="text-gradient">Innovations</span></h2>
         <p style={{ color: '#666' }}>A track record of engineering complex, mission-critical systems.</p>
@@ -67,11 +62,20 @@ const Portfolio = () => {
                   </span>
                 ))}
               </div>
-              <h3 style={{ fontSize: '2rem', marginBottom: '15px' }}>{project.title}</h3>
-              <p style={{ color: '#888', lineHeight: '1.6', marginBottom: '20px', fontSize: '0.95rem' }}>{project.description}</p>
+              <h3 style={{ fontSize: '2rem', marginBottom: '5px' }}>{project.title}</h3>
+              <p style={{ color: 'var(--accent-color)', fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', marginBottom: '20px', letterSpacing: '1px' }}>{project.role}</p>
               
-              <div style={{ padding: '12px 20px', background: 'rgba(0, 243, 255, 0.1)', borderRadius: '12px', border: '1px solid rgba(0, 243, 255, 0.2)', marginBottom: '30px', display: 'inline-block' }}>
-                <span style={{ color: 'var(--accent-color)', fontWeight: '700', fontSize: '0.9rem' }}>{project.metric}</span>
+              <p style={{ color: '#888', lineHeight: '1.6', marginBottom: '25px', fontSize: '0.95rem' }}>{project.description}</p>
+              
+              <div style={{ marginBottom: '30px', fontSize: '0.9rem' }}>
+                <div style={{ display: 'flex', gap: '10px', marginBottom: '10px', color: '#666' }}>
+                  <span style={{ color: '#ff4444' }}>-</span>
+                  <span><strong>Before:</strong> {project.before}</span>
+                </div>
+                <div style={{ display: 'flex', gap: '10px', color: '#ccc' }}>
+                  <span style={{ color: 'var(--accent-color)' }}>+</span>
+                  <span><strong>After:</strong> {project.after}</span>
+                </div>
               </div>
             </div>
 
@@ -79,7 +83,8 @@ const Portfolio = () => {
               href={project.link} 
               target="_blank" 
               rel="noreferrer" 
-              style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: '10px', color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '0.9rem' }}
+              className="explore-link"
+              style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: '10px', color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '0.9rem', transition: 'all 0.3s' }}
             >
               Explore Project <ExternalLink size={18} color="var(--accent-color)" />
             </a>

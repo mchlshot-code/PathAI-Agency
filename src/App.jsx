@@ -6,7 +6,7 @@ import About from './components/About';
 import Services from './components/Services';
 import Process from './components/Process';
 import Portfolio from './components/Portfolio';
-import Trust from './components/Trust';
+
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import DiscoveryGuide from './components/DiscoveryGuide';
@@ -21,7 +21,7 @@ function MainSite() {
       <About />
       <Services />
       <Process />
-      <Trust />
+
       <Portfolio />
       <Contact />
       <Footer />

@@ -52,7 +52,7 @@ const Process = () => {
   }, []);
 
   return (
-    <section id="process" className="reveal" ref={sectionRef}>
+    <section id="process" className="reveal" ref={sectionRef} style={{ padding: '160px 5%' }}>
       <div style={{ textAlign: 'center', marginBottom: '100px' }}>
         <h2 style={{ fontSize: '3rem', marginBottom: '10px' }}>The <span className="text-gradient">Protocol</span></h2>
         <p style={{ color: '#666' }}>A systematic engineering approach to building high-frequency business engines.</p>
