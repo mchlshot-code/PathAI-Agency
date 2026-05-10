@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { Shield, Zap, TrendingUp, Users } from 'lucide-react';
 
 const stats = [
-  { icon: <Zap size={24} />, label: 'Avg. Deployment', value: '24 Hours' },
-  { icon: <TrendingUp size={24} />, label: 'Client ROI', value: '400%+' },
-  { icon: <Users size={24} />, label: 'Active Partners', value: '12+' },
-  { icon: <Shield size={24} />, label: 'Security Score', value: '99.9%' },
+  { icon: <Zap size={24} />, label: 'Standard Delivery', value: '7-14 Days' },
+  { icon: <TrendingUp size={24} />, label: 'Efficiency Gain', value: '40%+' },
+  { icon: <Users size={24} />, label: 'Active Partners', value: '10+' },
+  { icon: <Shield size={24} />, label: 'Uptime Protocol', value: '99.9%' },
 ];
 
 const testimonials = [

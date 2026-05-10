@@ -47,13 +47,13 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="contact-info-item">
+          <a href="https://wa.me/2347012188849" target="_blank" rel="noreferrer" className="contact-info-item" style={{ textDecoration: 'none', color: 'inherit' }}>
             <div className="contact-info-icon"><MessageCircle size={20} /></div>
             <div>
               <div style={{ fontWeight: '700', fontSize: '1rem' }}>WhatsApp</div>
-              <div style={{ color: '#666' }}>+234 (Placeholder)</div>
+              <div style={{ color: '#666' }}>+234 701 218 8849</div>
             </div>
-          </div>
+          </a>
 
           <div className="contact-info-item">
             <div className="contact-info-icon"><MapPin size={20} /></div>

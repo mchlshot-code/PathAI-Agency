@@ -48,9 +48,9 @@ const About = () => {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginTop: '40px' }}>
-            <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: '#222', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', color: 'var(--accent-color)', border: '2px solid #333' }}>OA</div>
+            <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: '#222', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', color: 'var(--accent-color)', border: '2px solid #333' }}>MA</div>
             <div>
-              <p style={{ fontWeight: '700', fontSize: '1rem', color: '#fff' }}>Oluwanifemi A.</p>
+              <p style={{ fontWeight: '700', fontSize: '1rem', color: '#fff' }}>Michael A.</p>
               <p style={{ fontSize: '0.8rem', color: '#666' }}>Founder & Lead Architect · Lagos, Nigeria</p>
             </div>
           </div>
@@ -68,7 +68,8 @@ const About = () => {
       </div>
 
       {/* Responsive adjustments for mobile */}
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @media (max-width: 992px) {
           #about > div {
             grid-template-columns: 1fr !important;
