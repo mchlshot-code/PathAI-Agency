@@ -13,10 +13,10 @@ const Hero = () => {
           style={{ display: 'inline-block', padding: '6px 14px', background: 'rgba(0, 243, 255, 0.1)', border: '1px solid rgba(0, 243, 255, 0.2)', borderRadius: '50px', marginBottom: '25px' }}
         >
           <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '2px' }}>
-            📍 Lagos, Nigeria · GMT+1 · Remote-first
+            📍 Remote-first
           </span>
         </motion.div>
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
