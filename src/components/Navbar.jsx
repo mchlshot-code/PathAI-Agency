@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }} onClick={(e) => handleNavClick(e, 'hero')}>
-        <img src="/favicon.ico" alt="PathAI" style={{ width: '35px', height: '35px', borderRadius: '8px' }} />
+        <img src="/favicon.svg" alt="PathAI" style={{ width: '35px', height: '35px', borderRadius: '8px' }} />
         <span style={{ fontWeight: '800', fontSize: '1.2rem', letterSpacing: '-1px' }}>PathAI</span>
       </div>
 

@@ -6,7 +6,7 @@ const Footer = () => {
     <footer style={{ padding: '80px 5% 40px', background: '#050505', borderTop: '1px solid #111', textAlign: 'center' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '40px' }}>
-          <img src="/favicon.ico" alt="PathAI" style={{ width: '30px', height: '30px', borderRadius: '6px' }} />
+          <img src="/favicon.svg" alt="PathAI" style={{ width: '30px', height: '30px', borderRadius: '6px' }} />
           <span style={{ fontWeight: '800', fontSize: '1.2rem', letterSpacing: '-1px' }}>PathAI</span>
         </div>
 
