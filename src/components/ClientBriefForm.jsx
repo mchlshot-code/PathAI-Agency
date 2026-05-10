@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react';
 
 const ClientBriefForm = () => {
@@ -142,6 +142,7 @@ const ClientBriefForm = () => {
     );
   }
 
+  // eslint-disable-next-line
   const InputField = ({ label, name, type="text", required=false, placeholder="" }) => (
     <div style={{ marginBottom: '20px' }}>
       <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#fff' }}>

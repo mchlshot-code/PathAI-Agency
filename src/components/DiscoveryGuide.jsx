@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Play, Pause, AlertTriangle, CheckSquare, Square, MessageSquare, Clock } from 'lucide-react';
 
 const DiscoveryGuide = () => {

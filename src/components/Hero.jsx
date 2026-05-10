@@ -1,12 +1,21 @@
-import React, { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
+
 import { motion } from 'framer-motion';
+import AgentNetworkCanvas from './AgentNetworkCanvas';
 
 const Hero = () => {
   return (
-    <section className="bg-gradient hero-layout">
+    <section id="hero" className="bg-gradient hero-layout">
       <div className="hero-text">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          style={{ display: 'inline-block', padding: '6px 14px', background: 'rgba(0, 243, 255, 0.1)', border: '1px solid rgba(0, 243, 255, 0.2)', borderRadius: '50px', marginBottom: '25px' }}
+        >
+          <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '2px' }}>
+            📍 Lagos, Nigeria · GMT+1 · Remote-first
+          </span>
+        </motion.div>
         <motion.h1 
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -32,23 +41,8 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      <div className="hero-canvas-wrapper">
-        <Canvas>
-          <Suspense fallback={null}>
-            <OrbitControls enableZoom={false} />
-            <ambientLight intensity={1} />
-            <directionalLight position={[3, 2, 1]} />
-            <Sphere args={[1, 100, 200]} scale={2.4}>
-              <MeshDistortMaterial
-                color="#00f3ff"
-                attach="material"
-                distort={0.5}
-                speed={2}
-                roughness={0}
-              />
-            </Sphere>
-          </Suspense>
-        </Canvas>
+      <div className="hero-canvas-wrapper" style={{ cursor: 'grab' }}>
+        <AgentNetworkCanvas />
       </div>
     </section>
   );
