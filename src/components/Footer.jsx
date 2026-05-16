@@ -1,5 +1,5 @@
-
 import { Linkedin, Github } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -17,6 +17,11 @@ const Footer = () => {
           <a href="#portfolio">Work</a>
           <a href="#reviews">Reviews</a>
           <a href="#contact">Contact</a>
+        </div>
+
+        <div className="footer-links" style={{ marginBottom: '40px' }}>
+          <Link to="/onboarding/brief" style={{ color: 'var(--accent-color)', fontWeight: '600' }}>Start Project Brief</Link>
+          <Link to="/onboarding/guide" style={{ color: '#444' }}>Discovery Guide (Internal)</Link>
         </div>
 
         <div className="social-links">

@@ -63,7 +63,11 @@ const Navbar = () => {
       </div>
 
       <button className="mobile-menu-btn" onClick={() => setIsMobileOpen(!isMobileOpen)}>
-        {isMobileOpen ? <X size={28} /> : <Menu size={28} />}
+        {isMobileOpen ? (
+          <>Close <X size={16} /></>
+        ) : (
+          <>Menu <Menu size={16} /></>
+        )}
       </button>
 
       <div className={`nav-links ${isMobileOpen ? 'mobile-open' : ''}`}>

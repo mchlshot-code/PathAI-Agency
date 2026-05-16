@@ -17,11 +17,24 @@ const Contact = () => {
     setStatus('loading');
 
     try {
-      // Mocking submission since /api/send might not exist locally
-      setTimeout(() => {
+      const response = await fetch("https://formsubmit.co/ajax/hello@pathai.name.ng", {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            _subject: `New Lead: ${formData.name} - ${formData.service}`,
+            ...formData
+        })
+      });
+
+      if (response.ok) {
         setStatus('success');
         setFormData({ name: '', email: '', service: '', budget: '', message: '' });
-      }, 1500);
+      } else {
+        setStatus('error');
+      }
     } catch (err) {
       console.error(err);
       setStatus('error');

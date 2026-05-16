@@ -71,8 +71,10 @@ const Process = () => {
               {step.icon}
               <div className="process-number">{index + 1}</div>
             </div>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '15px' }}>{step.title}</h3>
-            <p style={{ fontSize: '0.85rem', color: '#666', lineHeight: '1.6' }}>{step.desc}</p>
+            <div>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '15px' }}>{step.title}</h3>
+              <p style={{ fontSize: '0.85rem', color: '#666', lineHeight: '1.6' }}>{step.desc}</p>
+            </div>
           </div>
         ))}
       </div>
