@@ -88,7 +88,7 @@ const Trust = () => {
           <h2 style={{ fontSize: '2.5rem' }}>Client <span className="text-gradient">Intelligence</span></h2>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px' }}>
           {testimonials.map((t, i) => (
             <div key={i} className="glass testimonial-card" style={{ padding: '40px', border: '1px solid rgba(255,255,255,0.05)' }}>
               <div style={{ display: 'flex', gap: '5px', marginBottom: '20px' }}>

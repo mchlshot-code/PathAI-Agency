@@ -1,5 +1,36 @@
 import { useState } from 'react';
-import { CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react';
+import { CheckCircle2, ArrowRight, ArrowLeft, Home } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const InputField = ({ label, name, type="text", required=false, placeholder="", formData, handleInputChange }) => (
+  <div style={{ marginBottom: '20px' }}>
+    <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#fff' }}>
+      {label} {required && <span style={{ color: 'var(--accent-color)' }}>*</span>}
+    </label>
+    {type === 'textarea' ? (
+      <textarea
+        name={name}
+        value={formData[name]}
+        onChange={handleInputChange}
+        placeholder={placeholder}
+        style={{ width: '100%', background: '#111', border: '1px solid #333', padding: '12px 15px', borderRadius: '8px', color: '#fff', outline: 'none', minHeight: '100px', fontFamily: 'var(--font-body)' }}
+        onFocus={(e) => e.target.style.borderColor = 'var(--accent-color)'}
+        onBlur={(e) => e.target.style.borderColor = '#333'}
+      />
+    ) : (
+      <input
+        type={type}
+        name={name}
+        value={formData[name]}
+        onChange={handleInputChange}
+        placeholder={placeholder}
+        style={{ width: '100%', background: '#111', border: '1px solid #333', padding: '12px 15px', borderRadius: '8px', color: '#fff', outline: 'none', fontFamily: 'var(--font-body)' }}
+        onFocus={(e) => e.target.style.borderColor = 'var(--accent-color)'}
+        onBlur={(e) => e.target.style.borderColor = '#333'}
+      />
+    )}
+  </div>
+);
 
 const ClientBriefForm = () => {
   const [step, setStep] = useState(1);
@@ -130,54 +161,36 @@ const ClientBriefForm = () => {
 
   if (isSubmitted) {
     return (
-      <div style={{ padding: '150px 5%', maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
+      <div style={{ padding: '40px 5% 150px', maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ marginBottom: '60px', textAlign: 'left' }}>
+          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#888', textDecoration: 'none', fontWeight: '600', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-color)'} onMouseLeave={e => e.currentTarget.style.color = '#888'}>
+            <Home size={18} /> Return to Home
+          </Link>
+        </div>
         <div className="glass" style={{ padding: '50px' }}>
           <CheckCircle2 size={64} color="var(--accent-color)" style={{ margin: '0 auto 20px' }} />
           <h2 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>Brief Received</h2>
           <p style={{ color: '#aaa', fontSize: '1.2rem', lineHeight: '1.6' }}>
-            Thank you for submitting your project brief. We have received your information and will be in touch within 24 hours to discuss the next steps.
+            Thank you for submitting your project architecture brief. We have received your information and our engineering team will be in touch within 24 hours to discuss the next steps in scaling your vision.
           </p>
         </div>
       </div>
     );
   }
 
-  // eslint-disable-next-line
-  const InputField = ({ label, name, type="text", required=false, placeholder="" }) => (
-    <div style={{ marginBottom: '20px' }}>
-      <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', color: '#fff' }}>
-        {label} {required && <span style={{ color: 'var(--accent-color)' }}>*</span>}
-      </label>
-      {type === 'textarea' ? (
-        <textarea
-          name={name}
-          value={formData[name]}
-          onChange={handleInputChange}
-          placeholder={placeholder}
-          style={{ width: '100%', background: '#111', border: '1px solid #333', padding: '12px 15px', borderRadius: '8px', color: '#fff', outline: 'none', minHeight: '100px', fontFamily: 'var(--font-body)' }}
-          onFocus={(e) => e.target.style.borderColor = 'var(--accent-color)'}
-          onBlur={(e) => e.target.style.borderColor = '#333'}
-        />
-      ) : (
-        <input
-          type={type}
-          name={name}
-          value={formData[name]}
-          onChange={handleInputChange}
-          placeholder={placeholder}
-          style={{ width: '100%', background: '#111', border: '1px solid #333', padding: '12px 15px', borderRadius: '8px', color: '#fff', outline: 'none', fontFamily: 'var(--font-body)' }}
-          onFocus={(e) => e.target.style.borderColor = 'var(--accent-color)'}
-          onBlur={(e) => e.target.style.borderColor = '#333'}
-        />
-      )}
-    </div>
-  );
-
   return (
-    <div style={{ padding: '100px 5%', maxWidth: '800px', margin: '0 auto' }}>
+    <div style={{ padding: '40px 5% 100px', maxWidth: '800px', margin: '0 auto' }}>
+      <div style={{ marginBottom: '40px' }}>
+        <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#888', textDecoration: 'none', fontWeight: '600', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-color)'} onMouseLeave={e => e.currentTarget.style.color = '#888'}>
+          <Home size={18} /> Return to Home
+        </Link>
+      </div>
+
       <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '15px' }} className="text-gradient">Client Project Brief</h1>
-        <p style={{ color: '#aaa', fontSize: '1.1rem' }}>Please complete this brief to provide the necessary information for your project.</p>
+        <h1 style={{ fontSize: '3rem', marginBottom: '15px', lineHeight: '1.1' }} className="text-gradient">Project Architecture Brief</h1>
+        <p style={{ color: '#aaa', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto', lineHeight: '1.6' }}>
+          This is the blueprint for your digital presence. Please provide as much context as possible so our engineering team can architect a solution tailored exactly to your growth objectives.
+        </p>
       </div>
 
       <div className="glass" style={{ padding: '40px' }}>
@@ -208,33 +221,33 @@ const ClientBriefForm = () => {
         {/* Step 1 */}
         {step === 1 && (
           <div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-              <InputField label="Business Name" name="businessName" required />
-              <InputField label="Business Tagline or Slogan" name="tagline" />
-              <InputField label="Business Email" name="email" type="email" required />
-              <InputField label="Business Phone" name="phone" />
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
+              <InputField label="Business Name" name="businessName" formData={formData} handleInputChange={handleInputChange} required />
+              <InputField label="Business Tagline or Slogan" name="tagline" formData={formData} handleInputChange={handleInputChange} />
+              <InputField label="Business Email" name="email" type="email" formData={formData} handleInputChange={handleInputChange} required />
+              <InputField label="Business Phone" name="phone" formData={formData} handleInputChange={handleInputChange} />
             </div>
-            <InputField label="Business Address" name="address" />
-            <InputField label="Social Media Handles" name="socialHandles" placeholder="Instagram, LinkedIn, X, Facebook, TikTok" />
-            <InputField label="Industry / Niche" name="industry" required />
-            <InputField label="Target Audience Description" name="audience" type="textarea" placeholder="Who do you serve? Age range, location, etc." required />
+            <InputField label="Business Address" name="address" formData={formData} handleInputChange={handleInputChange} />
+            <InputField label="Social Media Handles" name="socialHandles" formData={formData} handleInputChange={handleInputChange} placeholder="Instagram, LinkedIn, X, Facebook, TikTok" />
+            <InputField label="Industry / Niche" name="industry" formData={formData} handleInputChange={handleInputChange} required />
+            <InputField label="Target Audience Description" name="audience" type="textarea" formData={formData} handleInputChange={handleInputChange} placeholder="Who do you serve? Age range, location, etc." required />
           </div>
         )}
 
         {/* Step 2 */}
         {step === 2 && (
           <div>
-            <InputField label="List of Pages Needed" name="pagesNeeded" type="textarea" placeholder="Home, About, Services, Contact, etc." required />
-            <InputField label="Primary Goal of the Website" name="primaryGoal" placeholder="Bookings, sales, leads, awareness" required />
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-              <InputField label="Domain Name" name="domain" placeholder="Existing or new domain" required />
-              <InputField label="Preferred Domain Registrar" name="registrar" placeholder="Namecheap, GoDaddy, etc." />
+            <InputField label="List of Pages Needed" name="pagesNeeded" type="textarea" formData={formData} handleInputChange={handleInputChange} placeholder="Home, About, Services, Contact, etc." required />
+            <InputField label="Primary Goal of the Website" name="primaryGoal" formData={formData} handleInputChange={handleInputChange} placeholder="Bookings, sales, leads, awareness" required />
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
+              <InputField label="Domain Name" name="domain" formData={formData} handleInputChange={handleInputChange} placeholder="Existing or new domain" required />
+              <InputField label="Preferred Domain Registrar" name="registrar" formData={formData} handleInputChange={handleInputChange} placeholder="Namecheap, GoDaddy, etc." />
             </div>
-            <InputField label="3 Competitor or Inspiration Websites" name="competitors" type="textarea" placeholder="Links to 3 websites you like or compete with" required />
+            <InputField label="3 Competitor or Inspiration Websites" name="competitors" type="textarea" formData={formData} handleInputChange={handleInputChange} placeholder="Links to 3 websites you like or compete with" required />
             
             <div style={{ marginTop: '30px' }}>
               <label style={{ display: 'block', marginBottom: '15px', fontWeight: '600', color: '#fff' }}>Module Checklist (Tick what applies)</label>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '15px' }}>
                 {modulesList.map((mod, idx) => (
                   <label key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', padding: '10px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid transparent', transition: 'border 0.2s' }} onMouseEnter={e => e.currentTarget.style.borderColor = '#333'} onMouseLeave={e => e.currentTarget.style.borderColor = 'transparent'}>
                     <input 
@@ -259,10 +272,10 @@ const ClientBriefForm = () => {
                 Note: If you have no branding at all, please note this in the 'Design Examples' section. Branding is a separate deliverable.
               </p>
             </div>
-            <InputField label="Brand Colors" name="brandColors" placeholder="Hex codes preferred, e.g., #FFFFFF, #000000" required />
-            <InputField label="Preferred Fonts" name="fonts" placeholder="If none, we will select appropriate fonts" />
-            <InputField label="Brand Tone" name="brandTone" placeholder="Professional, friendly, bold, minimal, luxury, etc." required />
-            <InputField label="Examples of design you like" name="designExamples" type="textarea" placeholder="Screenshots, links, references..." required />
+            <InputField label="Brand Colors" name="brandColors" formData={formData} handleInputChange={handleInputChange} placeholder="Hex codes preferred, e.g., #FFFFFF, #000000" required />
+            <InputField label="Preferred Fonts" name="fonts" formData={formData} handleInputChange={handleInputChange} placeholder="If none, we will select appropriate fonts" />
+            <InputField label="Brand Tone" name="brandTone" formData={formData} handleInputChange={handleInputChange} placeholder="Professional, friendly, bold, minimal, luxury, etc." required />
+            <InputField label="Examples of design you like" name="designExamples" type="textarea" formData={formData} handleInputChange={handleInputChange} placeholder="Screenshots, links, references..." required />
           </div>
         )}
 
@@ -275,10 +288,10 @@ const ClientBriefForm = () => {
               </p>
             </div>
             
-            <InputField label="Homepage Headline and Text" name="homepageHeadline" type="textarea" required />
-            <InputField label="About Page Text" name="aboutText" type="textarea" required />
-            <InputField label="Services or Products List (Names, descriptions, prices)" name="servicesList" type="textarea" required />
-            <InputField label="Team Member Names and Bios (If applicable)" name="teamBios" type="textarea" />
+            <InputField label="Homepage Headline and Text" name="homepageHeadline" type="textarea" formData={formData} handleInputChange={handleInputChange} required />
+            <InputField label="About Page Text" name="aboutText" type="textarea" formData={formData} handleInputChange={handleInputChange} required />
+            <InputField label="Services or Products List (Names, descriptions, prices)" name="servicesList" type="textarea" formData={formData} handleInputChange={handleInputChange} required />
+            <InputField label="Team Member Names and Bios (If applicable)" name="teamBios" type="textarea" formData={formData} handleInputChange={handleInputChange} />
             
             <label style={{ display: 'flex', alignItems: 'center', gap: '15px', cursor: 'pointer', marginTop: '20px', padding: '20px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px' }}>
               <input 

@@ -57,7 +57,7 @@ const Offerings = () => {
         <p style={{ color: '#666', maxWidth: '600px', margin: '0 auto' }}>Choose a specialized engineering path to accelerate your business growth.</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px', maxWidth: '1200px', margin: '0 auto' }}>
         {offerings.map((offering, index) => (
           <div 
             key={index} 

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +39,7 @@ const Navbar = () => {
 
   const handleNavClick = (e, id) => {
     e.preventDefault();
+    setIsMobileOpen(false);
     const element = document.getElementById(id);
     if (element) {
       const offset = 80;
@@ -59,7 +62,11 @@ const Navbar = () => {
         <span style={{ fontWeight: '800', fontSize: '1.2rem', letterSpacing: '-1px' }}>PathAI</span>
       </div>
 
-      <div className="nav-links">
+      <button className="mobile-menu-btn" onClick={() => setIsMobileOpen(!isMobileOpen)}>
+        {isMobileOpen ? <X size={28} /> : <Menu size={28} />}
+      </button>
+
+      <div className={`nav-links ${isMobileOpen ? 'mobile-open' : ''}`}>
         <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className={activeSection === 'about' ? 'active' : ''}>About</a>
         <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className={activeSection === 'services' ? 'active' : ''}>Services</a>
         <a href="#process" onClick={(e) => handleNavClick(e, 'process')} className={activeSection === 'process' ? 'active' : ''}>Process</a>

@@ -30,7 +30,7 @@ const About = () => {
 
   return (
     <section id="about" className="reveal" ref={sectionRef} style={{ padding: '160px 5%' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '80px', maxWidth: '1200px', margin: '0 auto', alignItems: 'center' }}>
+      <div className="about-grid">
         <div>
           <h3 style={{ color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '3px', fontSize: '0.8rem', marginBottom: '20px' }}>
             Our Mission
@@ -56,7 +56,7 @@ const About = () => {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+        <div className="about-stats-grid">
           {values.map((value, index) => (
             <div key={index} className="glass" style={{ padding: '30px', border: '1px solid rgba(255,255,255,0.05)' }}>
               <div style={{ color: 'var(--accent-color)', marginBottom: '15px' }}>{value.icon}</div>
@@ -67,16 +67,7 @@ const About = () => {
         </div>
       </div>
 
-      {/* Responsive adjustments for mobile */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        @media (max-width: 992px) {
-          #about > div {
-            grid-template-columns: 1fr !important;
-            gap: 60px !important;
-          }
-        }
-      `}} />
+      {/* Responsive adjustments handled in index.css */}
     </section>
   );
 };

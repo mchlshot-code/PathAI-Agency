@@ -35,7 +35,7 @@ const Portfolio = () => {
         <p style={{ color: '#666' }}>A track record of engineering complex, mission-critical systems.</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px', maxWidth: '1200px', margin: '0 auto' }}>
         {projects.map((project, index) => (
           <motion.div
             key={index}

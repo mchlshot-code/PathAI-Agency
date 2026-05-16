@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Play, Pause, AlertTriangle, CheckSquare, Square, MessageSquare, Clock } from 'lucide-react';
+import { Play, Pause, AlertTriangle, CheckSquare, Square, MessageSquare, Clock, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const DiscoveryGuide = () => {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
@@ -49,7 +50,13 @@ const DiscoveryGuide = () => {
   };
 
   return (
-    <div style={{ padding: '100px 5%', maxWidth: '1000px', margin: '0 auto', color: '#fff', fontFamily: 'var(--font-body)' }}>
+    <div style={{ padding: '40px 5% 100px', maxWidth: '1000px', margin: '0 auto', color: '#fff', fontFamily: 'var(--font-body)' }}>
+      <div style={{ marginBottom: '40px' }}>
+        <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#888', textDecoration: 'none', fontWeight: '600', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-color)'} onMouseLeave={e => e.currentTarget.style.color = '#888'}>
+          <ArrowLeft size={18} /> Back to Main Site
+        </Link>
+      </div>
+
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
         <div>
           <h1 style={{ fontSize: '2.5rem', marginBottom: '10px' }}>Discovery Call Guide</h1>
@@ -81,7 +88,7 @@ const DiscoveryGuide = () => {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '40px' }}>
+      <div className="discovery-grid" style={{ gap: '40px' }}>
         <div>
           <h2 style={{ fontSize: '1.8rem', marginBottom: '20px', borderBottom: '1px solid #333', paddingBottom: '10px' }}>Questions Checklist</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
