@@ -150,14 +150,13 @@ section {
   border-color: var(--accent-color);
 }
 
-.contact-form-grid textarea {
+.contact-full-width {
   grid-column: span 2;
-  height: 150px;
-  resize: vertical;
 }
 
-.contact-form-grid .btn-full {
-  grid-column: span 2;
+.contact-form-grid textarea {
+  height: 150px;
+  resize: vertical;
 }
 
 /* Trust Brand Row */
@@ -226,11 +225,7 @@ section {
     grid-template-columns: 1fr;
   }
 
-  .contact-form-grid textarea {
-    grid-column: span 1;
-  }
-
-  .contact-form-grid .btn-full {
+  .contact-full-width {
     grid-column: span 1;
   }
 

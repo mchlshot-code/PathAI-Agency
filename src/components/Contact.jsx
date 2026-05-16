@@ -93,7 +93,7 @@ const Contact = () => {
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
                 />
                 
-                <div style={{ gridColumn: 'span 2' }}>
+                <div className="contact-full-width">
                   <select 
                     required
                     value={formData.service}
@@ -112,9 +112,10 @@ const Contact = () => {
                 </div>
 
                 <select 
+                  className="contact-full-width"
                   value={formData.budget}
                   onChange={(e) => setFormData({...formData, budget: e.target.value})}
-                  style={{ background: '#111', border: '1px solid #333', padding: '15px', borderRadius: '10px', color: '#fff', width: '100%', outline: 'none', gridColumn: 'span 2' }}
+                  style={{ background: '#111', border: '1px solid #333', padding: '15px', borderRadius: '10px', color: '#fff', width: '100%', outline: 'none' }}
                 >
                   <option value="" disabled>Project Budget (Optional)</option>
                   <option value="not-sure">Not sure yet / Flexible</option>
@@ -125,6 +126,7 @@ const Contact = () => {
                 </select>
 
                 <textarea 
+                  className="contact-full-width"
                   placeholder="Message (Tell us about your project)" 
                   required
                   value={formData.message}
@@ -133,7 +135,7 @@ const Contact = () => {
                 <button 
                   type="submit" 
                   disabled={status === 'loading'}
-                  className="btn-primary btn-full" 
+                  className="btn-primary contact-full-width" 
                   style={{ border: 'none', cursor: status === 'loading' ? 'not-allowed' : 'pointer', opacity: status === 'loading' ? 0.7 : 1 }}
                 >
                   {status === 'loading' ? 'Initiating...' : 'Initiate Protocol'}
