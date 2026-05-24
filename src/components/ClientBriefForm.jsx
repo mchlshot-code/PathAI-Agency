@@ -145,6 +145,8 @@ const ClientBriefForm = () => {
           },
           body: JSON.stringify({
               _subject: `New Project Brief: ${formData.businessName}`,
+              _captcha: "false",
+              _template: "table",
               ...formData
           })
         });

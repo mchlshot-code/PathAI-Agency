@@ -25,6 +25,8 @@ const Contact = () => {
         },
         body: JSON.stringify({
             _subject: `New Lead: ${formData.name} - ${formData.service}`,
+            _captcha: "false",
+            _template: "table",
             ...formData
         })
       });
