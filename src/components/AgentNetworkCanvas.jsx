@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 // Node configurations
 const NODES = [
-  { id: 'core', label: 'PathAI Core', sub: 'Orchestrator Hub', tier: 1, size: 25, pos: [0, 0, 0], connections: 5 },
+  { id: 'core', label: 'MA Core', sub: 'Orchestrator Hub', tier: 1, size: 25, pos: [0, 0, 0], connections: 5 },
   // Tier 1
   { id: 'brain', label: 'AI Brain', sub: 'Language Model Layer', tier: 2, size: 16, pos: [100, 50, 40], connections: 3 },
   { id: 'deploy', label: 'Deploy Engine', sub: 'CI/CD Pipeline', tier: 2, size: 16, pos: [-100, -50, -40], connections: 2 },
@@ -279,7 +279,7 @@ const AgentNetworkCanvas = () => {
       ctx.fillStyle = 'rgba(0, 243, 255, 0.4)';
       ctx.font = '10px monospace';
       ctx.textAlign = 'left';
-      ctx.fillText('PATHAI // AGENT NETWORK // LIVE', 20, 30);
+      ctx.fillText('MICHAEL ADEWALE // AGENT NETWORK // LIVE', 20, 30);
       
       ctx.textAlign = 'right';
       const opPulse = Math.sin(time * 0.005) > 0;

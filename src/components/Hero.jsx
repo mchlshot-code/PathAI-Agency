@@ -20,9 +20,9 @@ const Hero = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          style={{ fontSize: '4.2rem', lineHeight: '1.1', marginBottom: '20px' }}
+          style={{ fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', lineHeight: '1.2', marginBottom: '20px' }}
         >
-          Building AI-powered <br /><span className="text-gradient">3D Web Experiences</span> & Products
+          Building AI-powered <span className="text-gradient">3D Web Experiences</span> & Products
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, x: -50 }}
