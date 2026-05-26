@@ -2,31 +2,29 @@ import { useState, useEffect } from 'react';
 import { Play, Pause, AlertTriangle, CheckSquare, Square, MessageSquare, Clock, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const DiscoveryGuide = () => {
+const CollabGuide = () => {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [secondsElapsed, setSecondsElapsed] = useState(0);
   const [notes, setNotes] = useState({});
   const [generalNotes, setGeneralNotes] = useState('');
 
   const questions = [
-    "What does your business do, and who is your customer?",
-    "What problem is your website solving right now? (No site? Broken site? Ugly site? Slow site?)",
-    "Do you currently have a website? If yes, what do you hate about it?",
-    "What do you want visitors to do when they land on your site?",
-    "Do you sell products, offer services, take bookings, or a combination?",
-    "Do you need a blog or content section?",
-    "Do you have a team you want to show?",
-    "Do you need people to be able to log in or create accounts?",
-    "Do you take payments online or want to start?",
-    "When do you need this live?",
-    "What is your budget range?"
+    "What does your business/product do, and who is your target customer?",
+    "What primary bottleneck does this project solve? (No web presence, slow load, bad UI, zero automations?)",
+    "If you have a website/system currently, what are the biggest pain points?",
+    "What is the single most important action you want visitors to take?",
+    "Which gig path fits your needs? (3D Experience, AI Agent Pipeline, Full-Stack App, or Custom Collab?)",
+    "What specific integrations or APIs are required? (Stripe, n8n, specific LLM, custom database?)",
+    "Do you have brand guidelines, copywriting, and design assets ready?",
+    "When is your target launch date?",
+    "What is your budget range for this scope?"
   ];
 
   const redFlags = [
-    "Cannot answer what they want visitors to do",
-    "No clear budget range ('just tell me what it costs')",
-    "Wants everything for a small budget",
-    "Needs it live in under two weeks with no existing content ready"
+    "Cannot define target audience or primary conversion action.",
+    "Unwilling to state budget range ('just tell me what it costs').",
+    "Wants a complex full-stack app or customized AI agent with a micro-budget.",
+    "Demands delivery in under 10 days with no assets or content prepared."
   ];
 
   useEffect(() => {
@@ -53,14 +51,17 @@ const DiscoveryGuide = () => {
     <div style={{ padding: '40px 5% 100px', maxWidth: '1000px', margin: '0 auto', color: '#fff', fontFamily: 'var(--font-body)' }}>
       <div style={{ marginBottom: '40px' }}>
         <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#888', textDecoration: 'none', fontWeight: '600', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-color)'} onMouseLeave={e => e.currentTarget.style.color = '#888'}>
-          <ArrowLeft size={18} /> Back to Main Site
+          <ArrowLeft size={18} /> Back to main site
         </Link>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px', flexWrap: 'wrap', gap: '20px' }}>
         <div>
-          <h1 style={{ fontSize: '2.5rem', marginBottom: '10px' }}>Discovery Call Guide</h1>
-          <p style={{ color: '#aaa', fontSize: '1.1rem' }}>Internal reference & note-taking</p>
+          <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '2px' }}>
+            Freelance Toolkit
+          </span>
+          <h1 style={{ fontSize: '2.5rem', marginTop: '5px', marginBottom: '10px' }}>Collab Discovery Guide</h1>
+          <p style={{ color: '#666', fontSize: '1rem' }}>Interactive note-taking and client qualification framework during consultation calls.</p>
         </div>
         
         <div className="glass" style={{ display: 'flex', alignItems: 'center', padding: '15px 25px', gap: '20px' }}>
@@ -131,7 +132,7 @@ const DiscoveryGuide = () => {
             </h3>
             <ul style={{ paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '15px', color: '#ddd' }}>
               {redFlags.map((flag, idx) => (
-                <li key={idx} style={{ lineHeight: '1.5' }}>{flag}</li>
+                <li key={idx} style={{ lineHeight: '1.5', fontSize: '0.92rem' }}>{flag}</li>
               ))}
             </ul>
           </div>
@@ -141,7 +142,7 @@ const DiscoveryGuide = () => {
               <MessageSquare /> General Notes
             </h3>
             <textarea
-              placeholder="Additional context or thoughts..."
+              placeholder="Additional context, action items, or initial tech stack thoughts..."
               value={generalNotes}
               onChange={(e) => setGeneralNotes(e.target.value)}
               style={{
@@ -166,4 +167,4 @@ const DiscoveryGuide = () => {
   );
 };
 
-export default DiscoveryGuide;
+export default CollabGuide;

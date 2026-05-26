@@ -24,7 +24,7 @@ const Services = () => {
   return (
     <section id="services" className="bg-gradient" style={{ padding: '160px 5%' }}>
       <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-        <h2 style={{ fontSize: '3rem' }}>The <span className="text-gradient">PathAI Edge</span></h2>
+        <h2 style={{ fontSize: '3rem' }}>My <span className="text-gradient">Core Edge</span></h2>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>

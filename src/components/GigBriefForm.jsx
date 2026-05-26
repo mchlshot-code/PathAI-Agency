@@ -32,11 +32,11 @@ const InputField = ({ label, name, type="text", required=false, placeholder="", 
   </div>
 );
 
-const ClientBriefForm = () => {
+const GigBriefForm = () => {
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
-    // Step 1: Business Info
+    // Step 1: Client Info
     businessName: '',
     tagline: '',
     email: '',
@@ -46,7 +46,7 @@ const ClientBriefForm = () => {
     industry: '',
     audience: '',
     
-    // Step 2: Website Requirements
+    // Step 2: Gig Requirements
     pagesNeeded: '',
     primaryGoal: '',
     domain: '',
@@ -54,14 +54,13 @@ const ClientBriefForm = () => {
     competitors: '',
     modules: [],
     
-    // Step 3: Branding
-    logoFile: null,
+    // Step 3: Brand Assets & Style
     brandColors: '',
     fonts: '',
     brandTone: '',
     designExamples: '',
     
-    // Step 4: Content
+    // Step 4: Copywriting & Content
     homepageHeadline: '',
     aboutText: '',
     servicesList: '',
@@ -70,17 +69,17 @@ const ClientBriefForm = () => {
   });
 
   const modulesList = [
-    "Product listing and shop",
-    "Service pages",
-    "Online booking / appointment form",
-    "Blog or articles section",
-    "Team members page",
-    "Webinars or events",
-    "Customer login / dashboard",
-    "Online payments",
-    "Newsletter signup",
-    "Contact form",
-    "FAQ section"
+    "Interactive 3D Elements",
+    "WebGL / Three.js Scene",
+    "n8n / Make Automation Setup",
+    "OpenAI / LLM Integration",
+    "Stripe / Payment Gateway",
+    "User Auth & Accounts",
+    "Dashboard UI",
+    "Database (PostgreSQL / Supabase)",
+    "Contact / Booking Forms",
+    "CMS (Content Management)",
+    "API Development / Documentation"
   ];
 
   const handleInputChange = (e) => {
@@ -105,7 +104,7 @@ const ClientBriefForm = () => {
       return formData.businessName && formData.email && formData.industry && formData.audience;
     }
     if (step === 2) {
-      return formData.pagesNeeded && formData.primaryGoal && formData.domain && formData.competitors;
+      return formData.pagesNeeded && formData.primaryGoal && formData.competitors;
     }
     if (step === 3) {
       return formData.brandColors && formData.brandTone && formData.designExamples;
@@ -137,14 +136,14 @@ const ClientBriefForm = () => {
     if (validateStep()) {
       setIsSubmitting(true);
       try {
-        const response = await fetch("https://formsubmit.co/ajax/hello@pathai.name.ng", {
+        const response = await fetch("https://formsubmit.co/ajax/adewalemchel@gmail.com", {
           method: "POST",
           headers: { 
               'Content-Type': 'application/json',
               'Accept': 'application/json'
           },
           body: JSON.stringify({
-              _subject: `New Project Brief: ${formData.businessName}`,
+              _subject: `New Gig Brief: ${formData.businessName} (${formData.email})`,
               _captcha: "false",
               _template: "table",
               ...formData
@@ -179,7 +178,7 @@ const ClientBriefForm = () => {
           <CheckCircle2 size={64} color="var(--accent-color)" style={{ margin: '0 auto 20px' }} />
           <h2 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>Brief Received</h2>
           <p style={{ color: '#aaa', fontSize: '1.2rem', lineHeight: '1.6' }}>
-            Thank you for submitting your project architecture brief. We have received your information and our engineering team will be in touch within 24 hours to discuss the next steps in scaling your vision.
+            Thank you for submitting your project brief. I have received your specifications and will review them. I will be in touch within 24 hours to schedule a collaboration kickoff call.
           </p>
         </div>
       </div>
@@ -195,9 +194,12 @@ const ClientBriefForm = () => {
       </div>
 
       <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '15px', lineHeight: '1.1' }} className="text-gradient">Project Architecture Brief</h1>
+        <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '2px' }}>
+          Project Scoping
+        </span>
+        <h1 style={{ fontSize: '3rem', marginTop: '5px', marginBottom: '15px', lineHeight: '1.1' }} className="text-gradient">Gig Specification Brief</h1>
         <p style={{ color: '#aaa', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto', lineHeight: '1.6' }}>
-          This is the blueprint for your digital presence. Please provide as much context as possible so our engineering team can architect a solution tailored exactly to your growth objectives.
+          Let's map out your project details. Filling out this questionnaire gives me the technical blueprint needed to prepare your deliverables immediately.
         </p>
       </div>
 
@@ -220,38 +222,38 @@ const ClientBriefForm = () => {
         </div>
 
         <h2 style={{ fontSize: '1.8rem', marginBottom: '30px', borderBottom: '1px solid #333', paddingBottom: '15px' }}>
-          {step === 1 && "Section A — Business Information"}
-          {step === 2 && "Section B — Website Requirements"}
-          {step === 3 && "Section C — Branding"}
-          {step === 4 && "Section D — Content"}
+          {step === 1 && "Section A — Contact & General Info"}
+          {step === 2 && "Section B — Project Requirements"}
+          {step === 3 && "Section C — Branding & Assets"}
+          {step === 4 && "Section D — Content & Copy"}
         </h2>
 
         {/* Step 1 */}
         {step === 1 && (
           <div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
-              <InputField label="Business Name" name="businessName" formData={formData} handleInputChange={handleInputChange} required />
-              <InputField label="Business Tagline or Slogan" name="tagline" formData={formData} handleInputChange={handleInputChange} />
-              <InputField label="Business Email" name="email" type="email" formData={formData} handleInputChange={handleInputChange} required />
-              <InputField label="Business Phone" name="phone" formData={formData} handleInputChange={handleInputChange} />
+              <InputField label="Company or Project Name" name="businessName" formData={formData} handleInputChange={handleInputChange} required placeholder="e.g. Acme Corp or My SaaS Idea" />
+              <InputField label="Project Tagline or Slogan" name="tagline" formData={formData} handleInputChange={handleInputChange} placeholder="e.g. AI-driven task manager" />
+              <InputField label="Contact Email Address" name="email" type="email" formData={formData} handleInputChange={handleInputChange} required placeholder="email@example.com" />
+              <InputField label="Phone Number / WhatsApp" name="phone" formData={formData} handleInputChange={handleInputChange} placeholder="+234..." />
             </div>
-            <InputField label="Business Address" name="address" formData={formData} handleInputChange={handleInputChange} />
-            <InputField label="Social Media Handles" name="socialHandles" formData={formData} handleInputChange={handleInputChange} placeholder="Instagram, LinkedIn, X, Facebook, TikTok" />
-            <InputField label="Industry / Niche" name="industry" formData={formData} handleInputChange={handleInputChange} required />
-            <InputField label="Target Audience Description" name="audience" type="textarea" formData={formData} handleInputChange={handleInputChange} placeholder="Who do you serve? Age range, location, etc." required />
+            <InputField label="Location / Timezone" name="address" formData={formData} handleInputChange={handleInputChange} placeholder="e.g. Lagos, Nigeria (GMT+1)" />
+            <InputField label="Social Media Profiles" name="socialHandles" formData={formData} handleInputChange={handleInputChange} placeholder="LinkedIn, GitHub, X, etc." />
+            <InputField label="Industry / Niche" name="industry" formData={formData} handleInputChange={handleInputChange} required placeholder="e.g. HealthTech, FinTech, E-commerce" />
+            <InputField label="Target Audience Description" name="audience" type="textarea" formData={formData} handleInputChange={handleInputChange} placeholder="Who are the primary users or customers?" required />
           </div>
         )}
 
         {/* Step 2 */}
         {step === 2 && (
           <div>
-            <InputField label="List of Pages Needed" name="pagesNeeded" type="textarea" formData={formData} handleInputChange={handleInputChange} placeholder="Home, About, Services, Contact, etc." required />
-            <InputField label="Primary Goal of the Website" name="primaryGoal" formData={formData} handleInputChange={handleInputChange} placeholder="Bookings, sales, leads, awareness" required />
+            <InputField label="List of Pages / Views Needed" name="pagesNeeded" type="textarea" formData={formData} handleInputChange={handleInputChange} placeholder="e.g. Homepage, Dashboard, User Settings, Billing" required />
+            <InputField label="Primary Goal of this Build" name="primaryGoal" formData={formData} handleInputChange={handleInputChange} placeholder="e.g. Secure user registrations, showcase 3D products, automate client outreach" required />
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
-              <InputField label="Domain Name" name="domain" formData={formData} handleInputChange={handleInputChange} placeholder="Existing or new domain" required />
-              <InputField label="Preferred Domain Registrar" name="registrar" formData={formData} handleInputChange={handleInputChange} placeholder="Namecheap, GoDaddy, etc." />
+              <InputField label="Domain Name Details" name="domain" formData={formData} handleInputChange={handleInputChange} placeholder="Do you own a domain, or need one?" />
+              <InputField label="Preferred Hosting/Deployment Platforms" name="registrar" formData={formData} handleInputChange={handleInputChange} placeholder="e.g. Vercel, Render, AWS" />
             </div>
-            <InputField label="3 Competitor or Inspiration Websites" name="competitors" type="textarea" formData={formData} handleInputChange={handleInputChange} placeholder="Links to 3 websites you like or compete with" required />
+            <InputField label="Competitors & Inspiration Sites" name="competitors" type="textarea" formData={formData} handleInputChange={handleInputChange} placeholder="Links to 2-3 sites whose UI/UX or flow you like" required />
             
             <div style={{ marginTop: '30px' }}>
               <label style={{ display: 'block', marginBottom: '15px', fontWeight: '600', color: '#fff' }}>Module Checklist (Tick what applies)</label>
@@ -277,13 +279,13 @@ const ClientBriefForm = () => {
           <div>
             <div style={{ marginBottom: '20px', padding: '15px', background: 'rgba(0, 243, 255, 0.05)', borderRadius: '8px', border: '1px solid rgba(0, 243, 255, 0.2)' }}>
               <p style={{ fontSize: '0.9rem', color: '#aaa', lineHeight: '1.5' }}>
-                Note: If you have no branding at all, please note this in the 'Design Examples' section. Branding is a separate deliverable.
+                Note: If you do not have logo or color scheme ready, please note this in 'Design Examples'. I can establish a design system as part of the setup.
               </p>
             </div>
-            <InputField label="Brand Colors" name="brandColors" formData={formData} handleInputChange={handleInputChange} placeholder="Hex codes preferred, e.g., #FFFFFF, #000000" required />
-            <InputField label="Preferred Fonts" name="fonts" formData={formData} handleInputChange={handleInputChange} placeholder="If none, we will select appropriate fonts" />
-            <InputField label="Brand Tone" name="brandTone" formData={formData} handleInputChange={handleInputChange} placeholder="Professional, friendly, bold, minimal, luxury, etc." required />
-            <InputField label="Examples of design you like" name="designExamples" type="textarea" formData={formData} handleInputChange={handleInputChange} placeholder="Screenshots, links, references..." required />
+            <InputField label="Brand Colors" name="brandColors" formData={formData} handleInputChange={handleInputChange} placeholder="Hex codes or colors, e.g., #00F3FF, Dark Blue" required />
+            <InputField label="Preferred Typography / Fonts" name="fonts" formData={formData} handleInputChange={handleInputChange} placeholder="e.g. Inter, Outfit, Roboto" />
+            <InputField label="Brand Tone & Personality" name="brandTone" formData={formData} handleInputChange={handleInputChange} placeholder="e.g. Sleek, professional, futuristic, clean" required />
+            <InputField label="Design Inspiration / Examples" name="designExamples" type="textarea" formData={formData} handleInputChange={handleInputChange} placeholder="Links to screenshots, designs, Figma boards..." required />
           </div>
         )}
 
@@ -292,14 +294,14 @@ const ClientBriefForm = () => {
           <div>
             <div style={{ marginBottom: '25px', padding: '15px', background: 'rgba(255, 51, 102, 0.05)', borderRadius: '8px', border: '1px solid rgba(255, 51, 102, 0.2)' }}>
               <p style={{ fontSize: '0.9rem', color: '#ff3366', lineHeight: '1.5', fontWeight: 'bold' }}>
-                Content is the client's responsibility. Work will not begin on any section until that section's content has been received.
+                Providing ready text content accelerates development. Please supply the primary copy or blueprints below.
               </p>
             </div>
             
-            <InputField label="Homepage Headline and Text" name="homepageHeadline" type="textarea" formData={formData} handleInputChange={handleInputChange} required />
-            <InputField label="About Page Text" name="aboutText" type="textarea" formData={formData} handleInputChange={handleInputChange} required />
-            <InputField label="Services or Products List (Names, descriptions, prices)" name="servicesList" type="textarea" formData={formData} handleInputChange={handleInputChange} required />
-            <InputField label="Team Member Names and Bios (If applicable)" name="teamBios" type="textarea" formData={formData} handleInputChange={handleInputChange} />
+            <InputField label="Project Core Headline / Main Message" name="homepageHeadline" type="textarea" formData={formData} handleInputChange={handleInputChange} required placeholder="What is the primary text visitors will see first?" />
+            <InputField label="Product / About Bio Copy" name="aboutText" type="textarea" formData={formData} handleInputChange={handleInputChange} required placeholder="Detailed description of the company, product or mission..." />
+            <InputField label="Deliverables or Features List (Names, details)" name="servicesList" type="textarea" formData={formData} handleInputChange={handleInputChange} required placeholder="Detailed list of services, pricing structure, or SaaS features..." />
+            <InputField label="Additional Notes or Role Specifications" name="teamBios" type="textarea" formData={formData} handleInputChange={handleInputChange} placeholder="Any other team bios, dashboard requirements, or specific requests..." />
             
             <label style={{ display: 'flex', alignItems: 'center', gap: '15px', cursor: 'pointer', marginTop: '20px', padding: '20px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px' }}>
               <input 
@@ -309,7 +311,7 @@ const ClientBriefForm = () => {
                 onChange={handleInputChange}
                 style={{ accentColor: 'var(--accent-color)', width: '24px', height: '24px' }}
               />
-              <span style={{ fontSize: '1.05rem', fontWeight: '600' }}>I confirm I have high-quality photos ready (Minimum: logo, 1 hero image, product/service images) *</span>
+              <span style={{ fontSize: '1.05rem', fontWeight: '600' }}>I confirm I have project assets ready (Minimum: product screenshots, logo outline, or basic visual specs) *</span>
             </label>
           </div>
         )}
@@ -337,4 +339,4 @@ const ClientBriefForm = () => {
   );
 };
 
-export default ClientBriefForm;
+export default GigBriefForm;

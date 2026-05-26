@@ -1,27 +1,25 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Offerings from './components/Offerings';
+import Gigs from './components/Gigs';
 import About from './components/About';
 import Services from './components/Services';
 import Process from './components/Process';
 import Portfolio from './components/Portfolio';
-
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import DiscoveryGuide from './components/DiscoveryGuide';
-import ClientBriefForm from './components/ClientBriefForm';
+import CollabGuide from './components/CollabGuide';
+import GigBriefForm from './components/GigBriefForm';
 
 function MainSite() {
   return (
     <>
       <Navbar />
       <Hero />
-      <Offerings />
+      <Gigs />
       <About />
       <Services />
       <Process />
-
       <Portfolio />
       <Contact />
       <Footer />
@@ -35,8 +33,8 @@ function App() {
       <div className="app-container">
         <Routes>
           <Route path="/" element={<MainSite />} />
-          <Route path="/onboarding/guide" element={<DiscoveryGuide />} />
-          <Route path="/onboarding/brief" element={<ClientBriefForm />} />
+          <Route path="/collab/guide" element={<CollabGuide />} />
+          <Route path="/collab/brief" element={<GigBriefForm />} />
         </Routes>
       </div>
     </Router>

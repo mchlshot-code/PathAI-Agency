@@ -20,24 +20,24 @@ const Hero = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          style={{ fontSize: '5rem', lineHeight: '1.1', marginBottom: '20px' }}
+          style={{ fontSize: '4.2rem', lineHeight: '1.1', marginBottom: '20px' }}
         >
-          Engineering the <span className="text-gradient">Future of AI</span> Web Presence
+          Building AI-powered <br /><span className="text-gradient">3D Web Experiences</span> & Products
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          style={{ fontSize: '1.2rem', color: '#888', marginBottom: '40px', maxWidth: '600px', lineHeight: '1.6' }}
+          style={{ fontSize: '1.15rem', color: '#aaa', marginBottom: '40px', maxWidth: '600px', lineHeight: '1.6' }}
         >
-          PathAI helps SaaS founders and service businesses ship AI-powered web products and agents in under 14 days.
+          I help founders and modern businesses ship high‑performance web products, interactive 3D experiences, and autonomous AI agents—especially in digital health and fintech—fast.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <a href="#contact" className="btn-primary">Scale Your Vision</a>
+          <a href="#gigs" className="btn-primary">Explore My Gigs</a>
         </motion.div>
       </div>
 

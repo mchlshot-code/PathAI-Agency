@@ -1,11 +1,50 @@
 import { useEffect, useRef } from 'react';
-import { Zap, Eye, Cpu, Globe } from 'lucide-react';
+import { Award, Code, Brain, Cpu, BookOpen } from 'lucide-react';
+import profileImg from '../assets/michael-adewale-profile.jpg';
 
-const values = [
-  { icon: <Zap size={24} />, title: 'Speed', desc: 'From idea to production in days, not months. We build at the speed of thought.' },
-  { icon: <Eye size={24} />, title: 'Transparency', desc: 'No black boxes. Real-time updates and clear communication at every stage.' },
-  { icon: <Cpu size={24} />, title: 'AI-First', desc: 'We don’t just use AI; we architect entire systems around it for maximum efficiency.' },
-  { icon: <Globe size={24} />, title: 'African Edge', desc: 'Nigerian-built with a global standard. Local grit meeting world-class engineering.' }
+const experience = [
+  {
+    date: 'May 2026 – Present',
+    title: 'Founder & Lead Architect',
+    company: 'PathAI Systems',
+    desc: 'Engineering high-performance 3D interfaces and autonomous AI pipelines (ReAct, function calling) to automate business operations and client acquisition for founders and SMEs.'
+  },
+  {
+    date: '2024 – Present',
+    title: 'Lead Full-Stack Developer',
+    company: 'Nigerian Academy of Audiology (NAA)',
+    desc: 'Architected and deployed the official national NAA professional portal, featuring secure membership authentication, automatic CPD points tracking, and a dynamic forms builder in Django.'
+  },
+  {
+    date: '2025',
+    title: 'Founder & Developer',
+    company: 'RemitAI',
+    desc: 'Designed and built a real-time FinTech comparison assistant for cross-border payments, optimizing remittance rates globally with AI insights.'
+  },
+  {
+    date: '2024',
+    title: 'Founder & Developer',
+    company: 'AudiologyLink',
+    desc: 'Developed a specialized patient management portal and audiogram analysis system connecting hearing care professionals.'
+  }
+];
+
+const achievements = [
+  {
+    icon: <Award size={20} />,
+    title: 'Digital Health Innovation Winner',
+    desc: 'Won the ITHISAN Week Hackathon for designing and building AudiologyLink.'
+  },
+  {
+    icon: <Cpu size={20} />,
+    title: '3MTT NextGen Fellow',
+    desc: 'Selected fellow of the 3 Million Technical Talent (3MTT) Program.'
+  },
+  {
+    icon: <BookOpen size={20} />,
+    title: 'Bachelor of Audiology',
+    desc: 'Federal University of Health Sciences, Ila Orangun.'
+  }
 ];
 
 const About = () => {
@@ -29,45 +68,91 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="reveal" ref={sectionRef} style={{ padding: '160px 5%' }}>
+    <section id="about" className="reveal" ref={sectionRef} style={{ padding: '120px 5%' }}>
       <div className="about-grid">
+        {/* Left column: Bio & Achievements */}
         <div>
           <h3 style={{ color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '3px', fontSize: '0.8rem', marginBottom: '20px' }}>
-            Our Mission
+            About Me
           </h3>
-          <h2 style={{ fontSize: '3.5rem', lineHeight: '1.1', marginBottom: '30px' }}>
-            Not An Agency. <br /><span className="text-gradient">A Force Multiplier.</span>
+          <h2 style={{ fontSize: '3.5rem', lineHeight: '1.1', marginBottom: '30px', fontWeight: '800' }}>
+            Not Just a Developer. <br /><span className="text-gradient">A Technical Force Multiplier.</span>
           </h2>
-          <div style={{ color: '#aaa', lineHeight: '1.8', fontSize: '1.1rem' }}>
+          <div style={{ color: '#aaa', lineHeight: '1.8', fontSize: '1.05rem' }}>
             <p style={{ marginBottom: '20px' }}>
-              Born in the heart of Lagos, PathAI was founded on a simple realization: the traditional agency model is broken. It's too slow, too opaque, and too disconnected from the AI revolution.
+              I am a Full-Stack Engineer and AI Architect based in Lagos, Nigeria. I specialize in bridging the gap between advanced agentic AI networks and immersive web frontend interfaces.
             </p>
             <p style={{ marginBottom: '30px' }}>
-              We started as a small team of engineers obsessed with automation. Today, we're a specialized lab that transforms businesses into AI-native powerhouses. We don't just build websites; we build the future of how companies operate.
+              Obsessed with performance and speed, I build custom 3D web applications and automate complex operational workflows. Whether developing clinical ecosystems for digital health or optimizing fintech rails, I design software that delivers measurable growth.
             </p>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginTop: '40px' }}>
-            <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: '#222', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', color: 'var(--accent-color)', border: '2px solid #333' }}>MA</div>
-            <div>
-              <p style={{ fontWeight: '700', fontSize: '1rem', color: '#fff' }}>Michael A.</p>
-              <p style={{ fontSize: '0.8rem', color: '#666' }}>Founder & Lead Architect · Lagos, Nigeria</p>
-            </div>
+          {/* Core Qualifications Grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', marginTop: '40px' }}>
+            {achievements.map((item, index) => (
+              <div 
+                key={index} 
+                className="glass" 
+                style={{ 
+                  padding: '20px 25px', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '20px', 
+                  border: '1px solid rgba(255,255,255,0.03)',
+                  textAlign: 'left'
+                }}
+              >
+                <div style={{ color: 'var(--accent-color)', display: 'flex', alignItems: 'center' }}>
+                  {item.icon}
+                </div>
+                <div>
+                  <h4 style={{ fontSize: '0.98rem', fontWeight: '700', color: '#fff', marginBottom: '3px' }}>{item.title}</h4>
+                  <p style={{ fontSize: '0.82rem', color: '#666' }}>{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="about-stats-grid">
-          {values.map((value, index) => (
-            <div key={index} className="glass" style={{ padding: '30px', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <div style={{ color: 'var(--accent-color)', marginBottom: '15px' }}>{value.icon}</div>
-              <h4 style={{ fontSize: '1.1rem', marginBottom: '10px' }}>{value.title}</h4>
-              <p style={{ fontSize: '0.8rem', color: '#666', lineHeight: '1.5' }}>{value.desc}</p>
+        {/* Right column: Profile Photo & Skills Frame */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '40px' }}>
+          {/* Glowing Conic Border Profile Picture */}
+          <div className="profile-frame">
+            <div className="profile-img-container">
+              <img src={profileImg} alt="Michael Adewale" className="profile-img" />
+            </div>
+          </div>
+          
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontWeight: '700', fontSize: '1.2rem', color: '#fff', marginBottom: '2px' }}>Michael Adewale</p>
+            <p style={{ fontSize: '0.85rem', color: '#555', letterSpacing: '1px', textTransform: 'uppercase', fontWeight: '600' }}>Full-Stack Engineer & AI Architect</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Experience Timeline Section */}
+      <div style={{ maxWidth: '800px', margin: '100px auto 0' }}>
+        <h3 style={{ fontSize: '2rem', textAlign: 'center', marginBottom: '50px' }}>
+          Professional <span className="text-gradient">Timeline</span>
+        </h3>
+        
+        <div className="timeline-container">
+          {experience.map((item, index) => (
+            <div key={index} className="timeline-item">
+              <div className="timeline-date">{item.date}</div>
+              <h4 className="timeline-title">
+                {item.title}
+              </h4>
+              <div className="timeline-subtitle">
+                {item.company}
+              </div>
+              <p className="timeline-desc">
+                {item.desc}
+              </p>
             </div>
           ))}
         </div>
       </div>
-
-      {/* Responsive adjustments handled in index.css */}
     </section>
   );
 };

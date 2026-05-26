@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,7 +14,7 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll);
     
-    const sections = ['about', 'services', 'process', 'portfolio', 'reviews', 'contact'];
+    const sections = ['gigs', 'about', 'portfolio', 'contact'];
     const observers = sections.map(id => {
       const element = document.getElementById(id);
       if (!element) return null;
@@ -24,7 +25,7 @@ const Navbar = () => {
             setActiveSection(id);
           }
         },
-        { threshold: 0.5 }
+        { threshold: 0.3 }
       );
 
       observer.observe(element);
@@ -58,8 +59,8 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }} onClick={(e) => handleNavClick(e, 'hero')}>
-        <img src="/favicon.svg" alt="PathAI" style={{ width: '35px', height: '35px', borderRadius: '8px' }} />
-        <span style={{ fontWeight: '800', fontSize: '1.2rem', letterSpacing: '-1px' }}>PathAI</span>
+        <img src="/favicon.svg" alt="Michael Adewale" style={{ width: '35px', height: '35px', borderRadius: '8px' }} />
+        <span style={{ fontWeight: '800', fontSize: '1.2rem', letterSpacing: '-1.2px' }}>Michael Adewale</span>
       </div>
 
       <button className="mobile-menu-btn" onClick={() => setIsMobileOpen(!isMobileOpen)}>
@@ -71,16 +72,15 @@ const Navbar = () => {
       </button>
 
       <div className={`nav-links ${isMobileOpen ? 'mobile-open' : ''}`}>
+        <a href="#gigs" onClick={(e) => handleNavClick(e, 'gigs')} className={activeSection === 'gigs' ? 'active' : ''}>Gigs</a>
         <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className={activeSection === 'about' ? 'active' : ''}>About</a>
-        <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className={activeSection === 'services' ? 'active' : ''}>Services</a>
-        <a href="#process" onClick={(e) => handleNavClick(e, 'process')} className={activeSection === 'process' ? 'active' : ''}>Process</a>
         <a href="#portfolio" onClick={(e) => handleNavClick(e, 'portfolio')} className={activeSection === 'portfolio' ? 'active' : ''}>Work</a>
-        <a href="#reviews" onClick={(e) => handleNavClick(e, 'reviews')} className={activeSection === 'reviews' ? 'active' : ''}>Reviews</a>
         <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className={activeSection === 'contact' ? 'active' : ''}>Contact</a>
-        <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="btn-primary" style={{ padding: '10px 20px', fontSize: '0.85rem', marginLeft: '10px' }}>Start a Project</a>
+        <Link to="/collab/brief" className="btn-primary" style={{ padding: '10px 20px', fontSize: '0.85rem', marginLeft: '10px' }}>Book a Gig</Link>
       </div>
     </nav>
   );
 };
 
 export default Navbar;
+
