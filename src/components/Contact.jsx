@@ -31,15 +31,21 @@ const Contact = () => {
         })
       });
 
-      if (response.ok) {
+      const data = await response.json().catch(() => null);
+      console.log("FormSubmit Response:", response.status, data);
+
+      if (response.ok && (!data || data.success !== "false")) {
         setStatus('success');
         setFormData({ name: '', email: '', service: '', budget: '', message: '' });
       } else {
+        console.error("FormSubmit Error:", data?.message);
         setStatus('error');
+        alert(`Error: ${data?.message || 'Submission failed'}. Please check console.`);
       }
     } catch (err) {
-      console.error(err);
+      console.error("Submission Error:", err);
       setStatus('error');
+      alert(`Error: ${err.message}. Please check console.`);
     }
   };
 

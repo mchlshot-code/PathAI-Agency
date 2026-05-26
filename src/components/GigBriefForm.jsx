@@ -150,14 +150,17 @@ const GigBriefForm = () => {
           })
         });
         
-        if (!response.ok) {
-          throw new Error('Failed to submit form');
+        const data = await response.json().catch(() => null);
+        console.log("FormSubmit Response:", response.status, data);
+
+        if (!response.ok || (data && data.success === "false")) {
+          throw new Error(data?.message || 'Failed to submit form');
         }
         
         setIsSubmitted(true);
       } catch (error) {
-        console.error(error);
-        alert('There was an error submitting your brief. Please try again.');
+        console.error("Submission Error:", error);
+        alert(`Error: ${error.message}. If this is a new email, you may need to verify it via FormSubmit first. Please check the console for details.`);
       } finally {
         setIsSubmitting(false);
       }
