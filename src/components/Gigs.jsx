@@ -382,8 +382,8 @@ const GigVisualizer = ({ type, glowColor }) => {
 
 const Gigs = () => {
   return (
-    <section id="gigs" style={{ background: '#050505', paddingTop: '100px', paddingBottom: '100px' }}>
-      <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+    <section id="gigs" style={{ background: '#050505' }}>
+      <div style={{ textAlign: 'center', marginBottom: 'var(--header-margin, 80px)' }}>
         <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '2px' }}>
           Available Gigs
         </span>
@@ -401,7 +401,6 @@ const Gigs = () => {
             key={index} 
             className="glass offering-card" 
             style={{ 
-              padding: '40px 30px', 
               background: gig.color, 
               borderColor: gig.borderColor,
               display: 'flex',
@@ -414,8 +413,8 @@ const Gigs = () => {
               
               {/* Interactive 3D Canvas visualizer for each service */}
               <GigVisualizer type={gig.type} glowColor={gig.glowColor} />
-
-              <div style={{ marginBottom: '25px' }}>
+ 
+              <div style={{ marginBottom: 'var(--elem-margin, 25px)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '8px', flexWrap: 'wrap', gap: '10px' }}>
                   <h3 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#fff', letterSpacing: '-0.5px' }}>{gig.title}</h3>
                 </div>
@@ -427,29 +426,29 @@ const Gigs = () => {
                 </p>
               </div>
               
-              <p style={{ color: '#777', lineHeight: '1.6', marginBottom: '30px', fontSize: '0.92rem' }}>
+              <p style={{ color: '#777', lineHeight: '1.6', marginBottom: 'var(--elem-margin, 30px)', fontSize: '0.92rem' }}>
                 {gig.desc}
               </p>
-
-              <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: '25px', marginBottom: '30px' }}>
+ 
+              <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: 'var(--elem-margin, 25px)', marginBottom: 'var(--elem-margin, 30px)' }}>
                 <p style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', color: '#888', letterSpacing: '1px', marginBottom: '15px' }}>What You Get:</p>
                 <ul style={{ paddingLeft: '15px', color: '#bbb', fontSize: '0.88rem', listStyleType: 'square' }}>
                   {gig.deliverables.map((item, i) => (
-                    <li key={i} style={{ marginBottom: '10px', lineHeight: '1.5' }}>
+                    <li key={i} style={{ marginBottom: 'var(--bullet-margin, 10px)', lineHeight: '1.5' }}>
                       {item}
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
-
+ 
             <div>
-              <div style={{ marginBottom: '25px', display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+              <div style={{ marginBottom: 'var(--elem-margin, 25px)', display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                 {gig.tags.map(tag => (
                   <span key={tag} className="badge" style={{ margin: 0 }}>{tag}</span>
                 ))}
               </div>
-
+ 
               <Link 
                 to="/collab/brief" 
                 className="btn-primary" 

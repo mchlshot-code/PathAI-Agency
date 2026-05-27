@@ -9,6 +9,9 @@
   --glass-border: rgba(255, 255, 255, 0.1);
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
+  --elem-margin: 25px;
+  --bullet-margin: 10px;
+  --header-margin: 80px;
 }
 
 * {
@@ -180,8 +183,13 @@ section {
    TABLET (max-width: 768px)
    =========================== */
 @media (max-width: 768px) {
+  :root {
+    --elem-margin: 15px;
+    --bullet-margin: 6px;
+    --header-margin: 40px;
+  }
   section {
-    padding: 70px 5%;
+    padding: 45px 4%;
   }
 
   /* Hero — stack vertically, canvas becomes background */
@@ -212,11 +220,11 @@ section {
 
   /* Hero typography */
   .hero-layout h1 {
-    font-size: 3rem !important;
+    font-size: 2.6rem !important;
   }
 
   .hero-layout p {
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
     max-width: 100% !important;
   }
 
@@ -236,11 +244,19 @@ section {
 
   /* Headings scale down */
   h2 {
-    font-size: 2.2rem !important;
+    font-size: 2rem !important;
   }
 
   h1 {
-    font-size: 2.8rem !important;
+    font-size: 2.4rem !important;
+  }
+  
+  .offering-card {
+    padding: 25px 20px !important;
+  }
+
+  .gig-canvas-container {
+    height: 120px !important;
   }
 }
 
@@ -249,7 +265,7 @@ section {
    =========================== */
 @media (max-width: 480px) {
   section {
-    padding: 60px 5%;
+    padding: 35px 3%;
   }
 
   .hero-layout h1 {
