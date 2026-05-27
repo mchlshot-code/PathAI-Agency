@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Layout, Bot, Server, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -381,8 +381,40 @@ const GigVisualizer = ({ type, glowColor }) => {
 };
 
 const Gigs = () => {
+  const gridRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  // Track scroll position → active dot
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+    const onScroll = () => {
+      const cardWidth = grid.scrollWidth / gigs.length;
+      const idx = Math.round(grid.scrollLeft / cardWidth);
+      setActiveIndex(Math.min(idx, gigs.length - 1));
+    };
+    grid.addEventListener('scroll', onScroll, { passive: true });
+    return () => grid.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const scrollTo = (i) => {
+    const grid = gridRef.current;
+    if (!grid) return;
+    const cardWidth = grid.scrollWidth / gigs.length;
+    grid.scrollTo({ left: cardWidth * i, behavior: 'smooth' });
+  };
+
   return (
-    <section id="gigs" style={{ background: '#050505' }}>
+    <section id="gigs" style={{ background: '#050505', overflow: 'hidden' }}>
       <div style={{ textAlign: 'center', marginBottom: 'var(--header-margin, 80px)' }}>
         <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '2px' }}>
           Available Gigs
@@ -395,25 +427,35 @@ const Gigs = () => {
         </p>
       </div>
 
-      <div className="gigs-grid">
+      {/* Gradient edge masks for horizontal scroll (mobile only) */}
+      {isMobile && (
+        <div style={{ position: 'relative' }}>
+          <div className="gigs-edge-mask gigs-edge-mask--left" />
+          <div className="gigs-edge-mask gigs-edge-mask--right" />
+        </div>
+      )}
+
+      <div className="gigs-grid" ref={gridRef}>
         {gigs.map((gig, index) => (
-          <div 
-            key={index} 
-            className="glass offering-card" 
-            style={{ 
-              background: gig.color, 
-              borderColor: gig.borderColor,
+          <div
+            key={index}
+            className={`glass offering-card gig-slide ${isMobile && activeIndex === index ? 'gig-slide--active' : ''}`}
+            style={{
+              background: gig.color,
+              borderColor: activeIndex === index && isMobile ? gig.glowColor + '66' : gig.borderColor,
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'space-between'
+              justifyContent: 'space-between',
+              transition: 'border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease',
+              boxShadow: activeIndex === index && isMobile ? `0 0 40px ${gig.glowColor}22` : 'none',
             }}
           >
             <div>
               <span className="card-number">{gig.num}</span>
-              
+
               {/* Interactive 3D Canvas visualizer for each service */}
               <GigVisualizer type={gig.type} glowColor={gig.glowColor} />
- 
+
               <div style={{ marginBottom: 'var(--elem-margin, 25px)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '8px', flexWrap: 'wrap', gap: '10px' }}>
                   <h3 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#fff', letterSpacing: '-0.5px' }}>{gig.title}</h3>
@@ -425,11 +467,11 @@ const Gigs = () => {
                   {gig.subtitle}
                 </p>
               </div>
-              
+
               <p style={{ color: '#777', lineHeight: '1.6', marginBottom: 'var(--elem-margin, 30px)', fontSize: '0.92rem' }}>
                 {gig.desc}
               </p>
- 
+
               <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: 'var(--elem-margin, 25px)', marginBottom: 'var(--elem-margin, 30px)' }}>
                 <p style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', color: '#888', letterSpacing: '1px', marginBottom: '15px' }}>What You Get:</p>
                 <ul style={{ paddingLeft: '15px', color: '#bbb', fontSize: '0.88rem', listStyleType: 'square' }}>
@@ -441,25 +483,27 @@ const Gigs = () => {
                 </ul>
               </div>
             </div>
- 
+
             <div>
               <div style={{ marginBottom: 'var(--elem-margin, 25px)', display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                 {gig.tags.map(tag => (
                   <span key={tag} className="badge" style={{ margin: 0 }}>{tag}</span>
                 ))}
               </div>
- 
-              <Link 
-                to="/collab/brief" 
-                className="btn-primary" 
-                style={{ 
-                  width: '100%', 
-                  textAlign: 'center', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center', 
+
+              <Link
+                to="/collab/brief"
+                className="btn-primary"
+                style={{
+                  width: '100%',
+                  textAlign: 'center',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                   gap: '10px',
-                  boxShadow: `0 10px 20px ${gig.glowColor}1a`
+                  background: activeIndex === index && isMobile ? gig.glowColor : 'var(--accent-color)',
+                  boxShadow: `0 10px 20px ${gig.glowColor}33`,
+                  transition: 'background 0.4s ease',
                 }}
               >
                 Book This Gig <ArrowRight size={16} />
@@ -468,6 +512,35 @@ const Gigs = () => {
           </div>
         ))}
       </div>
+
+      {/* Pagination Dots — mobile only */}
+      {isMobile && (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', marginTop: '24px' }}>
+          {gigs.map((gig, i) => (
+            <button
+              key={i}
+              onClick={() => scrollTo(i)}
+              aria-label={`Go to gig ${i + 1}`}
+              style={{
+                width: activeIndex === i ? '28px' : '8px',
+                height: '8px',
+                borderRadius: '50px',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+                background: activeIndex === i ? gig.glowColor : 'rgba(255,255,255,0.15)',
+                boxShadow: activeIndex === i ? `0 0 10px ${gig.glowColor}99` : 'none',
+                transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+              }}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Swipe hint — shown briefly then fades */}
+      {isMobile && activeIndex === 0 && (
+        <p className="gigs-swipe-hint">Swipe to explore gigs →</p>
+      )}
     </section>
   );
 };

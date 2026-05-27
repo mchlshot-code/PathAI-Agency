@@ -255,6 +255,14 @@ section {
     padding: 25px 20px !important;
     flex: 0 0 85% !important;
     scroll-snap-align: center;
+    opacity: 0.6;
+    transform: scale(0.96);
+    transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
+  }
+
+  .gig-slide--active {
+    opacity: 1 !important;
+    transform: scale(1) !important;
   }
 
   .gig-canvas-container {
@@ -268,13 +276,51 @@ section {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     gap: 20px !important;
-    padding: 10px 4% 30px !important;
+    padding: 16px 8% 30px !important;
     margin: 0 -4% !important;
     scrollbar-width: none;
   }
 
   .gigs-grid::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Left fade edge */
+  .gigs-edge-mask {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .gigs-edge-mask--left {
+    left: 0;
+    background: linear-gradient(to right, #050505, transparent);
+  }
+
+  .gigs-edge-mask--right {
+    right: 0;
+    background: linear-gradient(to left, #050505, transparent);
+  }
+
+  /* Swipe hint */
+  .gigs-swipe-hint {
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 12px;
+    animation: swipeHintFade 2.5s ease-in-out forwards;
+  }
+
+  @keyframes swipeHintFade {
+    0%   { opacity: 0; transform: translateX(-6px); }
+    20%  { opacity: 1; transform: translateX(0); }
+    70%  { opacity: 1; }
+    100% { opacity: 0; }
   }
 }
 
