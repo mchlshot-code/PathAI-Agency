@@ -253,10 +253,28 @@ section {
   
   .offering-card {
     padding: 25px 20px !important;
+    flex: 0 0 85% !important;
+    scroll-snap-align: center;
   }
 
   .gig-canvas-container {
     height: 120px !important;
+  }
+
+  .gigs-grid {
+    display: flex !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px !important;
+    padding: 10px 4% 30px !important;
+    margin: 0 -4% !important;
+    scrollbar-width: none;
+  }
+
+  .gigs-grid::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -357,6 +375,15 @@ section {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Gigs Grid Layout */
+.gigs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Offering Cards */

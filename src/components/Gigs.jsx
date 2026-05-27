@@ -395,7 +395,7 @@ const Gigs = () => {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', maxWidth: '1200px', margin: '0 auto' }}>
+      <div className="gigs-grid">
         {gigs.map((gig, index) => (
           <div 
             key={index} 
