@@ -48,89 +48,118 @@ const CollabGuide = () => {
   };
 
   return (
-    <div className="bg-stelvio-dark min-h-screen font-mono text-stelvio-gray px-6 md:px-12 lg:px-24 py-20 selection:bg-stelvio-white selection:text-stelvio-dark">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-12">
-          <Link to="/" className="inline-flex items-center gap-2 text-stelvio-gray hover:text-stelvio-white transition-colors font-bold">
-            <ArrowLeft size={18} /> Back to main site
-          </Link>
+    <div style={{ padding: '40px 5% 100px', maxWidth: '1000px', margin: '0 auto', color: '#fff', fontFamily: 'var(--font-body)' }}>
+      <div style={{ marginBottom: '40px' }}>
+        <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#888', textDecoration: 'none', fontWeight: '600', transition: 'color 0.2s' }} onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-color)'} onMouseLeave={e => e.currentTarget.style.color = '#888'}>
+          <ArrowLeft size={18} /> Back to main site
+        </Link>
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px', flexWrap: 'wrap', gap: '20px' }}>
+        <div>
+          <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '2px' }}>
+            Freelance Toolkit
+          </span>
+          <h1 style={{ fontSize: '2.5rem', marginTop: '5px', marginBottom: '10px' }}>Collab Discovery Guide</h1>
+          <p style={{ color: '#666', fontSize: '1rem' }}>Interactive note-taking and client qualification framework during consultation calls.</p>
+        </div>
+        
+        <div className="glass" style={{ display: 'flex', alignItems: 'center', padding: '15px 25px', gap: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.5rem', fontFamily: 'monospace', fontWeight: 'bold' }}>
+            <Clock size={24} color="var(--accent-color)" />
+            {formatTime(secondsElapsed)}
+          </div>
+          <button 
+            onClick={() => setIsTimerRunning(!isTimerRunning)}
+            style={{ 
+              background: isTimerRunning ? '#ff3366' : 'var(--accent-color)', 
+              color: '#000', 
+              border: 'none', 
+              padding: '10px 20px', 
+              borderRadius: '50px', 
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}
+          >
+            {isTimerRunning ? <><Pause size={18} /> Pause</> : <><Play size={18} /> Start Call</>}
+          </button>
+        </div>
+      </div>
+
+      <div className="discovery-grid" style={{ gap: '40px' }}>
+        <div>
+          <h2 style={{ fontSize: '1.8rem', marginBottom: '20px', borderBottom: '1px solid #333', paddingBottom: '10px' }}>Questions Checklist</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
+            {questions.map((q, idx) => (
+              <div key={idx} className="glass" style={{ padding: '20px' }}>
+                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '15px', cursor: 'pointer', marginBottom: '15px' }}>
+                  <div style={{ marginTop: '2px', color: 'var(--accent-color)' }}>
+                    {notes[idx] ? <CheckSquare /> : <Square />}
+                  </div>
+                  <span style={{ fontSize: '1.1rem', fontWeight: '600' }}>{q}</span>
+                </label>
+                <textarea
+                  placeholder="Notes..."
+                  value={notes[idx] || ''}
+                  onChange={(e) => handleNoteChange(idx, e.target.value)}
+                  style={{
+                    width: '100%',
+                    background: '#111',
+                    border: '1px solid #333',
+                    padding: '15px',
+                    borderRadius: '10px',
+                    color: '#fff',
+                    fontFamily: 'var(--font-body)',
+                    minHeight: '80px',
+                    resize: 'vertical',
+                    outline: 'none'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = 'var(--accent-color)'}
+                  onBlur={(e) => e.target.style.borderColor = '#333'}
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16 gap-8">
-          <div>
-            <span className="text-xs font-bold text-stelvio-gray uppercase tracking-widest block mb-2">
-              Freelance Toolkit
-            </span>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-stelvio-white mb-4">Collab Discovery Guide</h1>
-            <p className="text-sm max-w-xl">Interactive note-taking and client qualification framework during consultation calls.</p>
-          </div>
-          
-          <div className="bg-stelvio-card border border-stelvio-border rounded-lg flex items-center p-4 gap-6 w-full lg:w-auto">
-            <div className="flex items-center gap-3 text-xl font-bold text-stelvio-white">
-              <Clock size={24} className="text-stelvio-gray" />
-              {formatTime(secondsElapsed)}
-            </div>
-            <button 
-              onClick={() => setIsTimerRunning(!isTimerRunning)}
-              className={`px-6 py-3 rounded-full font-bold flex items-center gap-2 transition-colors ml-auto ${
-                isTimerRunning 
-                  ? 'bg-red-500 text-white hover:bg-red-600 border border-red-500' 
-                  : 'bg-stelvio-white text-stelvio-dark hover:bg-gray-200 border border-stelvio-white'
-              }`}
-            >
-              {isTimerRunning ? <><Pause size={18} /> Pause</> : <><Play size={18} /> Start Call</>}
-            </button>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-          <div className="lg:col-span-2">
-            <h2 className="text-xl md:text-2xl font-bold text-stelvio-white mb-8 pb-4 border-b border-stelvio-border">Questions Checklist</h2>
-            <div className="flex flex-col gap-6">
-              {questions.map((q, idx) => (
-                <div key={idx} className="bg-stelvio-card border border-stelvio-border rounded-lg p-6 hover:bg-[#222] transition-colors">
-                  <label className="flex items-start gap-4 cursor-pointer mb-6">
-                    <div className="mt-1 text-stelvio-white">
-                      {notes[idx] ? <CheckSquare size={20} /> : <Square size={20} />}
-                    </div>
-                    <span className="text-lg font-bold text-stelvio-white leading-tight">{q}</span>
-                  </label>
-                  <textarea
-                    placeholder="Notes..."
-                    value={notes[idx] || ''}
-                    onChange={(e) => handleNoteChange(idx, e.target.value)}
-                    className="w-full bg-[#111] border border-stelvio-border rounded-lg p-4 text-stelvio-white font-mono min-h-[100px] outline-none focus:border-stelvio-gray transition-colors resize-y"
-                  />
-                </div>
+        <div>
+          <div className="glass" style={{ padding: '25px', marginBottom: '30px', borderColor: 'rgba(255, 51, 102, 0.3)' }}>
+            <h3 style={{ color: '#ff3366', display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', fontSize: '1.3rem' }}>
+              <AlertTriangle /> Red Flags
+            </h3>
+            <ul style={{ paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '15px', color: '#ddd' }}>
+              {redFlags.map((flag, idx) => (
+                <li key={idx} style={{ lineHeight: '1.5', fontSize: '0.92rem' }}>{flag}</li>
               ))}
-            </div>
+            </ul>
           </div>
 
-          <div className="lg:col-span-1 flex flex-col gap-8">
-            <div className="bg-stelvio-card border border-red-900/50 rounded-lg p-6">
-              <h3 className="text-red-500 flex items-center gap-3 mb-6 text-lg font-bold">
-                <AlertTriangle /> Red Flags
-              </h3>
-              <ul className="flex flex-col gap-4 text-sm">
-                {redFlags.map((flag, idx) => (
-                  <li key={idx} className="leading-relaxed pl-4 relative before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-red-500 before:rounded-full">
-                    {flag}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="bg-stelvio-card border border-stelvio-border rounded-lg p-6">
-              <h3 className="text-stelvio-white flex items-center gap-3 mb-6 text-lg font-bold">
-                <MessageSquare /> General Notes
-              </h3>
-              <textarea
-                placeholder="Additional context, action items, or initial tech stack thoughts..."
-                value={generalNotes}
-                onChange={(e) => setGeneralNotes(e.target.value)}
-                className="w-full bg-[#111] border border-stelvio-border rounded-lg p-4 text-stelvio-white font-mono min-h-[300px] outline-none focus:border-stelvio-gray transition-colors resize-y text-sm"
-              />
-            </div>
+          <div className="glass" style={{ padding: '25px' }}>
+            <h3 style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', fontSize: '1.3rem' }}>
+              <MessageSquare /> General Notes
+            </h3>
+            <textarea
+              placeholder="Additional context, action items, or initial tech stack thoughts..."
+              value={generalNotes}
+              onChange={(e) => setGeneralNotes(e.target.value)}
+              style={{
+                width: '100%',
+                background: '#111',
+                border: '1px solid #333',
+                padding: '15px',
+                borderRadius: '10px',
+                color: '#fff',
+                fontFamily: 'var(--font-body)',
+                minHeight: '300px',
+                resize: 'vertical',
+                outline: 'none'
+              }}
+              onFocus={(e) => e.target.style.borderColor = 'var(--accent-color)'}
+              onBlur={(e) => e.target.style.borderColor = '#333'}
+            />
           </div>
         </div>
       </div>
