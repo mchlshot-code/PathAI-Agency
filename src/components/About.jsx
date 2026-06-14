@@ -72,13 +72,14 @@ const About = () => {
       <div className="about-grid">
         {/* Left column: Bio & Achievements */}
         <div>
-          <h3 style={{ color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '3px', fontSize: '0.8rem', marginBottom: '20px' }}>
+          <div className="section-label" style={{ marginBottom: '20px' }}>
+            <span className="dot" />
             About Me
-          </h3>
-          <h2 style={{ fontSize: '3.5rem', lineHeight: '1.1', marginBottom: '30px', fontWeight: '800' }}>
-            Not Just a Developer. <br /><span className="text-gradient">A Technical Force Multiplier.</span>
+          </div>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.4rem)', lineHeight: '1.1', marginBottom: '28px', fontWeight: '900' }}>
+            Not Just a Developer. <br /><span style={{ color: 'var(--text-muted)' }}>A Technical Force Multiplier.</span>
           </h2>
-          <div style={{ color: '#aaa', lineHeight: '1.8', fontSize: '1.05rem' }}>
+          <div style={{ color: 'var(--text-muted)', lineHeight: '1.8', fontSize: '1rem', fontWeight: '400' }}>
             <p style={{ marginBottom: '20px' }}>
               I am a Full-Stack Engineer and AI Architect based in Lagos, Nigeria. I specialize in bridging the gap between advanced agentic AI networks and immersive web frontend interfaces.
             </p>

@@ -54,8 +54,16 @@ const Process = () => {
   return (
     <section id="process" className="reveal" ref={sectionRef} style={{ padding: '160px 5%' }}>
       <div style={{ textAlign: 'center', marginBottom: '100px' }}>
-        <h2 style={{ fontSize: '3rem', marginBottom: '10px' }}>The <span className="text-gradient">Protocol</span></h2>
-        <p style={{ color: '#666' }}>A systematic engineering approach to building high-frequency business engines.</p>
+        <div className="section-label" style={{ display: 'inline-flex', margin: '0 auto 20px' }}>
+          <span className="dot" />
+          My Workflow
+        </div>
+        <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '12px' }}>
+          The <span style={{ color: 'var(--text-muted)' }}>Protocol</span>
+        </h2>
+        <p style={{ color: 'var(--text-muted)', maxWidth: '500px', margin: '0 auto', lineHeight: '1.7', fontWeight: '400', fontSize: '0.95rem' }}>
+          A systematic engineering approach to building high-frequency business engines.
+        </p>
       </div>
 
       <div className="process-timeline">
@@ -72,8 +80,8 @@ const Process = () => {
               <div className="process-number">{index + 1}</div>
             </div>
             <div>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '15px' }}>{step.title}</h3>
-              <p style={{ fontSize: '0.85rem', color: '#666', lineHeight: '1.6' }}>{step.desc}</p>
+              <h3 style={{ fontSize: '1.15rem', marginBottom: '12px', fontFamily: 'var(--font-heading)', fontWeight: '700' }}>{step.title}</h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.65', fontWeight: '400' }}>{step.desc}</p>
             </div>
           </div>
         ))}

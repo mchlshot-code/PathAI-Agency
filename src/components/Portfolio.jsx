@@ -1,112 +1,133 @@
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Globe, GraduationCap, Headphones } from 'lucide-react';
 
 const projects = [
   {
     title: 'RemitAI',
-    role: 'Founder & Full‑Stack Developer',
-    description: 'A sophisticated real-time comparison assistant for cross-border payments, using AI to scan and optimize global remittance rates.',
-    before: 'Manual rate comparison across disjointed finance portals.',
-    after: 'Real-time optimization engine operating at <200ms latency.',
+    role: 'Full-Stack Developer',
+    description: 'A sophisticated real-time comparison assistant for cross-border payments, optimizing global remittance rates.',
+    before: 'Manual rate comparison across portals.',
+    after: 'Real-time engine at <200ms latency.',
     link: 'https://remitaiapp.com',
-    tags: ['AI', 'FinTech', 'Data Analytics', 'Next.js'],
-    watermark: '💸',
-    bg: 'rgba(0, 243, 255, 0.04)'
+    tags: ['FinTech', 'Data Analytics', 'Next.js'],
+    Icon: Globe,
   },
   {
-    title: 'Nigerian Academy of Audiology Portal',
-    role: 'Lead Full‑Stack Developer',
-    description: 'National professional portal featuring secure membership management, dynamic Django form builders, and automated CPD credits tracking.',
-    before: 'Offline member registration and manual CPD credits auditing.',
-    after: 'Centralized database with automated credits tracking & 99.9% uptime.',
+    title: 'NAA Portal',
+    role: 'Lead Architect',
+    description: 'National professional portal featuring secure membership management and automated CPD credits tracking.',
+    before: 'Offline registration and manual audits.',
+    after: 'Centralized DB with automated tracking.',
     link: 'https://naaudiology.org.ng',
-    tags: ['Django', 'Python', 'PostgreSQL', 'Auth Systems'],
-    watermark: '🎓',
-    bg: 'rgba(112, 0, 255, 0.04)'
+    tags: ['Python', 'PostgreSQL', 'Auth Systems'],
+    Icon: GraduationCap,
   },
   {
     title: 'AudiologyLink',
-    role: 'Founder & Developer',
-    description: 'Connected health care dashboard connecting audiology professionals with patients, featuring custom test analysis modules.',
-    before: 'Fragmented patient records and manual exam coordination.',
-    after: 'Unified digital workspace resulting in +45% patient retention.',
+    role: 'Frontend Engineer',
+    description: 'Connected health care dashboard connecting professionals with patients, featuring custom test analysis.',
+    before: 'Fragmented patient records.',
+    after: 'Unified digital workspace.',
     link: 'https://audiology-link.vercel.app',
-    tags: ['HealthTech', 'React', 'Digital Health', 'Charts'],
-    watermark: '👂',
-    bg: 'rgba(255, 255, 255, 0.02)'
-  }
+    tags: ['React', 'Digital Health', 'Charts'],
+    Icon: Headphones,
+  },
 ];
 
 const Portfolio = () => {
   return (
-    <section id="portfolio" style={{ background: '#080808', padding: '120px 5%' }}>
+    <section id="portfolio" style={{ background: '#0a0a0c', padding: '130px 5%', borderTop: '1px solid rgba(255,255,255,0.02)' }}>
       <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-        <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '2px' }}>
-          My Work
-        </span>
-        <h2 style={{ fontSize: '3.2rem', marginTop: '10px', marginBottom: '15px' }}>
-          Proven <span className="text-gradient">Innovations</span>
+        <div className="section-label" style={{ display: 'inline-flex', margin: '0 auto 20px' }}>
+          <span className="dot" />
+          Selected Work
+        </div>
+        <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', marginBottom: '16px' }}>
+          Proven <span style={{ color: 'var(--text-muted)' }}>Case Studies</span>
         </h2>
-        <p style={{ color: '#666', maxWidth: '600px', margin: '0 auto', fontSize: '1rem', lineHeight: '1.6' }}>
+        <p style={{ color: 'var(--text-muted)', maxWidth: '580px', margin: '0 auto', fontSize: '1rem', lineHeight: '1.7', fontWeight: '400' }}>
           A selection of web products and platforms I have engineered, showcasing end-to-end full-stack development and system architecture.
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', maxWidth: '1200px', margin: '0 auto' }}>
-        {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            whileHover={{ y: -8 }}
-            className="glass"
-            style={{ 
-              padding: '40px 30px', 
-              display: 'flex', 
-              flexDirection: 'column', 
-              justifyContent: 'space-between',
-              position: 'relative',
-              overflow: 'hidden',
-              background: project.bg,
-              border: '1px solid rgba(255,255,255,0.05)'
-            }}
-          >
-            <div className="project-watermark">{project.watermark}</div>
-            
-            <div style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '25px' }}>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+        gap: '24px',
+        maxWidth: '1200px',
+        margin: '0 auto',
+      }}>
+        {projects.map((project, index) => {
+          const { Icon } = project;
+          return (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              className="glass project-card"
+              style={{
+                padding: '36px 32px',
+                background: 'rgba(255,255,255,0.01)',
+              }}
+            >
+              {/* Background icon watermark */}
+              <div className="project-card-icon">
+                <Icon size={120} strokeWidth={0.5} />
+              </div>
+
+              {/* Tags */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '24px', position: 'relative', zIndex: 1 }}>
                 {project.tags.map(tag => (
-                  <span key={tag} className="badge" style={{ margin: 0 }}>
-                    {tag}
-                  </span>
+                  <span key={tag} className="project-tag">{tag}</span>
                 ))}
               </div>
-              <h3 style={{ fontSize: '1.8rem', fontWeight: '800', marginBottom: '5px', letterSpacing: '-0.5px' }}>{project.title}</h3>
-              <p style={{ color: 'var(--accent-color)', fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', marginBottom: '20px', letterSpacing: '1px' }}>{project.role}</p>
-              
-              <p style={{ color: '#888', lineHeight: '1.6', marginBottom: '25px', fontSize: '0.92rem' }}>{project.description}</p>
-              
-              <div style={{ marginBottom: '30px', fontSize: '0.88rem' }}>
-                <div style={{ display: 'flex', gap: '10px', marginBottom: '10px', color: '#666', lineHeight: '1.4' }}>
-                  <span style={{ color: '#ff4444' }}>-</span>
-                  <span><strong>Before:</strong> {project.before}</span>
-                </div>
-                <div style={{ display: 'flex', gap: '10px', color: '#ccc', lineHeight: '1.4' }}>
-                  <span style={{ color: 'var(--accent-color)' }}>+</span>
-                  <span><strong>After:</strong> {project.after}</span>
-                </div>
-              </div>
-            </div>
 
-            <a 
-              href={project.link} 
-              target="_blank" 
-              rel="noreferrer" 
-              className="explore-link"
-              style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: '10px', color: '#fff', textDecoration: 'none', fontWeight: '600', fontSize: '0.9rem', transition: 'all 0.3s' }}
-            >
-              Explore Project <ExternalLink size={16} color="var(--accent-color)" />
-            </a>
-          </motion.div>
-        ))}
+              {/* Title */}
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <h3 style={{ fontSize: '1.7rem', fontWeight: '700', marginBottom: '4px', letterSpacing: '-0.5px' }}>
+                  {project.title}
+                </h3>
+                <p style={{
+                  color: '#fff',
+                  fontSize: '0.75rem',
+                  fontWeight: '600',
+                  textTransform: 'uppercase',
+                  marginBottom: '18px',
+                  letterSpacing: '1px',
+                }}>
+                  {project.role}
+                </p>
+
+                <p style={{ color: 'var(--text-muted)', lineHeight: '1.65', marginBottom: '24px', fontSize: '0.9rem' }}>
+                  {project.description}
+                </p>
+
+                {/* Before / After */}
+                <div className="result-bar">
+                  <div className="result-item before">
+                    <div className="result-label" style={{ color: '#a1a1aa' }}>Challenge</div>
+                    {project.before}
+                  </div>
+                  <div className="result-item after">
+                    <div className="result-label" style={{ color: '#fff' }}>Solution</div>
+                    {project.after}
+                  </div>
+                </div>
+
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="explore-link"
+                >
+                  Explore Project <ExternalLink size={15} />
+                </a>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

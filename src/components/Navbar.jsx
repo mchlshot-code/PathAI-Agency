@@ -9,11 +9,11 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 60);
     };
 
     window.addEventListener('scroll', handleScroll);
-    
+
     const sections = ['gigs', 'about', 'portfolio', 'contact'];
     const observers = sections.map(id => {
       const element = document.getElementById(id);
@@ -43,44 +43,51 @@ const Navbar = () => {
     setIsMobileOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      const offset = 80;
+      const offset = 100;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      const offsetPosition = elementRect - bodyRect - offset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   };
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }} onClick={(e) => handleNavClick(e, 'hero')}>
-        <img src="/favicon.svg" alt="Michael Adewale" style={{ width: '35px', height: '35px', borderRadius: '8px' }} />
-        <span style={{ fontWeight: '800', fontSize: '1.2rem', letterSpacing: '-1.2px' }}>Michael Adewale</span>
+      <div className="nav-logo" onClick={(e) => handleNavClick(e, 'hero')}>
+        <img src="/favicon.svg" alt="Michael Adewale" className="nav-logo-img" />
+        <span className="nav-logo-text">Michael Adewale</span>
       </div>
 
       <button className="mobile-menu-btn" onClick={() => setIsMobileOpen(!isMobileOpen)}>
-        {isMobileOpen ? (
-          <>Close <X size={16} /></>
-        ) : (
-          <>Menu <Menu size={16} /></>
-        )}
+        {isMobileOpen ? (<><span>Close</span> <X size={15} /></>) : (<><span>Menu</span> <Menu size={15} /></>)}
       </button>
 
       <div className={`nav-links ${isMobileOpen ? 'mobile-open' : ''}`}>
-        <a href="#gigs" onClick={(e) => handleNavClick(e, 'gigs')} className={activeSection === 'gigs' ? 'active' : ''}>Gigs</a>
-        <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className={activeSection === 'about' ? 'active' : ''}>About</a>
-        <a href="#portfolio" onClick={(e) => handleNavClick(e, 'portfolio')} className={activeSection === 'portfolio' ? 'active' : ''}>Work</a>
-        <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className={activeSection === 'contact' ? 'active' : ''}>Contact</a>
-        <Link to="/collab/brief" className="btn-primary" style={{ padding: '10px 20px', fontSize: '0.85rem', marginLeft: '10px' }}>Book a Gig</Link>
+        {[
+          { id: 'gigs', label: 'Gigs' },
+          { id: 'about', label: 'About' },
+          { id: 'portfolio', label: 'Work' },
+          { id: 'contact', label: 'Contact' },
+        ].map(({ id, label }) => (
+          <a
+            key={id}
+            href={`#${id}`}
+            onClick={(e) => handleNavClick(e, id)}
+            className={activeSection === id ? 'active' : ''}
+          >
+            {label}
+          </a>
+        ))}
+        <Link
+          to="/collab/brief"
+          className="btn-primary"
+          style={{ padding: '10px 22px', fontSize: '0.82rem' }}
+        >
+          Book a Gig
+        </Link>
       </div>
     </nav>
   );
 };
 
 export default Navbar;
-
