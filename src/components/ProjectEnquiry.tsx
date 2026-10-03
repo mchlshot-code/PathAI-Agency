@@ -111,15 +111,8 @@ export function ProjectEnquiry() {
         </button>
 
         {status === "error" ? (
-          <p className="form-error">
-            Couldn&apos;t send it. Email{" "}
-            <a href="mailto:adewalemchel@gmail.com">adewalemchel@gmail.com</a>
-          </p>
-        ) : (
-          <a className="direct-email" href="mailto:adewalemchel@gmail.com">
-            adewalemchel@gmail.com
-          </a>
-        )}
+          <p className="form-error">Couldn&apos;t send it. Please try again.</p>
+        ) : null}
       </div>
     </form>
   );

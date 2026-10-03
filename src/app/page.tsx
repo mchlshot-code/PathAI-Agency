@@ -46,10 +46,10 @@ export default function Home() {
         <section className="hero" id="top">
           <h1 className="hero-title">
             <span className="hero-line hero-primary">We design and build</span>
-            <span className="hero-line hero-muted">
+            <span className="hero-line hero-feature hero-feature-one">
               MVPs, websites, web &amp; mobile apps,
             </span>
-            <span className="hero-line hero-muted">
+            <span className="hero-line hero-feature hero-feature-two">
               AI workflows &amp; automations
             </span>
             <span className="hero-line hero-primary">for brands and companies.</span>
