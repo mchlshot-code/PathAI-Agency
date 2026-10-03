@@ -47,7 +47,10 @@ export default function Home() {
           <h1 className="hero-title">
             <span className="hero-line hero-primary">We design and build</span>
             <span className="hero-line hero-muted">
-              MVPs, websites,<br className="mobile-break" /> web &amp; mobile apps
+              MVPs, websites, web &amp; mobile apps,
+            </span>
+            <span className="hero-line hero-muted">
+              AI workflows &amp; automations
             </span>
             <span className="hero-line hero-primary">for brands and companies.</span>
           </h1>
