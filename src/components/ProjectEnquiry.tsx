@@ -16,12 +16,7 @@ export function ProjectEnquiry() {
 
     const form = new FormData(event.currentTarget);
     const payload = {
-      _subject: `PaTH project enquiry — ${type}`,
-      _captcha: "false",
-      _template: "table",
-      _replyto: String(form.get("email") || ""),
-      source: "PaTH Digital Studio",
-      project_type: type,
+      projectType: type,
       name: String(form.get("name") || ""),
       email: String(form.get("email") || ""),
       company: String(form.get("company") || ""),
@@ -29,7 +24,7 @@ export function ProjectEnquiry() {
     };
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/adewalemchel@gmail.com", {
+      const response = await fetch("/api/enquiry", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,9 +33,7 @@ export function ProjectEnquiry() {
         body: JSON.stringify(payload)
       });
 
-      const data = await response.json().catch(() => null);
-
-      if (!response.ok || data?.success === "false") {
+      if (!response.ok) {
         throw new Error("Submission failed");
       }
 
