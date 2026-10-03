@@ -1,0 +1,52 @@
+[
+  {
+    "slug": "woven",
+    "name": "Woven",
+    "category": "Content platform",
+    "url": "https://woven-marketing.vercel.app/",
+    "image": "/projects/woven.jpg",
+    "featured": true,
+    "order": 1,
+    "theme": "ink"
+  },
+  {
+    "slug": "remitai",
+    "name": "RemitAI",
+    "category": "Fintech product",
+    "url": "https://remitaiapp.com/",
+    "image": "/projects/remitai.jpg",
+    "featured": true,
+    "order": 2,
+    "theme": "forest"
+  },
+  {
+    "slug": "tevo",
+    "name": "Tevo",
+    "category": "Ticketing platform",
+    "url": "https://tevo.remitaiapp.com/",
+    "image": "/projects/tevo.jpg",
+    "featured": true,
+    "order": 3,
+    "theme": "violet"
+  },
+  {
+    "slug": "inked-by-ftd",
+    "name": "inkedbyFTD",
+    "category": "Interactive web experience",
+    "url": "https://inkedbyftd.vercel.app/",
+    "image": "/projects/inked-by-ftd.jpg",
+    "featured": true,
+    "order": 4,
+    "theme": "paper"
+  },
+  {
+    "slug": "jig-store",
+    "name": "Jig Store",
+    "category": "Online store",
+    "url": "https://jig-zeta.vercel.app/",
+    "image": "/projects/jig-store.jpg",
+    "featured": true,
+    "order": 5,
+    "theme": "sky"
+  }
+]
