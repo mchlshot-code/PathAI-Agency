@@ -49,7 +49,7 @@ export function ProjectEnquiry() {
   if (status === "success") {
     return (
       <div className="enquiry-success" role="status">
-        <span className="eyebrow">Sent</span>
+        <span className="eyebrow">Successful</span>
         <h3>We have your project brief.</h3>
         <button className="text-button" type="button" onClick={() => setStatus("idle")}>
           Send another enquiry <ArrowIcon size={15} />
