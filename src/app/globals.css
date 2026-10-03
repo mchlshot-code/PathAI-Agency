@@ -126,20 +126,20 @@ img { max-width: 100%; }
 
 @keyframes hero-glow {
   0% {
-    color: #b9a58e;
-    filter: drop-shadow(0 0 0 rgba(184, 132, 78, 0));
+    color: #b8a7b2;
+    filter: drop-shadow(0 0 0 rgba(139, 104, 128, 0));
   }
   34% {
-    color: #b8844e;
-    filter: drop-shadow(0 0 12px rgba(184, 132, 78, .28));
+    color: #8b6880;
+    filter: drop-shadow(0 0 10px rgba(139, 104, 128, .22));
   }
   68% {
-    color: #a59482;
-    filter: drop-shadow(0 0 6px rgba(184, 132, 78, .14));
+    color: #9c8795;
+    filter: drop-shadow(0 0 5px rgba(139, 104, 128, .1));
   }
   100% {
     color: var(--quiet);
-    filter: drop-shadow(0 0 0 rgba(184, 132, 78, 0));
+    filter: drop-shadow(0 0 0 rgba(139, 104, 128, 0));
   }
 }
 .hero-actions {
