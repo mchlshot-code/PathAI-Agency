@@ -2,22 +2,13 @@
   {
     "slug": "woven",
     "name": "Woven",
-    "category": "Content platform",
+    "category": "AI content platform",
     "url": "https://woven-marketing.vercel.app/",
     "image": "/projects/woven.jpg",
     "featured": true,
     "order": 1,
-    "theme": "ink"
-  },
-  {
-    "slug": "remitai",
-    "name": "RemitAI",
-    "category": "Fintech product",
-    "url": "https://remitaiapp.com/",
-    "image": "/projects/remitai.jpg",
-    "featured": true,
-    "order": 2,
-    "theme": "forest"
+    "size": "hero",
+    "capabilities": ["AI", "Workflows", "Publishing"]
   },
   {
     "slug": "tevo",
@@ -26,27 +17,52 @@
     "url": "https://tevo.remitaiapp.com/",
     "image": "/projects/tevo.jpg",
     "featured": true,
+    "order": 2,
+    "size": "large",
+    "capabilities": ["Events", "Organisers", "Buyers"]
+  },
+  {
+    "slug": "auris",
+    "name": "Auris",
+    "category": "Tinnitus support app",
+    "url": "https://auris-two-steel.vercel.app/",
+    "image": "/projects/auris.jpg",
+    "featured": true,
     "order": 3,
-    "theme": "violet"
+    "size": "large",
+    "capabilities": ["Voice", "Guided sessions", "AI"]
+  },
+  {
+    "slug": "remitai",
+    "name": "RemitAI",
+    "category": "Fintech product",
+    "url": "https://remitaiapp.com/",
+    "image": "/projects/remitai.jpg",
+    "featured": true,
+    "order": 4,
+    "size": "standard",
+    "capabilities": ["Fintech", "Product UX"]
   },
   {
     "slug": "inked-by-ftd",
     "name": "inkedbyFTD",
-    "category": "Interactive web experience",
+    "category": "Brand website",
     "url": "https://inkedbyftd.vercel.app/",
     "image": "/projects/inked-by-ftd.jpg",
     "featured": true,
-    "order": 4,
-    "theme": "paper"
+    "order": 5,
+    "size": "small",
+    "capabilities": ["Brand", "Responsive"]
   },
   {
     "slug": "jig-store",
     "name": "Jig Store",
-    "category": "Online store",
+    "category": "E-commerce",
     "url": "https://jig-zeta.vercel.app/",
     "image": "/projects/jig-store.jpg",
     "featured": true,
-    "order": 5,
-    "theme": "sky"
+    "order": 6,
+    "size": "small",
+    "capabilities": ["Storefront", "Commerce"]
   }
 ]

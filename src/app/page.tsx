@@ -1,7 +1,8 @@
 import { ArrowIcon } from "@/components/ArrowIcon";
 import { ProjectCard } from "@/components/ProjectCard";
+import { ProjectEnquiry } from "@/components/ProjectEnquiry";
 import { featuredProjects } from "@/data/projects";
-import { services } from "@/data/services";
+import { needs } from "@/data/services";
 
 function BrandMark() {
   return (
@@ -26,7 +27,7 @@ export default function Home() {
             <a className="nav-link" href="#work">Work</a>
             <a className="nav-link" href="#build">What we build</a>
             <a className="nav-link" href="#studio">Studio</a>
-            <a className="button" href="mailto:adewalemchel@gmail.com?subject=Project%20Enquiry%20%E2%80%94%20PaTH%20Digital%20Studio">
+            <a className="button nav-cta" href="#enquiry">
               Start a project <ArrowIcon size={15} />
             </a>
           </div>
@@ -37,20 +38,19 @@ export default function Home() {
             We design and build <span>MVPs, websites, web apps &amp; mobile apps</span> for brands and companies.
           </h1>
 
-          <div className="hero-footer">
-            <a className="conversion-link" href="mailto:adewalemchel@gmail.com?subject=Project%20Enquiry%20%E2%80%94%20PaTH%20Digital%20Studio">
-              <span className="phone-glyph" aria-hidden="true">▯</span>
-              <strong>Turn your website into a mobile app.</strong>
-              <span className="round-link"><ArrowIcon size={16} /></span>
+          <div className="hero-actions">
+            <a className="button button-large" href="#enquiry">
+              Start a project <ArrowIcon size={17} />
             </a>
-            <span className="hero-index">Digital products / 2026</span>
+            <a className="text-link" href="#work">
+              See our work <ArrowIcon size={15} />
+            </a>
           </div>
         </section>
 
-        <section className="section" id="work">
+        <section className="section work-section" id="work">
           <div className="section-head">
             <span className="eyebrow">Selected work</span>
-            <span className="section-note">Built products. Live on the web.</span>
           </div>
 
           <div className="work-grid">
@@ -61,39 +61,33 @@ export default function Home() {
         </section>
 
         <section className="section" id="build">
-          <div className="section-head compact-head">
-            <span className="eyebrow">What we build</span>
+          <div className="section-head">
+            <span className="eyebrow">What do you need built?</span>
           </div>
 
-          <div className="service-grid">
-            {services.map((service, index) => (
-              <div className="service-card" key={service}>
-                <span className="service-number">{String(index + 1).padStart(2, "0")}</span>
-                <strong>{service}</strong>
-              </div>
+          <div className="needs-grid">
+            {needs.map((need, index) => (
+              <a className="need-card" href="#enquiry" key={need.service}>
+                <span className="need-index">{String(index + 1).padStart(2, "0")}</span>
+                <span className="need-prompt">{need.prompt}</span>
+                <strong>{need.service}</strong>
+                <span className="need-arrow"><ArrowIcon size={17} /></span>
+              </a>
             ))}
           </div>
         </section>
 
         <section className="section philosophy" id="studio">
-          <div>
-            <span className="eyebrow">Studio</span>
-            <h2>We work closely with founders and businesses to turn complex ideas into simple, useful software.</h2>
-          </div>
-          <div className="studio-mark" aria-hidden="true">
-            <span>PaTH</span>
-            <span>Ideas → Products</span>
-          </div>
+          <span className="eyebrow">PaTH Digital Studio</span>
+          <h2>We work closely with founders and businesses to turn complex ideas into simple, useful software.</h2>
         </section>
 
-        <section className="cta" id="contact">
-          <div>
-            <span className="eyebrow">Let&apos;s build</span>
-            <h2>Have something to build?</h2>
+        <section className="section enquiry-section" id="enquiry">
+          <div className="enquiry-intro">
+            <span className="eyebrow">Start a project</span>
+            <h2>Tell us what you&apos;re building.</h2>
           </div>
-          <a className="button button-large" href="mailto:adewalemchel@gmail.com?subject=Project%20Enquiry%20%E2%80%94%20PaTH%20Digital%20Studio">
-            Start a project <ArrowIcon size={17} />
-          </a>
+          <ProjectEnquiry />
         </section>
 
         <footer className="footer">
@@ -101,7 +95,7 @@ export default function Home() {
           <div className="footer-links">
             <a href="#work">Work</a>
             <a href="#build">Services</a>
-            <a href="mailto:adewalemchel@gmail.com?subject=Project%20Enquiry%20%E2%80%94%20PaTH%20Digital%20Studio">Contact</a>
+            <a href="mailto:adewalemchel@gmail.com">Email</a>
           </div>
         </footer>
       </div>

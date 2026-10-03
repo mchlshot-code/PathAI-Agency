@@ -1,6 +1,6 @@
 import projectData from "./projects.json";
 
-export type ProjectTheme = "forest" | "violet" | "paper" | "ink" | "sky";
+export type ProjectSize = "hero" | "large" | "standard" | "small";
 
 export type Project = {
   slug: string;
@@ -10,7 +10,8 @@ export type Project = {
   image: string;
   featured: boolean;
   order: number;
-  theme: ProjectTheme;
+  size: ProjectSize;
+  capabilities: string[];
 };
 
 export const projects = projectData as Project[];

@@ -4,35 +4,33 @@ import { ArrowIcon } from "./ArrowIcon";
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <a
-      className={`project-card project-${project.theme}`}
+      className={`project-card project-${project.size}`}
       href={project.url}
       target="_blank"
       rel="noreferrer"
       aria-label={`Open ${project.name}`}
     >
-      <div className="project-meta">
-        <div>
-          <strong>{project.name}</strong>
-          <span>{project.category}</span>
-        </div>
-        <span className="round-link" aria-hidden="true">
-          <ArrowIcon size={16} />
+      <div className="project-shot">
+        <img
+          src={project.image}
+          alt={`${project.name} product preview`}
+          loading={project.size === "hero" ? "eager" : "lazy"}
+        />
+        <span className="project-open" aria-hidden="true">
+          <ArrowIcon size={18} />
         </span>
       </div>
 
-      <div className="project-preview">
-        <div className="browser-chrome" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-          <span className="address-bar">{project.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
+      <div className="project-info">
+        <div>
+          <h3>{project.name}</h3>
+          <p>{project.category}</p>
         </div>
-        <img
-          className="project-homepage"
-          src={project.image}
-          alt={`${project.name} homepage`}
-          loading="lazy"
-        />
+        <div className="project-tags" aria-label="Capabilities">
+          {project.capabilities.map((capability) => (
+            <span key={capability}>{capability}</span>
+          ))}
+        </div>
       </div>
     </a>
   );
