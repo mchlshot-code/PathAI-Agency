@@ -14,7 +14,8 @@ export function ProjectEnquiry() {
     event.preventDefault();
     setStatus("sending");
 
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const payload = {
       projectType: type,
       name: String(form.get("name") || ""),
@@ -37,7 +38,7 @@ export function ProjectEnquiry() {
         throw new Error("Submission failed");
       }
 
-      event.currentTarget.reset();
+      formElement.reset();
       setType("MVP");
       setStatus("success");
     } catch {
