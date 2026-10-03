@@ -6,10 +6,18 @@ import { needs } from "@/data/services";
 
 function BrandMark() {
   return (
-    <span className="brand-mark" aria-hidden="true">
-      <span>P</span>
-      <span className="brand-path">/</span>
-    </span>
+    <svg
+      className="brand-mark"
+      viewBox="0 0 64 64"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M13 49 27 16h18c8.2 0 13 4.1 13 10.9 0 8.7-6.5 14.1-16.4 14.1H29.8L26.3 49H13Zm19.9-20.1h10.4c2.4 0 4-1.1 4-3 0-1.8-1.2-2.7-3.7-2.7h-8.4l-2.3 5.7Z"
+        fill="currentColor"
+      />
+      <path d="m37.5 51 8.8-15.2h7.9L45.5 51h-8Z" className="brand-accent" />
+    </svg>
   );
 }
 
@@ -20,7 +28,6 @@ export default function Home() {
         <nav className="nav" aria-label="Main navigation">
           <a href="#top" className="brand" aria-label="PaTH Digital Studio home">
             <BrandMark />
-            <span>PaTH Digital Studio</span>
           </a>
 
           <div className="nav-right">
