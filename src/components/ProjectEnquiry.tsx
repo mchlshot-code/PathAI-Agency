@@ -12,9 +12,9 @@ export function ProjectEnquiry() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    if (["path-kitchen", "owan-kitchen"].includes(new URLSearchParams(window.location.search).get("concept") ?? "")) {
+    if (["kitchen-concept", "path-kitchen", "owan-kitchen"].includes(new URLSearchParams(window.location.search).get("concept") ?? "")) {
       setType("Website");
-      setMessage("I'd like a food and restaurant website like the PaTH Kitchen demo, tailored to my business.");
+      setMessage("I'd like a food and restaurant website like the Kitchen Concept demo, tailored to my business.");
     }
   }, []);
 

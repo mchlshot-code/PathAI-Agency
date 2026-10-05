@@ -1,12 +1,12 @@
-# PaTH Kitchen restaurant concept
+# Kitchen Concept restaurant concept
 
-Public URL: https://pathai.name.ng/concepts/path-kitchen
+Public URL: https://pathai.name.ng/concepts/kitchen-concept
 
-A PaTH-branded fictional restaurant demo for prospective PaTH clients. It demonstrates menu filtering, meal customisation, portion and spice selection, extras, quantities, bag editing, delivery/pickup, and a sample checkout. The checkout creates no real orders, makes no payment requests, and does not transmit or persist customer details.
+An unbranded fictional restaurant demo for prospective PaTH clients. It demonstrates menu filtering, meal customisation, portion and spice selection, extras, quantities, bag editing, delivery/pickup, and a sample checkout. The checkout creates no real orders, makes no payment requests, and does not transmit or persist customer details.
 
 The studio homepage introduces the demo under “Explore by business”. The enquiry CTA selects Website and prefills a restaurant brief; the existing enquiry endpoint and delivery pipeline are unchanged.
 
-The original `/concepts/owan-kitchen` URL redirects to this concept. The former demo name was removed after finding an unrelated real restaurant using it.
+The original `/concepts/owan-kitchen` and `/concepts/path-kitchen` URLs redirect to this concept. The former demo name was removed after finding an unrelated real restaurant using it.
 
 ## Design
 

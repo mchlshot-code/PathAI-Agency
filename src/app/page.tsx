@@ -79,18 +79,18 @@ export default function Home() {
         <section className="section concept-section" id="concepts">
           <HorizontalGallery label="Explore by business" className="concept-rail">
           <div className="business-concept">
-            <Link href="/concepts/path-kitchen" className="business-concept-preview" aria-label="Explore the PaTH Kitchen restaurant demo">
-              <span className="concept-preview-brand">PaTH.</span>
+            <Link href="/concepts/kitchen-concept" className="business-concept-preview" aria-label="Explore the Kitchen Concept restaurant demo">
+              <span className="concept-preview-brand">kitchen.</span>
               <span className="concept-preview-title">Good food.<br /><span>Better mood.</span></span>
-              <img src="/concepts/owan/jollof.webp" alt="Nigerian jollof rice and grilled chicken from the PaTH Kitchen concept" loading="lazy" />
+              <img src="/concepts/owan/jollof.webp" alt="Nigerian jollof rice and grilled chicken from the Kitchen Concept concept" loading="lazy" />
               <span className="project-open" aria-hidden="true"><ArrowIcon size={18} /></span>
             </Link>
             <div className="business-concept-info">
               <span className="eyebrow">Food &amp; restaurants · Concept demo</span>
-              <h2>PaTH Kitchen.</h2>
+              <h2>Kitchen Concept.</h2>
               <p>Browse the menu, make a meal your own, and try checkout.</p>
-              <Link className="button" href="/concepts/path-kitchen">Explore the demo <ArrowIcon size={16} /></Link>
-              <a className="text-link" href="/?concept=path-kitchen#enquiry">Build something like this <ArrowIcon size={15} /></a>
+              <Link className="button" href="/concepts/kitchen-concept">Explore the demo <ArrowIcon size={16} /></Link>
+              <a className="text-link" href="/?concept=kitchen-concept#enquiry">Build something like this <ArrowIcon size={15} /></a>
             </div>
           </div>
           </HorizontalGallery>
