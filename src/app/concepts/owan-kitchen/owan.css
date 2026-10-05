@@ -1,0 +1,158 @@
+@font-face { font-family: Owan Sans; src: url('/concepts/owan/fonts/dm-sans-400.woff') format('woff'); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: Owan Sans; src: url('/concepts/owan/fonts/dm-sans-600.woff') format('woff'); font-style: normal; font-weight: 500 700; font-display: swap; }
+@font-face { font-family: Owan Sans; src: url('/concepts/owan/fonts/dm-sans-800.woff') format('woff'); font-style: normal; font-weight: 800 900; font-display: swap; }
+.owan { --ow-cream: #fcf6e9; --ow-ink: #39241e; --ow-red: #b93f24; --ow-lime: #dce6ae; --ow-line: #e5dacb; background: var(--ow-cream); color: var(--ow-ink); font-family: Owan Sans, Arial, sans-serif; min-height: 100vh; padding-bottom: 1px; }
+.owan ::selection { background: var(--ow-red); color: var(--ow-cream); }
+.owan button { font-family: inherit; cursor: pointer; }
+.owan button:disabled { opacity: .45; cursor: default; }
+.owan a, .owan button { -webkit-tap-highlight-color: transparent; }
+.owan :focus-visible { outline: 3px solid var(--ow-red); outline-offset: 5px; }
+.owan-container { width: min(1296px, calc(100% - 96px)); margin-inline: auto; }
+.owan-demo-bar { min-height: 40px; padding: 8px max(24px, calc((100vw - 1296px) / 2)); background: var(--ow-ink); color: var(--ow-cream); display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 11px; }
+.owan-demo-bar a { display: inline-flex; align-items: center; gap: 8px; min-height: 24px; }
+.owan-demo-label { color: #e3d8ca; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.owan-demo-label span { padding-inline: 8px; }
+.owan-nav { min-height: 104px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--ow-line); gap: 24px; }
+.owan-logo { display: block; color: var(--ow-red); font-weight: 800; font-size: 45px; line-height: .88; letter-spacing: -.065em; }
+.owan-logo small { display: block; font-size: 8px; letter-spacing: .38em; text-align: center; margin-top: 8px; }
+.owan-logo span { color: var(--ow-ink); }
+.owan-nav-links { display: flex; align-items: center; gap: 40px; font-size: 14px; font-weight: 600; }
+.owan-nav-links a { padding-block: 16px; }
+.owan-nav-links a:hover { color: var(--ow-red); }
+.owan-bag { display: flex; align-items: center; gap: 12px; background: var(--ow-ink); color: var(--ow-cream); border: 0; border-radius: 999px; min-height: 48px; padding: 8px 16px 8px 20px; font-size: 13px; }
+.owan-bag b { display: grid; place-items: center; min-width: 26px; height: 26px; background: var(--ow-cream); color: var(--ow-ink); border-radius: 50%; font-size: 11px; }
+.owan-primary { display: inline-flex; min-height: 56px; padding: 14px 24px; align-items: center; justify-content: center; gap: 24px; border: 0; border-radius: 999px; background: var(--ow-red); color: var(--ow-cream); font-size: 14px; font-weight: 600; transition: transform .2s ease, background .2s ease; }
+.owan-primary:hover { transform: translateY(-2px); background: #a5351d; }
+.owan-primary svg { flex-shrink: 0; transition: transform .2s ease; }
+.owan-primary:hover svg { transform: translate(2px, -2px); }
+.owan-hero { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; padding: 54px 0 66px; }
+.owan-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--ow-red); }
+.owan-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.owan-hero h1 { font-weight: 800; font-size: clamp(56px, 6.7vw, 98px); line-height: 1.01; letter-spacing: -.068em; margin: 24px 0; }
+.owan-hero h1 > span { color: var(--ow-red); }
+.owan-hero-copy > p { font-size: clamp(17px, 1.45vw, 21px); margin: 0; line-height: 1.5; letter-spacing: -.025em; color: #715b50; }
+.owan-hero-actions { display: flex; align-items: center; gap: 26px; margin-top: 32px; }
+.owan-hero-actions > span { font-size: 11px; line-height: 1.55; color: #715b50; }
+.owan-hero-actions b { color: var(--ow-ink); font-weight: 600; }
+.owan-hero-foot { display: flex; justify-content: space-between; gap: 12px; margin-top: 62px; font-size: 9px; font-weight: 600; letter-spacing: .025em; color: #806a5d; }
+.owan-hero-visual { position: relative; max-width: 552px; width: 100%; justify-self: end; padding: 0 8px 26px; }
+.owan-photo-arch { position: relative; width: 100%; aspect-ratio: 1 / 1.06; border-radius: 260px 260px 42px 42px; overflow: hidden; background: var(--ow-lime); }
+.owan-photo-arch img { object-fit: cover; object-position: 50% 55%; }
+.owan-soul-stamp { position: absolute; right: -16px; bottom: 84px; width: 122px; height: 122px; border: 6px solid var(--ow-cream); border-radius: 50%; background: var(--ow-red); color: var(--ow-cream); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; transform: rotate(12deg); }
+.owan-soul-stamp span { font-size: 15px; font-weight: 600; line-height: 1.08; letter-spacing: -.02em; }
+.owan-photo-label { position: absolute; bottom: 0; left: 32px; right: 58px; min-height: 78px; padding: 17px 68px 17px 24px; border: 1px solid var(--ow-line); border-radius: 18px; background: var(--ow-cream); box-shadow: 0 14px 40px #39241e0c; }
+.owan-photo-label > span { display: block; font-size: 8px; letter-spacing: .16em; color: #806a5d; margin-bottom: 6px; }
+.owan-photo-label b { font-size: 17px; letter-spacing: -.035em; }
+.owan-photo-label button { position: absolute; right: 16px; top: 17px; display: grid; place-items: center; width: 44px; height: 44px; background: var(--ow-ink); color: var(--ow-cream); border: 0; border-radius: 50%; }
+.owan-flavour-strip { display: flex; gap: 20px; align-items: center; justify-content: space-around; background: var(--ow-lime); padding: 23px 32px; border-radius: 16px; font-size: 10px; letter-spacing: .12em; font-weight: 600; text-transform: uppercase; }
+.owan-menu { padding: 80px 0 88px; scroll-margin-top: 24px; }
+.owan-section-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
+.owan h2 { font-weight: 800; font-size: clamp(32px, 3.35vw, 48px); line-height: 1.06; letter-spacing: -.055em; }
+.owan-section-heading h2 { margin: 13px 0 0; }
+.owan-menu-aside { font-size: 12px; color: #806a5d; margin-bottom: 5px; }
+.owan-categories { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0; }
+.owan-categories button { min-height: 44px; padding: 10px 19px; background: transparent; border: 1px solid var(--ow-line); border-radius: 999px; font-size: 12px; color: #715b50; transition: color .18s, background .18s; }
+.owan-categories button.active { background: var(--ow-ink); border-color: var(--ow-ink); color: var(--ow-cream); }
+.owan-categories button:hover:not(.active) { background: #f2e9d8; }
+.owan-meal-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 24px; min-height: 372px; }
+.owan-meal { min-width: 0; animation: owan-enter .3s ease both; }
+.owan-meal-photo { position: relative; display: block; width: 100%; aspect-ratio: 1.12; border: 0; overflow: hidden; border-radius: 24px; background: #eadfce; }
+.owan-meal-photo img { object-fit: cover; transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+.owan-meal-photo:hover img { transform: scale(1.045); }
+.owan-meal-photo > span:first-of-type { position: absolute; top: 14px; left: 14px; background: var(--ow-cream); border-radius: 999px; padding: 7px 11px; color: var(--ow-ink); font-size: 9px; font-weight: 600; }
+.owan-meal-arrow { position: absolute; right: 14px; bottom: 14px; display: grid; place-items: center; width: 40px; height: 40px; background: var(--ow-cream); color: var(--ow-ink); border-radius: 50%; }
+.owan-meal h3 { font-size: clamp(18px, 1.5vw, 22px); line-height: 1.12; letter-spacing: -.04em; margin: 20px 0 8px; }
+.owan-meal p { margin: 0; font-size: 12px; line-height: 1.55; color: #806a5d; min-height: 38px; }
+.owan-meal-price { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; }
+.owan-meal-price b { font-size: 17px; font-weight: 600; }
+.owan-meal-price button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--ow-line); border-radius: 50%; font-size: 24px; line-height: 1; background: transparent; color: var(--ow-red); transition: background .2s, color .2s; }
+.owan-meal-price button:hover { background: var(--ow-red); color: var(--ow-cream); border-color: var(--ow-red); }
+.owan-kitchen { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border-radius: 32px; background: var(--ow-red); color: var(--ow-cream); min-height: 440px; }
+.owan-kitchen-photo { position: relative; min-height: 440px; }
+.owan-kitchen-photo img { object-fit: cover; object-position: 50% 35%; }
+.owan-kitchen-copy { padding: clamp(32px,4.5vw,64px); display: flex; align-items: flex-start; flex-direction: column; justify-content: center; }
+.owan-kitchen-copy .owan-eyebrow { color: #f5d4b0; }
+.owan-kitchen-copy h2 { font-size: clamp(40px,4.5vw,64px); margin: 20px 0; }
+.owan-kitchen-copy p { max-width: 350px; font-size: 14px; line-height: 1.6; color: #f7dfcd; margin: 0 0 26px; }
+.owan-kitchen-copy .owan-primary { background: var(--ow-cream); color: var(--ow-red); }
+.owan-kitchen-sign { margin-top: 32px; font-size: 11px; color: #f5d4b0; }
+.owan-footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 44px 0 92px; font-size: 10px; color: #806a5d; }
+.owan-footer .owan-logo { font-size: 32px; }
+.owan-footer > span a { color: var(--ow-ink); }
+.owan-footer details { position: relative; }
+.owan-footer summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; text-decoration: underline; text-underline-offset: 3px; }
+.owan-footer details p { position: absolute; bottom: 100%; right: 0; width: 260px; background: var(--ow-cream); border: 1px solid var(--ow-line); padding: 16px; border-radius: 12px; line-height: 1.6; z-index: 1; }
+.owan-footer details a { text-decoration: underline; }
+.owan-floating-bag { position: fixed; z-index: 60; left: 50%; bottom: 22px; transform: translateX(-50%); width: min(480px,calc(100% - 32px)); min-height: 58px; background: var(--ow-ink); color: var(--ow-cream); border: 1px solid #ffffff25; border-radius: 999px; box-shadow: 0 8px 32px #39241e30; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 24px; font-size: 13px; animation: owan-enter .3s ease; }
+.owan-floating-bag > span { display: flex; align-items: center; gap: 10px; }
+.owan-floating-bag b { padding: 3px 7px; background: #fcf6e926; border-radius: 50%; font-size: 11px; }
+.owan-floating-bag strong { font-weight: 600; }
+.owan-dialog { font-family: Owan Sans,Arial,sans-serif; width: min(860px,calc(100% - 40px)); max-height: calc(100dvh - 48px); padding: 0; border: 0; border-radius: 28px; background: var(--ow-cream); color: var(--ow-ink); overflow-y: auto; box-shadow: 0 24px 100px #39241e40; }
+.owan-dialog[open] { animation: owan-enter .25s ease; }
+.owan-dialog::backdrop { background: #26160fb3; }
+.owan-dialog.owan-drawer { margin: 0 0 0 auto; height: 100dvh; max-height: 100dvh; width: min(490px,100%); border-radius: 24px 0 0 24px; }
+.owan-close { position: absolute; z-index: 2; right: 20px; top: 20px; display: grid; place-items: center; width: 42px; height: 42px; background: var(--ow-cream); border: 1px solid var(--ow-line); border-radius: 50%; }
+.owan-customise { display: grid; grid-template-columns: .8fr 1fr; }
+.owan-modal-photo { position: sticky; top: 0; height: 100%; min-height: 600px; }
+.owan-modal-photo img { object-fit: cover; }
+.owan-modal-content { padding: 44px 32px 28px; }
+.owan-dialog h2 { font-size: 34px; margin: 16px 0 12px; line-height: 1.05; letter-spacing: -.05em; }
+.owan-dialog-description { font-size: 12px; line-height: 1.55; color: #806a5d; margin-bottom: 24px; }
+.owan-dialog fieldset { border: 0; padding: 0; margin: 24px 0; }
+.owan-dialog legend { width: 100%; font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+.owan-dialog small { font-size: 10px; font-weight: 400; color: #806a5d; }
+.owan-dialog legend small { float: right; }
+.owan-option-row { display: flex; gap: 8px; }
+.owan-option-row label { display: flex; align-items: center; gap: 7px; flex: 1; padding: 13px 10px; min-height: 48px; border: 1px solid var(--ow-line); border-radius: 12px; font-size: 12px; cursor: pointer; }
+.owan-option-row label.selected { border-color: var(--ow-red); background: #b93f2408; color: var(--ow-red); }
+.owan input[type=radio], .owan input[type=checkbox] { accent-color: var(--ow-red); width: 16px; height: 16px; flex-shrink: 0; margin: 0; }
+.owan-option-row small { display: block; margin-top: 4px; }
+.owan-extra { display: flex; min-height: 48px; align-items: center; gap: 10px; border-bottom: 1px solid var(--ow-line); font-size: 12px; cursor: pointer; }
+.owan-extra b { margin-left: auto; font-weight: 400; color: #806a5d; }
+.owan-note { display: block; font-size: 12px; font-weight: 600; margin: 20px 0; }
+.owan-note small { float: right; }
+.owan-note input { display: block; width: 100%; margin-top: 10px; height: 48px; padding: 12px; border: 1px solid var(--ow-line); border-radius: 10px; color: var(--ow-ink); background: transparent; font-size: 12px; }
+.owan-note input::placeholder { color: #806a5d; }
+.owan-add-row { display: flex; gap: 12px; margin-top: 28px; }
+.owan-add-row .owan-primary { flex: 1; font-size: 12px; padding-inline: 16px; gap: 12px; min-height: 48px; }
+.owan-quantity { display: inline-flex; align-items: center; border: 1px solid var(--ow-line); border-radius: 999px; min-height: 44px; background: var(--ow-cream); }
+.owan-quantity button { width: 38px; height: 42px; background: transparent; border: 0; font-size: 20px; border-radius: 999px; color: var(--ow-ink); }
+.owan-quantity span, .owan-quantity output { min-width: 16px; text-align: center; font-size: 12px; }
+.owan-drawer-content { min-height: 100%; padding: 72px 32px 28px; display: flex; flex-direction: column; }
+.owan-count { display: inline-grid; place-items: center; width: 30px; height: 30px; font-size: 14px; margin-left: 12px; background: var(--ow-lime); border-radius: 50%; vertical-align: middle; letter-spacing: 0; }
+.owan-empty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 16px; padding-block: 60px; }
+.owan-empty > svg { color: var(--ow-red); }
+.owan-empty h3 { font-size: 24px; letter-spacing: -.04em; margin: 16px 0 0; }
+.owan-empty p { font-size: 13px; color: #806a5d; margin: 0 0 8px; }
+.owan-bag-items { margin-top: 24px; flex: 1; }
+.owan-bag-item { display: grid; grid-template-columns: 76px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--ow-line); }
+.owan-bag-item > img { width: 76px; height: 90px; object-fit: cover; border-radius: 12px; }
+.owan-bag-item h3 { margin: 0 0 8px; font-size: 16px; letter-spacing: -.03em; }
+.owan-bag-item p { font-size: 10px; line-height: 1.6; color: #806a5d; margin: 0 0 8px; overflow-wrap: anywhere; }
+.owan-item-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.owan-item-bottom b { font-size: 13px; font-weight: 600; }
+.owan-remove { display: block; border: 0; padding: 10px 0; min-height: 36px; background: transparent; font-size: 10px; color: var(--ow-red); text-decoration: underline; }
+.owan-summary { border-top: 1px solid var(--ow-line); padding-top: 24px; margin-top: 32px; }
+.owan-summary > div { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; font-size: 13px; }
+.owan-summary > p { font-size: 11px; color: #806a5d; margin: 12px 0 24px; }
+.owan-summary .owan-primary { width: 100%; justify-content: space-between; }
+.owan-text-button { display: block; border: 0; background: transparent; color: #806a5d; font-size: 12px; min-height: 44px; padding: 12px; margin: 8px auto 0; }
+.ow-back-to-bag { margin: -40px 0 20px; align-self: flex-start; padding-left: 0; }
+.owan-sample-note { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; padding: 12px; border-radius: 10px; background: var(--ow-lime); font-size: 10px; }
+.owan-sample-note button { min-height: 28px; border: 0; background: transparent; font-size: 11px; text-decoration: underline; color: var(--ow-ink); padding: 0; }
+.owan-pickup { display: flex; align-items: center; gap: 12px; padding: 20px; background: #f2e9d8; border-radius: 12px; font-size: 13px; }
+.owan-pickup small { display: block; margin-top: 6px; }
+.owan-summary .owan-total { font-size: 20px; border-top: 1px solid var(--ow-line); padding-top: 20px; margin-top: 20px; }
+.owan-summary .owan-preview-note, .owan-preview-note { text-align: center; font-size: 10px; color: #806a5d; line-height: 1.6; }
+.ow-complete { justify-content: center; text-align: center; align-items: center; }
+.ow-complete h2 { font-size: 44px; }
+.ow-complete > p { font-size: 13px; line-height: 1.6; }
+.ow-complete .owan-preview-note { font-size: 11px; margin-bottom: 32px; }
+.owan-success-icon { width: 96px; height: 96px; background: var(--ow-lime); color: var(--ow-ink); display: grid; place-items: center; border-radius: 50%; margin-bottom: 32px; }
+.owan-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+@keyframes owan-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@media(min-width:761px) { .owan-hero-copy { animation: owan-enter .6s ease both; } .owan-hero-visual { animation: owan-enter .7s ease .1s both; } }
+@media(max-width:1100px) { .owan-container { width: calc(100% - 64px); } .owan-hero { gap: 28px; } .owan-hero h1 { font-size: 7.2vw; } .owan-hero-foot { margin-top: 40px; font-size: 8px; flex-wrap: wrap; } .owan-meal-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 36px 24px; } .owan-meal-photo { aspect-ratio: 1.3; } .owan-meal h3 { font-size: 23px; } }
+@media(max-width:760px) { .owan-container { width: calc(100% - 40px); } .owan-demo-bar { padding: 7px 20px; min-height: 36px; font-size: 10px; gap: 10px; } .owan-back span { display: none; } .owan-back:after { content: 'PaTH'; } .owan-demo-label { font-size: 8px; } .owan-demo-label span { padding: 0 3px; } .owan-demo-bar > a:last-child { font-size: 0; gap: 0; min-width: 24px; justify-content: center; } .owan-demo-bar > a:last-child svg { width: 16px; height: 16px; } .owan-nav { min-height: 86px; } .owan-logo { font-size: 38px; } .owan-logo small { font-size: 7px; } .owan-nav-links { gap: 16px; font-size: 12px; } .owan-nav-links a:last-child { display: none; } .owan-bag { padding: 7px 10px; min-height: 44px; gap: 8px; } .owan-bag > span { display: none; } .owan-hero { grid-template-columns: 1fr; padding: 36px 0 40px; gap: 38px; } .owan-hero h1 { font-size: clamp(52px,12.7vw,86px); margin: 20px 0; } .owan-hero-copy > p { font-size: 17px; } .owan-eyebrow { font-size: 9px; } .owan-hero-actions { margin-top: 24px; gap: 22px; } .owan-primary { min-height: 52px; padding-inline: 21px; font-size: 13px; gap: 20px; } .owan-hero-foot { margin-top: 30px; } .owan-hero-foot > span:last-child { display: none; } .owan-hero-visual { max-width: 500px; justify-self: center; padding-inline: 4px; } .owan-photo-arch { aspect-ratio: 1.06; } .owan-soul-stamp { width: 98px; height: 98px; right: -8px; bottom: 64px; border-width: 4px; } .owan-soul-stamp > svg { width: 22px; height: 22px; } .owan-soul-stamp span { font-size: 12px; } .owan-photo-label { left: 16px; right: 34px; padding: 15px 60px 15px 18px; min-height: 70px; } .owan-photo-label b { font-size: 15px; } .owan-photo-label button { top: 13px; right: 12px; } .owan-flavour-strip { padding: 18px 15px; gap: 12px; font-size: 8px; letter-spacing: .06em; border-radius: 12px; } .owan-flavour-strip svg:last-of-type, .owan-flavour-strip > span:last-child { display: none; } .owan-menu { padding: 54px 0 56px; } .owan-menu-aside { display: none; } .owan-section-heading h2 { font-size: clamp(30px,7.5vw,46px); } .owan-categories { gap: 6px; margin-block: 24px; } .owan-categories button { padding-inline: 14px; font-size: 11px; } .owan-kitchen { grid-template-columns: 1fr; border-radius: 24px; } .owan-kitchen-photo { min-height: 280px; } .owan-kitchen-copy { padding: 36px 28px; } .owan-kitchen-copy h2 { font-size: 48px; } .owan-footer { padding: 32px 0 92px; flex-wrap: wrap; gap: 18px; } .owan-footer > span { font-size: 9px; } .owan-footer details { flex-basis: 100%; } .owan-footer details p { right: auto; left: 0; } .owan-dialog { width: calc(100% - 24px); max-height: calc(100dvh - 24px); border-radius: 20px; } .owan-customise { grid-template-columns: 1fr; } .owan-modal-photo { position: relative; height: 190px; min-height: 0; } .owan-modal-photo img { object-position: 50% 60%; } .owan-modal-content { padding: 24px; } .owan-dialog h2 { font-size: 30px; } .owan-close { right: 14px; top: 14px; } .owan-dialog.owan-drawer { border-radius: 0; } .owan-drawer-content { padding-inline: 24px; } .ow-complete h2 { font-size: 42px; } }
+@media(max-width:540px) { .owan-meal-grid { grid-template-columns: 1fr; gap: 32px; } .owan-meal-photo { aspect-ratio: 1.4; } .owan-meal h3 { font-size: 22px; margin-top: 16px; } .owan-meal p { min-height: 0; font-size: 12px; } .owan-meal-price { padding-top: 8px; } .owan-meal-price b { font-size: 18px; } }
+@media(prefers-reduced-motion:reduce) { .owan *, .owan *::before, .owan *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } html:has(.owan) { scroll-behavior: auto; } }

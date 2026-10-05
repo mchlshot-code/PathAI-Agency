@@ -258,6 +258,19 @@ img { max-width: 100%; }
 .project-small .project-tags { margin-top: 10px; justify-content: flex-start; }
 .project-small .project-tags span:nth-child(n+2) { display: none; }
 
+/* Business concepts */
+.business-concept { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: clamp(32px, 5vw, 72px); }
+.business-concept-preview { position: relative; display: block; aspect-ratio: 1.44; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #fcf6e9; container-type: inline-size; }
+.business-concept-preview > img { position: absolute; right: 5%; bottom: 12%; display: block; width: 44%; height: 70%; object-fit: cover; object-position: center; border-radius: 120px 120px 18px 18px; transition: transform .4s ease; }
+.concept-preview-brand { position: absolute; top: 8%; left: 6%; color: #b93f24; font-size: clamp(22px, 5cqw, 38px); letter-spacing: -.065em; font-weight: 800; }
+.concept-preview-title { position: absolute; top: 37%; left: 6%; z-index: 1; font-size: clamp(25px, 6.4cqw, 48px); color: #39241e; line-height: 1.05; font-weight: 800; letter-spacing: -.055em; }
+.concept-preview-title > span { color: #b93f24; }
+.business-concept-preview:hover > img { transform: scale(1.018); }
+.business-concept-info h2 { margin: 24px 0 18px; font-size: clamp(32px, 3.8vw, 54px); line-height: 1; letter-spacing: -.05em; }
+.business-concept-info p { max-width: 350px; font-size: 13px; line-height: 1.6; color: var(--muted); margin: 0 0 24px; }
+.business-concept-info .text-link { display: flex; width: fit-content; min-height: 44px; margin-top: 12px; }
+@media(max-width:760px) { .business-concept { grid-template-columns: 1fr; gap: 28px; } .business-concept-info h2 { margin-top: 18px; font-size: 38px; } }
+
 /* Need-led services */
 .needs-grid {
   display: grid;

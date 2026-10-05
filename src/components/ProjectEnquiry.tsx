@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { enquiryTypes } from "@/data/services";
 import { ArrowIcon } from "./ArrowIcon";
 
@@ -9,6 +9,14 @@ type Status = "idle" | "sending" | "success" | "error";
 export function ProjectEnquiry() {
   const [status, setStatus] = useState<Status>("idle");
   const [type, setType] = useState<string>("MVP");
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("concept") === "owan-kitchen") {
+      setType("Website");
+      setMessage("I'd like a food and restaurant website like the Owan Kitchen demo, tailored to my business.");
+    }
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -39,6 +47,7 @@ export function ProjectEnquiry() {
       }
 
       formElement.reset();
+      setMessage("");
       setType("MVP");
       setStatus("success");
     } catch {
@@ -95,7 +104,7 @@ export function ProjectEnquiry() {
 
       <label>
         <span>Tell us about the project</span>
-        <textarea name="message" rows={6} required />
+        <textarea name="message" rows={6} required value={message} onChange={(event) => setMessage(event.target.value)} />
       </label>
 
       <div className="enquiry-actions">

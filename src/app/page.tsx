@@ -3,6 +3,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { ProjectEnquiry } from "@/components/ProjectEnquiry";
 import { featuredProjects } from "@/data/projects";
 import { needs } from "@/data/services";
+import Link from "next/link";
 
 function BrandMark() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
 
           <div className="nav-right">
             <a className="nav-link" href="#work">Work</a>
+            <a className="nav-link" href="#concepts">Demos</a>
             <a className="nav-link" href="#build">What we build</a>
             <a className="nav-link" href="#studio">Studio</a>
             <a className="button nav-cta" href="#enquiry">
@@ -74,6 +76,27 @@ export default function Home() {
             {featuredProjects.map((project) => (
               <ProjectCard key={project.slug} project={project} />
             ))}
+          </div>
+        </section>
+
+        <section className="section concept-section" id="concepts">
+          <div className="section-head">
+            <span className="eyebrow">Explore by business</span>
+          </div>
+          <div className="business-concept">
+            <Link href="/concepts/owan-kitchen" className="business-concept-preview" aria-label="Explore the Owan Kitchen restaurant demo">
+              <span className="concept-preview-brand">owan.</span>
+              <span className="concept-preview-title">Good food.<br /><span>Better mood.</span></span>
+              <img src="/concepts/owan/jollof.webp" alt="Nigerian jollof rice and grilled chicken from the Owan Kitchen concept" loading="lazy" />
+              <span className="project-open" aria-hidden="true"><ArrowIcon size={18} /></span>
+            </Link>
+            <div className="business-concept-info">
+              <span className="eyebrow">Food &amp; restaurants · Concept demo</span>
+              <h2>Your business.<br />A new possibility.</h2>
+              <p>Explore Owan Kitchen. Browse the menu, make a meal your own, and try checkout.</p>
+              <Link className="button" href="/concepts/owan-kitchen">Explore the demo <ArrowIcon size={16} /></Link>
+              <Link className="text-link" href="/?concept=owan-kitchen#enquiry">Build something like this <ArrowIcon size={15} /></Link>
+            </div>
           </div>
         </section>
 
