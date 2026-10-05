@@ -1,5 +1,6 @@
 import { ArrowIcon } from "@/components/ArrowIcon";
 import { ProjectCard } from "@/components/ProjectCard";
+import { HorizontalGallery } from "@/components/HorizontalGallery";
 import { ProjectEnquiry } from "@/components/ProjectEnquiry";
 import { featuredProjects } from "@/data/projects";
 import { needs } from "@/data/services";
@@ -68,36 +69,31 @@ export default function Home() {
         </section>
 
         <section className="section work-section" id="work">
-          <div className="section-head">
-            <span className="eyebrow">Selected work</span>
-          </div>
-
-          <div className="work-grid">
+          <HorizontalGallery label="Selected work" className="work-grid">
             {featuredProjects.map((project) => (
               <ProjectCard key={project.slug} project={project} />
             ))}
-          </div>
+          </HorizontalGallery>
         </section>
 
         <section className="section concept-section" id="concepts">
-          <div className="section-head">
-            <span className="eyebrow">Explore by business</span>
-          </div>
+          <HorizontalGallery label="Explore by business" className="concept-rail">
           <div className="business-concept">
-            <Link href="/concepts/owan-kitchen" className="business-concept-preview" aria-label="Explore the Owan Kitchen restaurant demo">
-              <span className="concept-preview-brand">owan.</span>
+            <Link href="/concepts/path-kitchen" className="business-concept-preview" aria-label="Explore the PaTH Kitchen restaurant demo">
+              <span className="concept-preview-brand">PaTH.</span>
               <span className="concept-preview-title">Good food.<br /><span>Better mood.</span></span>
-              <img src="/concepts/owan/jollof.webp" alt="Nigerian jollof rice and grilled chicken from the Owan Kitchen concept" loading="lazy" />
+              <img src="/concepts/owan/jollof.webp" alt="Nigerian jollof rice and grilled chicken from the PaTH Kitchen concept" loading="lazy" />
               <span className="project-open" aria-hidden="true"><ArrowIcon size={18} /></span>
             </Link>
             <div className="business-concept-info">
               <span className="eyebrow">Food &amp; restaurants · Concept demo</span>
-              <h2>Your business.<br />A new possibility.</h2>
-              <p>Explore Owan Kitchen. Browse the menu, make a meal your own, and try checkout.</p>
-              <Link className="button" href="/concepts/owan-kitchen">Explore the demo <ArrowIcon size={16} /></Link>
-              <Link className="text-link" href="/?concept=owan-kitchen#enquiry">Build something like this <ArrowIcon size={15} /></Link>
+              <h2>PaTH Kitchen.</h2>
+              <p>Browse the menu, make a meal your own, and try checkout.</p>
+              <Link className="button" href="/concepts/path-kitchen">Explore the demo <ArrowIcon size={16} /></Link>
+              <Link className="text-link" href="/?concept=path-kitchen#enquiry">Build something like this <ArrowIcon size={15} /></Link>
             </div>
           </div>
+          </HorizontalGallery>
         </section>
 
         <section className="section" id="build">
