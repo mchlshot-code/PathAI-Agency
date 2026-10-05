@@ -90,7 +90,7 @@ export default function Home() {
               <h2>PaTH Kitchen.</h2>
               <p>Browse the menu, make a meal your own, and try checkout.</p>
               <Link className="button" href="/concepts/path-kitchen">Explore the demo <ArrowIcon size={16} /></Link>
-              <Link className="text-link" href="/?concept=path-kitchen#enquiry">Build something like this <ArrowIcon size={15} /></Link>
+              <a className="text-link" href="/?concept=path-kitchen#enquiry">Build something like this <ArrowIcon size={15} /></a>
             </div>
           </div>
           </HorizontalGallery>
