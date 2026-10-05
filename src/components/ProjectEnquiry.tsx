@@ -18,6 +18,9 @@ export function ProjectEnquiry() {
     } else if (new URLSearchParams(window.location.search).get("concept") === "salon-concept") {
       setType("Website");
       setMessage("I'd like a beauty salon website like the Salon Concept demo, with services and appointment booking tailored to my business.");
+    } else if (new URLSearchParams(window.location.search).get("concept") === "fashion-concept") {
+      setType("E-commerce");
+      setMessage("I'd like a fashion store like the Fashion Concept demo, with product variants, a shopping bag and checkout tailored to my business.");
     }
   }, []);
 

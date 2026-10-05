@@ -570,3 +570,7 @@ img { max-width: 100%; }
 .salon-concept-preview .concept-preview-brand, .salon-concept-preview .concept-preview-title > span { color: #68465e; }
 .salon-concept-preview .concept-preview-brand, .salon-concept-preview .concept-preview-title { font-family: Georgia,serif; font-weight: 400; }
 .salon-concept-preview > img { object-position: 50% 65%; }
+
+.fashion-concept-preview { background: #f4f3ee; }
+.fashion-concept-preview .concept-preview-brand, .fashion-concept-preview .concept-preview-title > span { color: #294bd6; }
+.fashion-concept-preview > img { border-radius: 8px; transform: rotate(3deg); object-position: 50% 52%; }
