@@ -59,7 +59,7 @@
 .owan-categories button.active { background: var(--ow-ink); border-color: var(--ow-ink); color: var(--ow-cream); }
 .owan-categories button:hover:not(.active) { background: #f2e9d8; }
 .owan-meal-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 24px; min-height: 372px; }
-.owan-meal { min-width: 0; animation: owan-enter .22s cubic-bezier(.2,.7,.2,1) both; }
+.owan-meal { position: relative; min-width: 0; animation: owan-enter .22s cubic-bezier(.2,.7,.2,1) both; }
 .owan-meal-photo { position: relative; display: block; width: 100%; aspect-ratio: 1.12; border: 0; overflow: hidden; border-radius: 24px; background: #eadfce; }
 .owan-meal-photo img { object-fit: cover; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
 .owan-meal-photo:hover img { transform: scale(1.025); }
@@ -160,3 +160,26 @@
 @media(max-width:760px) { .owan-container { width: calc(100% - 40px); } .owan-demo-bar { padding: 7px 20px; min-height: 36px; font-size: 10px; gap: 10px; } .owan-back span { display: none; } .owan-back:after { content: 'PaTH'; } .owan-demo-label { font-size: 8px; } .owan-demo-label span { padding: 0 3px; } .owan-demo-bar > a:last-child { font-size: 0; gap: 0; min-width: 24px; justify-content: center; } .owan-demo-bar > a:last-child svg { width: 16px; height: 16px; } .owan-nav { min-height: 78px; } .owan-logo { font-size: 38px; } .owan-logo small { font-size: 7px; } .owan-nav-links { gap: 16px; font-size: 12px; } .owan-nav-links a:last-child { display: none; } .owan-bag { padding: 7px 10px; min-height: 44px; gap: 8px; } .owan-bag > span { display: none; } .owan-hero { grid-template-columns: 1fr; padding: 36px 0 40px; gap: 38px; } .owan-hero h1 { font-size: clamp(52px,12.7vw,86px); margin: 20px 0; } .owan-hero-copy > p { font-size: 17px; } .owan-eyebrow { font-size: 9px; } .owan-hero-actions { margin-top: 24px; gap: 22px; } .owan-primary { min-height: 52px; padding-inline: 21px; font-size: 13px; gap: 20px; } .owan-hero-foot { margin-top: 30px; } .owan-hero-foot > span:last-child { display: none; } .owan-hero-visual { max-width: 500px; justify-self: center; padding-inline: 4px; } .owan-photo-arch { aspect-ratio: 1.06; } .owan-soul-stamp { width: 98px; height: 98px; right: -8px; bottom: 64px; border-width: 4px; } .owan-soul-stamp > svg { width: 22px; height: 22px; } .owan-soul-stamp span { font-size: 12px; } .owan-photo-label { left: 16px; right: 34px; padding: 15px 60px 15px 18px; min-height: 70px; } .owan-photo-label b { font-size: 15px; } .owan-photo-label button { top: 13px; right: 12px; } .owan-flavour-strip { padding: 18px 15px; gap: 12px; font-size: 8px; letter-spacing: .06em; border-radius: 12px; } .owan-flavour-strip svg:last-of-type, .owan-flavour-strip > span:last-child { display: none; } .owan-menu { padding: 54px 0 56px; } .owan-menu-aside { display: none; } .owan-section-heading h2 { font-size: clamp(30px,7.5vw,46px); } .owan-categories { gap: 6px; margin-block: 24px; } .owan-categories button { padding-inline: 14px; font-size: 11px; } .owan-kitchen { grid-template-columns: 1fr; border-radius: 24px; } .owan-kitchen-photo { min-height: 280px; } .owan-kitchen-copy { padding: 36px 28px; } .owan-kitchen-copy h2 { font-size: 48px; } .owan-footer { padding: 32px 0 92px; flex-wrap: wrap; gap: 18px; } .owan-footer > span { font-size: 9px; } .owan-footer details { flex-basis: 100%; } .owan-footer details p { right: auto; left: 0; } .owan-dialog { width: calc(100% - 24px); max-height: calc(100dvh - 24px); border-radius: 20px; } .owan-customise { grid-template-columns: 1fr; } .owan-modal-photo { position: relative; height: 190px; min-height: 0; } .owan-modal-photo img { object-position: 50% 60%; } .owan-modal-content { padding: 24px; } .owan-dialog h2 { font-size: 30px; } .owan-close { right: 14px; top: 14px; } .owan-dialog.owan-drawer { border-radius: 0; } .owan-drawer-content { padding-inline: 24px; } .ow-complete h2 { font-size: 42px; } }
 @media(max-width:540px) { .owan-meal-grid { grid-template-columns: 1fr; gap: 32px; } .owan-meal-photo { aspect-ratio: 1.4; } .owan-meal h3 { font-size: 22px; margin-top: 16px; } .owan-meal p { min-height: 0; font-size: 12px; } .owan-meal-price { padding-top: 8px; } .owan-meal-price b { font-size: 18px; } }
 @media(prefers-reduced-motion:reduce) { .owan *, .owan *::before, .owan *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } html:has(.owan) { scroll-behavior: auto; } }
+
+/* Separate views keep each visit short; the bag stays available between them. */
+.owan [hidden] { display: none !important; }
+.owan-nav-links a[aria-current="page"] { color: var(--ow-red); text-decoration: underline; text-underline-offset: 8px; }
+.owan-kitchen:not([hidden]) { margin-top: 36px; }
+.owan-footer { padding-top: 24px; padding-bottom: 72px; }
+@media(max-width:760px) {
+  .owan-nav { flex-wrap: wrap; padding: 16px 0 0; gap: 12px; }
+  .owan-bag { margin-left: auto; }
+  .owan-nav-links { order: 3; width: 100%; gap: 0; justify-content: space-between; }
+  .owan-nav-links a, .owan-nav-links a:last-child { display: flex; align-items: center; justify-content: center; flex: 1; min-height: 44px; padding: 12px 6px; }
+  .owan-hero { padding-top: 28px; gap: 24px; }
+  .owan-hero-visual { max-width: 280px; }
+  .owan-hero-foot { margin-top: 18px; }
+  .owan-menu { padding-top: 32px; padding-bottom: 24px; }
+  .owan-meal-grid { display: flex; overflow-x: auto; gap: 18px; min-height: 0; padding: 4px 2px 16px; scroll-snap-type: x proximity; scrollbar-width: thin; }
+  .owan-meal { flex: 0 0 88%; scroll-snap-align: start; }
+  .owan-meal-photo { aspect-ratio: 1.4; }
+  .owan-kitchen-photo { min-height: 220px; }
+  .owan-kitchen-copy { padding: 28px; }
+  .owan-kitchen-copy h2 { font-size: 40px; }
+  .owan-footer { gap: 12px; padding-bottom: 72px; }
+}

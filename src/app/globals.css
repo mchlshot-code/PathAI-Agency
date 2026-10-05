@@ -565,3 +565,8 @@ img { max-width: 100%; }
     color: var(--quiet);
   }
 }
+
+.salon-concept-preview { background: #faf6f0; }
+.salon-concept-preview .concept-preview-brand, .salon-concept-preview .concept-preview-title > span { color: #68465e; }
+.salon-concept-preview .concept-preview-brand, .salon-concept-preview .concept-preview-title { font-family: Georgia,serif; font-weight: 400; }
+.salon-concept-preview > img { object-position: 50% 65%; }

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useConceptNavigation } from "./useConceptNavigation";
 import { FormEvent, useEffect, useRef, useState } from "react";
 
 type Meal = { id: string; name: string; description: string; category: string; price: number; image: string; tag: string };
@@ -28,7 +29,10 @@ function Icon({ kind, size = 20 }: { kind: "arrow" | "bag" | "close" | "pin" | "
   </svg>;
 }
 
+const kitchenSections = ["owan-top", "owan-menu", "owan-kitchen"] as const;
+
 export function OwanKitchen() {
+  const { section, navigate } = useConceptNavigation(kitchenSections);
   const [category, setCategory] = useState("All meals");
   const [bag, setBag] = useState<BagItem[]>([]);
   const [view, setView] = useState<"meal" | "bag" | "checkout" | "complete" | null>(null);
@@ -91,17 +95,17 @@ export function OwanKitchen() {
     </div>
     <div className="owan-container">
       <nav className="owan-nav" aria-label="Kitchen Concept navigation">
-        <a className="owan-logo" href="#owan-top" aria-label="Kitchen Concept home">kitchen<span>.</span><small>CONCEPT</small></a>
-        <div className="owan-nav-links"><a href="#owan-menu">The menu</a><a href="#owan-kitchen">Our kitchen</a></div>
+        <a className="owan-logo" href="#owan-top" onClick={event => { event.preventDefault(); navigate("owan-top"); }} aria-label="Kitchen Concept home">kitchen<span>.</span><small>CONCEPT</small></a>
+        <div className="owan-nav-links">{[["owan-top", "Home"], ["owan-menu", "The menu"], ["owan-kitchen", "Our kitchen"]].map(([id, label]) => <a key={id} href={`#${id}`} aria-current={section === id ? "page" : undefined} onClick={event => { event.preventDefault(); navigate(id); }}>{label}</a>)}</div>
         <button className="owan-bag" onClick={() => setView("bag")} aria-label={`Open your bag, ${count} items`}><Icon kind="bag" size={18} /><span>Your bag</span><b>{count}</b></button>
       </nav>
       <main>
-        <section className="owan-hero" id="owan-top">
+        <section className="owan-hero" id="owan-top" hidden={section !== "owan-top"}>
           <div className="owan-hero-copy">
             <span className="owan-eyebrow"><span className="owan-dot" /> Lagos roots. Big flavour.</span>
             <h1>Good food.<br /><span>Better mood.</span></h1>
             <p>Your everyday favourites,<br className="owan-desktop-break" /> with a little extra soul.</p>
-            <div className="owan-hero-actions"><a className="owan-primary" href="#owan-menu">Find your favourite <Icon kind="arrow" size={19} /></a><span>Made fresh.<br /><b>Always.</b></span></div>
+            <div className="owan-hero-actions"><a className="owan-primary" href="#owan-menu" onClick={event => { event.preventDefault(); navigate("owan-menu"); }}>Find your favourite <Icon kind="arrow" size={19} /></a><span>Made fresh.<br /><b>Always.</b></span></div>
             <div className="owan-hero-foot"><span>01 — A taste of home</span><span>Rice bowls / Grills / Good company</span></div>
           </div>
           <div className="owan-hero-visual">
@@ -110,8 +114,8 @@ export function OwanKitchen() {
             <div className="owan-photo-label"><span>THE HOUSE SIGNATURE</span><b>Smoky jollof & chicken</b><button onClick={() => customise(meals[0])} aria-label="Customise smoky jollof and chicken"><Icon kind="arrow" size={18} /></button></div>
           </div>
         </section>
-        <div className="owan-flavour-strip"><span>Cooked from scratch</span><Icon kind="sun" size={21} /><span>Full of flavour</span><Icon kind="sun" size={21} /><span>Made for your everyday</span></div>
-        <section className="owan-menu" id="owan-menu" aria-labelledby="owan-menu-title">
+        <div className="owan-flavour-strip" hidden={section !== "owan-top"}><span>Cooked from scratch</span><Icon kind="sun" size={21} /><span>Full of flavour</span><Icon kind="sun" size={21} /><span>Made for your everyday</span></div>
+        <section className="owan-menu" id="owan-menu" hidden={section !== "owan-menu"} aria-labelledby="owan-menu-title">
           <div className="owan-section-heading"><div><span className="owan-eyebrow">The good stuff</span><h2 id="owan-menu-title">What are you craving?</h2></div><span className="owan-menu-aside">Something for every kind of hungry.</span></div>
           <div className="owan-categories" aria-label="Filter meals">{categories.map(c => <button key={c} className={category === c ? "active" : ""} aria-pressed={category === c} onClick={() => setCategory(c)}>{c}</button>)}</div>
           <div className="owan-meal-grid">{meals.filter(m => category === "All meals" || m.category === category).map(m => <article className="owan-meal" key={m.id}>
@@ -119,12 +123,12 @@ export function OwanKitchen() {
             <h3>{m.name}</h3><p>{m.description}</p><div className="owan-meal-price"><b>{money(m.price)}</b><button onClick={() => customise(m)} aria-label={`Add ${m.name}`}>+<span className="owan-sr-only"> Customise and add</span></button></div>
           </article>)}</div>
         </section>
-        <section className="owan-kitchen" id="owan-kitchen">
+        <section className="owan-kitchen" id="owan-kitchen" hidden={section !== "owan-kitchen"}>
           <div className="owan-kitchen-photo"><Image src="/concepts/owan/table.webp" alt="A Nigerian meal spread with rice and chicken" fill sizes="(max-width: 760px) 90vw, 45vw" /></div>
-          <div className="owan-kitchen-copy"><span className="owan-eyebrow">From our kitchen, with love</span><h2>A little spice.<br />A lot of soul.</h2><p>Comfort food, done properly. Smoky rice, a well-seasoned grill, and the familiar flavours that make a meal feel like home.</p><a href="#owan-menu" className="owan-primary">Pull up a plate <Icon kind="arrow" size={18} /></a><span className="owan-kitchen-sign">Good food brings us together.</span></div>
+          <div className="owan-kitchen-copy"><span className="owan-eyebrow">From our kitchen, with love</span><h2>A little spice.<br />A lot of soul.</h2><p>Comfort food, done properly. Smoky rice, a well-seasoned grill, and the familiar flavours that make a meal feel like home.</p><a href="#owan-menu" onClick={event => { event.preventDefault(); navigate("owan-menu"); }} className="owan-primary">Pull up a plate <Icon kind="arrow" size={18} /></a><span className="owan-kitchen-sign">Good food brings us together.</span></div>
         </section>
       </main>
-      <footer className="owan-footer"><a className="owan-logo" href="#owan-top">kitchen<span>.</span></a><span>A restaurant concept by <Link href="/">PaTH Digital Studio ↗</Link></span><details><summary>Photo credits</summary><p>Food photography: <a href="https://unsplash.com/@keeshasskitchen" target="_blank" rel="noreferrer">Keesha’s Kitchen</a>, <a href="https://unsplash.com/photos/icciS_O3Gkk" target="_blank" rel="noreferrer">Chibuzo Nwaneri</a>, <a href="https://unsplash.com/photos/46i7Fqy4bto" target="_blank" rel="noreferrer">Angela Bailey</a> and <a href="https://unsplash.com/photos/1Gm_xrfRzUA" target="_blank" rel="noreferrer">Anshu A</a> / Unsplash.</p></details></footer>
+      <footer className="owan-footer"><a className="owan-logo" href="#owan-top" onClick={event => { event.preventDefault(); navigate("owan-top"); }}>kitchen<span>.</span></a><span>A restaurant concept by <Link href="/">PaTH Digital Studio ↗</Link></span><details><summary>Photo credits</summary><p>Food photography: <a href="https://unsplash.com/@keeshasskitchen" target="_blank" rel="noreferrer">Keesha’s Kitchen</a>, <a href="https://unsplash.com/photos/icciS_O3Gkk" target="_blank" rel="noreferrer">Chibuzo Nwaneri</a>, <a href="https://unsplash.com/photos/46i7Fqy4bto" target="_blank" rel="noreferrer">Angela Bailey</a> and <a href="https://unsplash.com/photos/1Gm_xrfRzUA" target="_blank" rel="noreferrer">Anshu A</a> / Unsplash.</p></details></footer>
     </div>
     <div className="owan-sr-only" role="status" aria-live="polite">{announcement}</div>
     {count > 0 && !view && <button className="owan-floating-bag" onClick={() => setView("bag")}><span><Icon kind="bag" size={18} /> View your bag <b>{count}</b></span><strong>{money(subtotal)} →</strong></button>}
@@ -141,7 +145,7 @@ export function OwanKitchen() {
         </div>
       </form>}
       {view === "bag" && <div className="owan-drawer-content"><span className="owan-eyebrow">Good things inside</span><h2 id="owan-dialog-title">Your bag<span className="owan-count">{count}</span></h2>
-        {count === 0 ? <div className="owan-empty"><Icon kind="bag" size={60} /><h3>Something good is missing.</h3><p>Find a favourite. Make it yours.</p><button className="owan-primary" onClick={() => setView(null)}>Explore the menu <Icon kind="arrow" /></button></div> : <><div className="owan-bag-items">{bag.map(item => { const m = meals.find(m => m.id === item.mealId)!; return <article key={item.key} className="owan-bag-item"><Image src={`/concepts/owan/${m.image}.webp`} alt="" width={80} height={90} /><div><h3>{m.name}</h3><p>{[item.large ? "Extra portion" : "", item.spice ? `${item.spice} pepper` : "", ...extras.filter(e => item.extras.includes(e.id)).map(e => e.name)].filter(Boolean).join(" · ")}</p>{item.note && <p>{item.note}</p>}<div className="owan-item-bottom"><div className="owan-quantity"><button aria-label={`Decrease ${m.name} quantity`} onClick={() => updateQuantity(item.key, -1)}>−</button><span>{item.quantity}</span><button aria-label={`Increase ${m.name} quantity`} disabled={item.quantity >= 20} onClick={() => updateQuantity(item.key, 1)}>+</button></div><b>{money(item.unitPrice * item.quantity)}</b></div><button className="owan-remove" onClick={() => setBag(current => current.filter(i => i.key !== item.key))}>Remove<span className="owan-sr-only"> {m.name}</span></button></div></article>; })}</div><div className="owan-summary"><div><span>Subtotal</span><b>{money(subtotal)}</b></div><p>Choose delivery or pickup at checkout.</p><button className="owan-primary" onClick={() => setView("checkout")}>Go to checkout <Icon kind="arrow" /></button><button className="owan-text-button" onClick={() => setView(null)}>Keep exploring the menu</button></div></>}
+        {count === 0 ? <div className="owan-empty"><Icon kind="bag" size={60} /><h3>Something good is missing.</h3><p>Find a favourite. Make it yours.</p><button className="owan-primary" onClick={() => { setView(null); navigate("owan-menu"); }}>Explore the menu <Icon kind="arrow" /></button></div> : <><div className="owan-bag-items">{bag.map(item => { const m = meals.find(m => m.id === item.mealId)!; return <article key={item.key} className="owan-bag-item"><Image src={`/concepts/owan/${m.image}.webp`} alt="" width={80} height={90} /><div><h3>{m.name}</h3><p>{[item.large ? "Extra portion" : "", item.spice ? `${item.spice} pepper` : "", ...extras.filter(e => item.extras.includes(e.id)).map(e => e.name)].filter(Boolean).join(" · ")}</p>{item.note && <p>{item.note}</p>}<div className="owan-item-bottom"><div className="owan-quantity"><button aria-label={`Decrease ${m.name} quantity`} onClick={() => updateQuantity(item.key, -1)}>−</button><span>{item.quantity}</span><button aria-label={`Increase ${m.name} quantity`} disabled={item.quantity >= 20} onClick={() => updateQuantity(item.key, 1)}>+</button></div><b>{money(item.unitPrice * item.quantity)}</b></div><button className="owan-remove" onClick={() => setBag(current => current.filter(i => i.key !== item.key))}>Remove<span className="owan-sr-only"> {m.name}</span></button></div></article>; })}</div><div className="owan-summary"><div><span>Subtotal</span><b>{money(subtotal)}</b></div><p>Choose delivery or pickup at checkout.</p><button className="owan-primary" onClick={() => setView("checkout")}>Go to checkout <Icon kind="arrow" /></button><button className="owan-text-button" onClick={() => { setView(null); navigate("owan-menu"); }}>Keep exploring the menu</button></div></>}
       </div>}
       {view === "checkout" && <form className="owan-drawer-content" onSubmit={completePreview} ref={checkoutForm}><button type="button" className="owan-text-button ow-back-to-bag" onClick={() => setView("bag")}>← Back to your bag</button><span className="owan-eyebrow">The last little step</span><h2 id="owan-dialog-title">Almost at the table.</h2><fieldset><legend>How would you like it?</legend><div className="owan-option-row">{["Delivery", "Pickup"].map(value => <label key={value} className={fulfilment === value ? "selected" : ""}><input type="radio" name="fulfilment" checked={fulfilment === value} onChange={() => setFulfilment(value)} /><span>{value}<small>{value === "Delivery" ? money(1500) : "Free"}</small></span></label>)}</div></fieldset>
         <div className="owan-sample-note"><span>Try checkout with sample details.</span><button type="button" onClick={() => { const form = checkoutForm.current; if (!form) return; (form.elements.namedItem("customer") as HTMLInputElement).value = "Demo guest"; const address = form.elements.namedItem("address") as HTMLInputElement | null; if (address) address.value = "12 Example Street, Lagos"; }}>Fill for me ↗</button></div>

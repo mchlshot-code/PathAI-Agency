@@ -15,6 +15,9 @@ export function ProjectEnquiry() {
     if (["kitchen-concept", "path-kitchen", "owan-kitchen"].includes(new URLSearchParams(window.location.search).get("concept") ?? "")) {
       setType("Website");
       setMessage("I'd like a food and restaurant website like the Kitchen Concept demo, tailored to my business.");
+    } else if (new URLSearchParams(window.location.search).get("concept") === "salon-concept") {
+      setType("Website");
+      setMessage("I'd like a beauty salon website like the Salon Concept demo, with services and appointment booking tailored to my business.");
     }
   }, []);
 

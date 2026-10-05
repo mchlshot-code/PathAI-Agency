@@ -93,6 +93,21 @@ export default function Home() {
               <a className="text-link" href="/?concept=kitchen-concept#enquiry">Build something like this <ArrowIcon size={15} /></a>
             </div>
           </div>
+          <div className="business-concept">
+            <Link href="/concepts/salon-concept" className="business-concept-preview salon-concept-preview" aria-label="Explore the Salon Concept beauty demo">
+              <span className="concept-preview-brand">salon.</span>
+              <span className="concept-preview-title">Your time.<br /><span>Your glow.</span></span>
+              <img src="/concepts/salon/portrait.webp" alt="Sculpted hairstyle from the Salon Concept demo" loading="lazy" />
+              <span className="project-open" aria-hidden="true"><ArrowIcon size={18} /></span>
+            </Link>
+            <div className="business-concept-info">
+              <span className="eyebrow">Beauty &amp; wellness · Concept demo</span>
+              <h2>Salon Concept.</h2>
+              <p>Explore services, choose your moment, and preview an appointment.</p>
+              <Link className="button" href="/concepts/salon-concept">Explore the demo <ArrowIcon size={16} /></Link>
+              <a className="text-link" href="/?concept=salon-concept#enquiry">Build something like this <ArrowIcon size={15} /></a>
+            </div>
+          </div>
           </HorizontalGallery>
         </section>
 
