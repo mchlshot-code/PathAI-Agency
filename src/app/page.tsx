@@ -47,24 +47,23 @@ export default function Home() {
         </nav>
 
         <section className="hero" id="top">
-          <h1 className="hero-title">
-            <span className="hero-line hero-primary">We design and build</span>
-            <span className="hero-line hero-feature hero-feature-one">
-              MVPs, websites, web &amp; mobile apps,
-            </span>
-            <span className="hero-line hero-feature hero-feature-two">
-              AI workflows &amp; automations
-            </span>
-            <span className="hero-line hero-primary">for brands and companies.</span>
-          </h1>
-
-          <div className="hero-actions">
-            <a className="button button-large" href="#enquiry">
-              Start a project <ArrowIcon size={17} />
-            </a>
-            <a className="text-link" href="#work">
-              See our work <ArrowIcon size={15} />
-            </a>
+          <div className="hero-copy">
+            <span className="eyebrow hero-eyebrow">PaTH Digital Studio</span>
+            <h1 className="hero-title">
+              <span className="hero-line">We design.</span>
+              <span className="hero-line hero-accent">We build.</span>
+            </h1>
+          </div>
+          <div className="hero-detail">
+            <p>MVPs, websites, web &amp; mobile apps.<br />AI workflows &amp; automations.<br /><span>For brands and businesses.</span></p>
+            <div className="hero-actions">
+              <a className="button button-large" href="#enquiry">
+                Start a project <ArrowIcon size={17} />
+              </a>
+              <a className="text-link" href="#work">
+                See our work <ArrowIcon size={15} />
+              </a>
+            </div>
           </div>
         </section>
 
@@ -128,7 +127,7 @@ export default function Home() {
 
         <section className="section" id="build">
           <div className="section-head">
-            <span className="eyebrow">What do you need built?</span>
+            <h2 className="gallery-title">What do you need built?</h2>
           </div>
 
           <div className="needs-grid">
@@ -145,7 +144,7 @@ export default function Home() {
 
         <section className="section philosophy" id="studio">
           <span className="eyebrow">PaTH Digital Studio</span>
-          <h2>We work closely with founders and businesses to turn complex ideas into simple, useful software.</h2>
+          <h2>We work with founders and businesses to turn ideas into useful software.</h2>
         </section>
 
         <section className="section enquiry-section" id="enquiry">

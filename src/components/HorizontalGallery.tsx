@@ -27,7 +27,7 @@ export function HorizontalGallery({ label, className, children }: { label: strin
 
   return <>
     <div className="section-head gallery-heading">
-      <span className="eyebrow">{label}</span>
+      <h2 className="gallery-title">{label}</h2>
       {!(edges.start && edges.end) && <div className="gallery-controls">
         <button type="button" aria-label={`Previous ${label.toLowerCase()}`} aria-controls={`${className}-rail`} disabled={edges.start} onClick={() => move(-1)}>←</button>
         <button type="button" aria-label={`Next ${label.toLowerCase()}`} aria-controls={`${className}-rail`} disabled={edges.end} onClick={() => move(1)}>→</button>
