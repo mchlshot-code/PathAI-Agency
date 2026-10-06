@@ -1,0 +1,4 @@
+interface:
+  display_name: "Studio UI Design"
+  short_description: "Build refined studio and business concept interfaces"
+  default_prompt: "Use $studio-ui-design to improve PaTH with precise layout, typography, and smooth interactions."

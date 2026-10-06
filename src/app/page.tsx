@@ -32,7 +32,7 @@ export default function Home() {
       <div className="wrap">
         <nav className="nav" aria-label="Main navigation">
           <a href="#top" className="brand" aria-label="PaTH Digital Studio home">
-            <BrandMark />
+            <BrandMark /><span className="brand-wordmark">PaTH<span>Digital Studio</span></span>
           </a>
 
           <div className="nav-right">
@@ -48,24 +48,45 @@ export default function Home() {
 
         <section className="hero" id="top">
           <div className="hero-copy">
-            <span className="eyebrow hero-eyebrow">PaTH Digital Studio</span>
+            <span className="eyebrow hero-eyebrow">Independent studio · Design &amp; technology</span>
             <h1 className="hero-title">
-              <span className="hero-line">We design.</span>
-              <span className="hero-line hero-accent">We build.</span>
+              <span className="hero-line">Good ideas.</span>
+              <span className="hero-line hero-accent">Made great.</span>
             </h1>
-          </div>
-          <div className="hero-detail">
-            <p>MVPs, websites, web &amp; mobile apps.<br />AI workflows &amp; automations.<br /><span>For brands and businesses.</span></p>
+            <div className="hero-detail">
+            <p>Thoughtful design. Useful technology.<br /><span>We turn your next idea into a digital experience worth coming back to.</span></p>
             <div className="hero-actions">
               <a className="button button-large" href="#enquiry">
-                Start a project <ArrowIcon size={17} />
+                Let&apos;s build something <ArrowIcon size={17} />
               </a>
               <a className="text-link" href="#work">
                 See our work <ArrowIcon size={15} />
               </a>
             </div>
+            </div>
+          </div>
+          <div className="hero-showcase" aria-label="A selection of our websites and interactive concepts">
+            <div className="showcase-orbit" aria-hidden="true" />
+            <span className="showcase-note eyebrow">From first idea to final detail</span>
+            <Link className="showcase-fashion" href="/concepts/fashion-concept" aria-label="Try the Fashion Concept demo">
+              <div className="showcase-browser"><span className="browser-dots" aria-hidden="true"><i /><i /><i /></span><span>fashion — concept store</span><ArrowIcon size={12} /></div>
+              <div className="showcase-fashion-content">
+                <span className="showcase-fashion-brand">fashion<span>*</span></span>
+                <span className="showcase-fashion-headline">Your style.<br /><em>Your rules.</em></span>
+                <img src="/concepts/fashion/shirt-sand.webp" alt="Natural linen shirt in our Fashion Concept storefront" fetchPriority="high" />
+                <span className="showcase-shop">Discover the collection <ArrowIcon size={13} /></span>
+              </div>
+            </Link>
+            <a className="showcase-product" href={featuredProjects[1].url} target="_blank" rel="noreferrer" aria-label="Open Tevo ticketing platform">
+              <div className="showcase-browser"><span className="browser-dots" aria-hidden="true"><i /><i /><i /></span><span>tevo — tickets &amp; experiences</span><ArrowIcon size={12} /></div>
+              <img src={featuredProjects[1].image} alt="Tevo ticketing website designed and built by PaTH" />
+            </a>
+            <Link className="showcase-stamp" href="#concepts" aria-label="Explore our interactive business concepts"><span>Ideas you<br />can interact with.</span><ArrowIcon size={23} /></Link>
+            <span className="showcase-caption"><span>Design that feels right.</span><span>Built to work beautifully.</span></span>
           </div>
         </section>
+
+        <div className="studio-capabilities" aria-label="Studio capabilities"><span>Design with intention.</span><span>Websites</span><span>Web &amp; mobile apps</span><span>AI &amp; automation</span><a href="#work">Discover our work <span aria-hidden="true">↓</span></a></div>
 
         <section className="section work-section" id="work">
           <HorizontalGallery label="Selected work" className="work-grid">
@@ -127,7 +148,8 @@ export default function Home() {
 
         <section className="section" id="build">
           <div className="section-head">
-            <h2 className="gallery-title">What do you need built?</h2>
+            <span className="eyebrow">03 / What we do</span>
+            <h2 className="gallery-title">Your next move.<br /><em>Our kind of work.</em></h2>
           </div>
 
           <div className="needs-grid">
@@ -144,13 +166,14 @@ export default function Home() {
 
         <section className="section philosophy" id="studio">
           <span className="eyebrow">PaTH Digital Studio</span>
-          <h2>We work with founders and businesses to turn ideas into useful software.</h2>
+          <h2>Small team.<br />A bigger <em>perspective.</em><span>We bring design and engineering together to build things that look good, feel natural, and solve real problems.</span></h2>
         </section>
 
         <section className="section enquiry-section" id="enquiry">
           <div className="enquiry-intro">
             <span className="eyebrow">Start a project</span>
-            <h2>Tell us what you&apos;re building.</h2>
+            <h2>Something good<br />starts with<br /><em>a conversation.</em></h2>
+            <p>Bring your idea. We&apos;ll help shape what comes next.</p>
           </div>
           <ProjectEnquiry />
         </section>
@@ -163,6 +186,7 @@ export default function Home() {
             <a href="mailto:adewalemchel@gmail.com">Email</a>
           </div>
         </footer>
+        <div className="footer-wordmark" aria-hidden="true">Ideas. Made real.<span>↗</span></div>
       </div>
     </main>
   );
