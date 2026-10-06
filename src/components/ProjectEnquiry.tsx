@@ -6,23 +6,27 @@ import { ArrowIcon } from "./ArrowIcon";
 
 type Status = "idle" | "sending" | "success" | "error";
 
-export function ProjectEnquiry() {
+export function ProjectEnquiry({ concept }: { concept?: string }) {
   const [status, setStatus] = useState<Status>("idle");
   const [type, setType] = useState<string>("MVP");
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    if (["kitchen-concept", "path-kitchen", "owan-kitchen"].includes(new URLSearchParams(window.location.search).get("concept") ?? "")) {
+    setStatus("idle");
+    if (["kitchen-concept", "path-kitchen", "owan-kitchen"].includes(concept ?? "")) {
       setType("Website");
       setMessage("I'd like a food and restaurant website like the Kitchen Concept demo, tailored to my business.");
-    } else if (new URLSearchParams(window.location.search).get("concept") === "salon-concept") {
+    } else if (concept === "salon-concept") {
       setType("Website");
       setMessage("I'd like a beauty salon website like the Salon Concept demo, with services and appointment booking tailored to my business.");
-    } else if (new URLSearchParams(window.location.search).get("concept") === "fashion-concept") {
+    } else if (concept === "fashion-concept") {
       setType("E-commerce");
       setMessage("I'd like a fashion store like the Fashion Concept demo, with product variants, a shopping bag and checkout tailored to my business.");
+    } else {
+      setType("MVP");
+      setMessage("");
     }
-  }, []);
+  }, [concept]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();

@@ -14,7 +14,7 @@ const services = [
 ];
 const money = (value: number) => `₦${value.toLocaleString("en-NG")}`;
 const times = ["10:00", "11:30", "13:00", "14:30", "16:00"];
-const enquiry = "/?concept=salon-concept#enquiry";
+const enquiry = "/contact?concept=salon-concept";
 
 function Flower() {
   return <svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" strokeWidth="1.5">{[0, 60, 120, 180, 240, 300].map(angle => <ellipse key={angle} cx="50" cy="30" rx="12" ry="24" transform={`rotate(${angle} 50 50)`} />)}<circle cx="50" cy="50" r="7" /></g></svg>;

@@ -1,10 +1,15 @@
 import { ArrowIcon } from "@/components/ArrowIcon";
 import { ProjectCard } from "@/components/ProjectCard";
 import { HorizontalGallery } from "@/components/HorizontalGallery";
-import { ProjectEnquiry } from "@/components/ProjectEnquiry";
 import { featuredProjects } from "@/data/projects";
 import { needs } from "@/data/services";
 import Link from "next/link";
+
+const businessConcepts = [
+  { slug: "kitchen", name: "Kitchen Concept", category: "Food & restaurants", image: "/concepts/owan/jollof.webp", alt: "Jollof rice and grilled chicken from the Kitchen Concept" },
+  { slug: "salon", name: "Salon Concept", category: "Beauty & wellness", image: "/concepts/salon/portrait.webp", alt: "Sculpted hairstyle from the Salon Concept" },
+  { slug: "fashion", name: "Fashion Concept", category: "Fashion & retail", image: "/concepts/fashion/shirt-sand.webp", alt: "Natural linen shirt from the Fashion Concept" }
+];
 
 function BrandMark() {
   return (
@@ -40,8 +45,8 @@ export default function Home() {
             <a className="nav-link" href="#concepts">Demos</a>
             <a className="nav-link" href="#build">What we build</a>
             <a className="nav-link" href="#studio">Studio</a>
-            <a className="button nav-cta" href="#enquiry">
-              Start a project <ArrowIcon size={15} />
+            <a className="text-link nav-contact" href="/contact">
+              Contact <ArrowIcon size={15} />
             </a>
           </div>
         </nav>
@@ -56,7 +61,7 @@ export default function Home() {
             <div className="hero-detail">
             <p>Thoughtful design. Useful technology.<br /><span>We turn your next idea into a digital experience worth coming back to.</span></p>
             <div className="hero-actions">
-              <a className="button button-large" href="#enquiry">
+              <a className="button button-large" href="/contact">
                 Let&apos;s build something <ArrowIcon size={17} />
               </a>
               <a className="text-link" href="#work">
@@ -86,8 +91,6 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="studio-capabilities" aria-label="Studio capabilities"><span>Design with intention.</span><span>Websites</span><span>Web &amp; mobile apps</span><span>AI &amp; automation</span><a href="#work">Discover our work <span aria-hidden="true">↓</span></a></div>
-
         <section className="section work-section" id="work">
           <HorizontalGallery label="Selected work" className="work-grid">
             {featuredProjects.map((project) => (
@@ -98,51 +101,18 @@ export default function Home() {
 
         <section className="section concept-section" id="concepts">
           <HorizontalGallery label="Explore by business" className="concept-rail">
-          <div className="business-concept">
-            <Link href="/concepts/kitchen-concept" className="business-concept-preview" aria-label="Explore the Kitchen Concept restaurant demo">
-              <span className="concept-preview-brand">kitchen.</span>
-              <span className="concept-preview-title">Good food.<br /><span>Better mood.</span></span>
-              <img src="/concepts/owan/jollof.webp" alt="Nigerian jollof rice and grilled chicken from the Kitchen Concept concept" loading="lazy" />
-              <span className="project-open" aria-hidden="true"><ArrowIcon size={18} /></span>
-            </Link>
-            <div className="business-concept-info">
-              <span className="eyebrow">Food &amp; restaurants · Concept demo</span>
-              <h2>Kitchen Concept.</h2>
-              <p>Browse the menu, make a meal your own, and try checkout.</p>
-              <Link className="button" href="/concepts/kitchen-concept">Explore the demo <ArrowIcon size={16} /></Link>
-              <a className="text-link" href="/?concept=kitchen-concept#enquiry">Build something like this <ArrowIcon size={15} /></a>
-            </div>
-          </div>
-          <div className="business-concept">
-            <Link href="/concepts/salon-concept" className="business-concept-preview salon-concept-preview" aria-label="Explore the Salon Concept beauty demo">
-              <span className="concept-preview-brand">salon.</span>
-              <span className="concept-preview-title">Your time.<br /><span>Your glow.</span></span>
-              <img src="/concepts/salon/portrait.webp" alt="Sculpted hairstyle from the Salon Concept demo" loading="lazy" />
-              <span className="project-open" aria-hidden="true"><ArrowIcon size={18} /></span>
-            </Link>
-            <div className="business-concept-info">
-              <span className="eyebrow">Beauty &amp; wellness · Concept demo</span>
-              <h2>Salon Concept.</h2>
-              <p>Explore services, choose your moment, and preview an appointment.</p>
-              <Link className="button" href="/concepts/salon-concept">Explore the demo <ArrowIcon size={16} /></Link>
-              <a className="text-link" href="/?concept=salon-concept#enquiry">Build something like this <ArrowIcon size={15} /></a>
-            </div>
-          </div>
-          <div className="business-concept">
-            <Link href="/concepts/fashion-concept" className="business-concept-preview fashion-concept-preview" aria-label="Explore the Fashion Concept retail demo">
-              <span className="concept-preview-brand">fashion.</span>
-              <span className="concept-preview-title">Your style.<br /><span>Your rules.</span></span>
-              <img src="/concepts/fashion/shirt-sand.webp" alt="Natural-coloured linen shirt from the Fashion Concept demo" loading="lazy" />
-              <span className="project-open" aria-hidden="true"><ArrowIcon size={18} /></span>
-            </Link>
-            <div className="business-concept-info">
-              <span className="eyebrow">Fashion &amp; retail · Concept demo</span>
-              <h2>Fashion Concept.</h2>
-              <p>Find your fit, choose a colour, and try a shopping bag and checkout.</p>
-              <Link className="button" href="/concepts/fashion-concept">Explore the demo <ArrowIcon size={16} /></Link>
-              <a className="text-link" href="/?concept=fashion-concept#enquiry">Build something like this <ArrowIcon size={15} /></a>
-            </div>
-          </div>
+            {businessConcepts.map((concept) => (
+              <Link className={`business-concept concept-${concept.slug}`} href={`/concepts/${concept.slug}-concept`} key={concept.slug} aria-label={`Explore the ${concept.name} demo`}>
+                <div className="concept-art">
+                  <img src={concept.image} alt={concept.alt} loading="lazy" />
+                  <span className="concept-wordmark" aria-hidden="true">{concept.slug}.</span>
+                </div>
+                <div className="business-concept-info">
+                  <div><h3>{concept.name}</h3><span>{concept.category}</span></div>
+                  <ArrowIcon size={20} />
+                </div>
+              </Link>
+            ))}
           </HorizontalGallery>
         </section>
 
@@ -154,28 +124,18 @@ export default function Home() {
 
           <div className="needs-grid">
             {needs.map((need, index) => (
-              <a className="need-card" href="#enquiry" key={need.service}>
+              <div className="need-card" key={need.service}>
                 <span className="need-index">{String(index + 1).padStart(2, "0")}</span>
                 <span className="need-prompt">{need.prompt}</span>
                 <strong>{need.service}</strong>
-                <span className="need-arrow"><ArrowIcon size={17} /></span>
-              </a>
+              </div>
             ))}
           </div>
         </section>
 
         <section className="section philosophy" id="studio">
           <span className="eyebrow">PaTH Digital Studio</span>
-          <h2>Small team.<br />A bigger <em>perspective.</em><span>We bring design and engineering together to build things that look good, feel natural, and solve real problems.</span></h2>
-        </section>
-
-        <section className="section enquiry-section" id="enquiry">
-          <div className="enquiry-intro">
-            <span className="eyebrow">Start a project</span>
-            <h2>Something good<br />starts with<br /><em>a conversation.</em></h2>
-            <p>Bring your idea. We&apos;ll help shape what comes next.</p>
-          </div>
-          <ProjectEnquiry />
+          <div><h2>Small team.<br />A bigger <em>perspective.</em></h2><p>Design and engineering, working together to make your next idea real.</p></div>
         </section>
 
         <footer className="footer">
@@ -183,10 +143,9 @@ export default function Home() {
           <div className="footer-links">
             <a href="#work">Work</a>
             <a href="#build">Services</a>
-            <a href="mailto:adewalemchel@gmail.com">Email</a>
+            <Link href="/contact">Contact</Link>
           </div>
         </footer>
-        <div className="footer-wordmark" aria-hidden="true">Ideas. Made real.<span>↗</span></div>
       </div>
     </main>
   );

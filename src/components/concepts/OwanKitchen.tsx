@@ -16,7 +16,7 @@ const categories = ["All meals", "Rice bowls", "Grills", "Drinks"];
 const extras = [{ id: "plantain", name: "Sweet plantain", price: 1000 }, { id: "slaw", name: "Fresh slaw", price: 700 }];
 type BagItem = { key: string; mealId: string; quantity: number; spice: string; large: boolean; extras: string[]; note: string; unitPrice: number };
 const money = (n: number) => `₦${n.toLocaleString("en-NG")}`;
-const enquiry = "/?concept=kitchen-concept#enquiry";
+const enquiry = "/contact?concept=kitchen-concept";
 
 function Icon({ kind, size = 20 }: { kind: "arrow" | "bag" | "close" | "pin" | "sun" | "check"; size?: number }) {
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">

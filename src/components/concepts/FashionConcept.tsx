@@ -11,7 +11,7 @@ const products = [
 ];
 const sections = ["fashion-shop", "fashion-product-linen", "fashion-product-backpack", "fashion-bag"] as const;
 const money = (amount: number) => `₦${amount.toLocaleString("en-NG")}`;
-const enquiry = "/?concept=fashion-concept#enquiry";
+const enquiry = "/contact?concept=fashion-concept";
 type BagItem = { key: string; productId: string; colour: string; size: string; quantity: number; image: string };
 
 function Arrow() { return <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>; }

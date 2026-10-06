@@ -11,14 +11,14 @@ export function ProjectCard({ project }: { project: Project }) {
       aria-label={`Open ${project.name}`}
     >
       <div className="project-shot">
-        <img
-          src={project.image}
-          alt={`${project.name} product preview`}
-          loading={project.size === "hero" ? "eager" : "lazy"}
-        />
-        <span className="project-open" aria-hidden="true">
-          <ArrowIcon size={18} />
-        </span>
+        <div className="project-window">
+          <div className="project-browser" aria-hidden="true"><span /><span /><span /></div>
+          <img
+            src={project.image}
+            alt={`${project.name} product preview`}
+            loading={project.size === "hero" ? "eager" : "lazy"}
+          />
+        </div>
       </div>
 
       <div className="project-info">
@@ -26,11 +26,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <h3>{project.name}</h3>
           <p>{project.category}</p>
         </div>
-        <div className="project-tags" aria-label="Capabilities">
-          {project.capabilities.map((capability) => (
-            <span key={capability}>{capability}</span>
-          ))}
-        </div>
+        <ArrowIcon size={20} />
       </div>
     </a>
   );

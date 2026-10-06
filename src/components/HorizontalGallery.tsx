@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Children, useEffect, useRef, useState, type ReactNode } from "react";
 
 export function HorizontalGallery({ label, className, children }: { label: string; className: string; children: ReactNode }) {
   const rail = useRef<HTMLDivElement>(null);
@@ -28,13 +28,16 @@ export function HorizontalGallery({ label, className, children }: { label: strin
   return <>
     <div className="section-head gallery-heading">
       <div><span className="eyebrow">{className === "work-grid" ? "01 / A few things we've made" : "02 / Find your starting point"}</span><h2 className="gallery-title">{label}</h2></div>
+    </div>
+    <div ref={rail} id={`${className}-rail`} className={`horizontal-rail ${className}`} role="region" aria-label={label} tabIndex={0} onKeyDown={event => {
+      if (event.target === event.currentTarget && (event.key === "ArrowLeft" || event.key === "ArrowRight")) { event.preventDefault(); move(event.key === "ArrowRight" ? 1 : -1); }
+    }}>{children}</div>
+    <div className="gallery-footer">
+      <span>{Children.count(children)} {className === "work-grid" ? "projects" : "concepts"}</span>
       {!(edges.start && edges.end) && <div className="gallery-controls">
         <button type="button" aria-label={`Previous ${label.toLowerCase()}`} aria-controls={`${className}-rail`} disabled={edges.start} onClick={() => move(-1)}>←</button>
         <button type="button" aria-label={`Next ${label.toLowerCase()}`} aria-controls={`${className}-rail`} disabled={edges.end} onClick={() => move(1)}>→</button>
       </div>}
     </div>
-    <div ref={rail} id={`${className}-rail`} className={`horizontal-rail ${className}`} role="region" aria-label={label} tabIndex={0} onKeyDown={event => {
-      if (event.target === event.currentTarget && (event.key === "ArrowLeft" || event.key === "ArrowRight")) { event.preventDefault(); move(event.key === "ArrowRight" ? 1 : -1); }
-    }}>{children}</div>
   </>;
 }
