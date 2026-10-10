@@ -380,3 +380,125 @@ img { max-width: 100%; }
   html { scroll-behavior: auto; }
   .site-shell *,.site-shell *:before,.site-shell *:after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+/* Commercial pages: the same studio identity, with clear buying decisions. */
+.studio-nav .nav-link[aria-current="page"] { color: var(--accent); }
+.studio-nav .nav-right { gap: 28px; }
+.concept-demo { display: block; }
+.concept-enquire { color: var(--accent); margin-top: 12px; font-size: 11px; }
+.site-shell .need-card { grid-template-columns: 40px minmax(160px,.8fr) 1.2fr 24px; }
+.need-card > svg { justify-self: end; transition: transform .2s ease; }
+.need-card:hover > svg { transform: translate(3px,-3px); }
+.need-card:hover strong { color: var(--accent); }
+.starter-offer { position: relative; display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; padding: 48px; border: 1px solid #424337; border-radius: 16px; background: radial-gradient(ellipse at 100% 0,#e9d86e0c,transparent 65%),#191a17; }
+.starter-copy h2 { margin: 24px 0; font-size: clamp(36px,4.2vw,56px); font-weight: 450; letter-spacing: -.055em; line-height: 1.08; }
+.starter-copy h2 em,.pricing-intro h1 em,.custom-project h2 em { font-family: 'Studio Serif',Georgia,serif; color: var(--accent); font-weight: 400; letter-spacing: -.025em; }
+.starter-inclusions { display: flex; flex-wrap: wrap; gap: 12px 24px; list-style: none; padding: 0; margin: 0 0 24px; max-width: 380px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.starter-inclusions li:before { content: '↗'; margin-right: 8px; color: var(--accent); }
+.starter-buy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; border-left: 1px solid var(--line); padding-left: 48px; }
+.starter-buy > strong { display: block; margin-top: 20px; font-size: clamp(40px,5vw,64px); letter-spacing: -.06em; font-weight: 450; line-height: 1.15; }
+.starter-buy > p { margin: 16px 0 24px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.starter-buy > small { margin-top: 20px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.pricing-intro { padding-block: 72px 48px; }
+.pricing-intro h1 { margin: 24px 0 32px; font-size: clamp(52px,7vw,92px); line-height: 1.02; font-weight: 450; letter-spacing: -.06em; }
+.pricing-intro-bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
+.pricing-intro-bottom p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+.package-panel { display: flex; flex-direction: column; min-width: 0; padding: 32px 28px 20px; background: #191a17; border: 1px solid var(--line); border-radius: 12px; }
+.package-starter { background: linear-gradient(150deg,#27291e,#191a17 60%); border-color: #686743; }
+.package-heading { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.package-heading h2 { margin: 0; font-size: 24px; font-weight: 500; letter-spacing: -.045em; }
+.package-number { color: var(--muted); font-size: 10px; }
+.package-purpose { margin: 14px 0 28px; color: var(--muted); font-size: 13px; line-height: 1.65; min-height: 44px; }
+.package-price { display: flex; flex-direction: column; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+.package-price > span { color: var(--muted); font-size: 11px; }
+.package-price > strong { margin-block: 8px 12px; font-size: clamp(32px,3.5vw,48px); line-height: 1.15; font-weight: 450; letter-spacing: -.055em; white-space: nowrap; }
+.package-price > small { color: var(--muted); font-size: 11px; }
+.package-features { list-style: none; margin: 28px 0; padding: 0; font-size: 13px; line-height: 1.6; }
+.package-features li { position: relative; padding-left: 22px; margin-bottom: 14px; }
+.package-features li:before { content: '✓'; position: absolute; left: 0; color: var(--muted); }
+.package-features .package-pages { font-weight: 550; }
+.package-delivery { margin: auto 0 20px; font-size: 12px; color: var(--muted); line-height: 1.6; }
+.package-panel > .button { justify-content: space-between; padding-inline: 18px; min-height: 48px; }
+.button-outline { background: transparent; border-color: #67695c; color: var(--ink); }
+.button-outline:hover { background: #292b24; border-color: var(--muted); }
+.package-details { margin-top: 20px; }
+.package-details summary,.faq-list summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; list-style: none; min-height: 44px; cursor: pointer; }
+.package-details summary::-webkit-details-marker,.faq-list summary::-webkit-details-marker { display: none; }
+.package-details summary { color: var(--muted); font-size: 11px; }
+.package-details summary span,.faq-list summary span { font-size: 20px; color: var(--muted); transition: transform .2s ease; }
+.package-details[open] summary span,.faq-list details[open] summary span { transform: rotate(45deg); }
+.package-details p { color: var(--muted); font-size: 12px; line-height: 1.8; margin: 12px 0; }
+.pricing-conditions { display: flex; justify-content: space-between; gap: 32px; padding-top: 24px; }
+.pricing-conditions p { margin: 0; max-width: 520px; color: var(--muted); font-size: 12px; line-height: 1.75; }
+.custom-project { display: grid; grid-template-columns: 1.25fr 1fr; gap: 80px; padding-block: 80px; margin-top: 80px; border-block: 1px solid var(--line); scroll-margin-top: 32px; }
+.custom-project h2 { margin: 24px 0; font-size: clamp(36px,4.5vw,60px); line-height: 1.1; font-weight: 450; letter-spacing: -.055em; }
+.custom-project p { max-width: 400px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
+.custom-action { align-self: center; }
+.custom-quote { display: block; font-size: 28px; letter-spacing: -.04em; margin-bottom: 16px; }
+.custom-action .button { margin-top: 28px; }
+.pricing-faq { display: grid; grid-template-columns: .7fr 1.3fr; gap: 80px; padding-block: 88px; }
+.pricing-faq h2 { font-size: 36px; font-weight: 450; letter-spacing: -.045em; margin-top: 24px; }
+.faq-list details { border-bottom: 1px solid var(--line); }
+.faq-list details:first-child { border-top: 1px solid var(--line); }
+.faq-list summary { font-size: 14px; line-height: 1.5; min-height: 72px; padding-block: 16px; }
+.faq-list p { margin: 0 0 28px; font-size: 13px; line-height: 1.9; color: var(--muted); }
+.enquiry-form select { font: inherit; font-size: 14px; min-height: 48px; width: 100%; padding: 12px; border: 1px solid #666; border-radius: 8px; background: #141414; color: var(--ink); }
+.package-selection { margin-bottom: 32px; }
+.package-selection > label { margin-top: 0 !important; }
+.selected-package { margin-top: 16px; padding: 20px; border: 1px solid #56583b; border-radius: 10px; background: #22241b; }
+.selected-package strong { font-size: 14px; font-weight: 550; }
+.selected-package p { margin: 12px 0 4px; font-size: 12px; line-height: 1.8; color: var(--muted); }
+.selected-package .text-link { font-size: 11px; color: var(--accent); }
+.enquiry-context { margin: 0 0 28px; padding-bottom: 20px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 12px; line-height: 1.7; }
+.enquiry-success p { color: var(--muted); font-size: 14px; line-height: 1.7; margin: 0 0 24px; }
+@media(max-width:1050px) {
+  .studio-nav .nav-right { gap: 24px; }
+  .package-panel { padding: 28px 20px 16px; }
+  .pricing-grid { gap: 14px; }
+  .package-panel > .button { font-size: 11px; padding-inline: 14px; gap: 8px; }
+  .starter-offer { padding: 36px; gap: 36px; }
+  .starter-buy { padding-left: 32px; }
+}
+@media(max-width:760px) {
+  .studio-nav { min-height: 76px; gap: 16px; }
+  .studio-nav .brand-wordmark { display: none; }
+  .studio-nav .nav-right { gap: 18px; font-size: 11px; }
+  .studio-nav .nav-link { display: inline-flex; min-height: 44px; }
+  .studio-nav .nav-contact { font-size: 11px; }
+  .site-shell .need-card { grid-template-columns: 24px 1fr 24px; }
+  .need-card > svg { grid-column: 3; grid-row: 1 / 3; }
+  .concept-enquire { margin-top: 8px; font-size: 11px; }
+  .starter-offer { grid-template-columns: 1fr; padding: 28px 24px; gap: 28px; }
+  .starter-copy h2 { font-size: 38px; margin-block: 20px 24px; }
+  .starter-inclusions { font-size: 12px; gap: 10px 20px; margin-bottom: 16px; }
+  .starter-buy { border-left: 0; border-top: 1px solid var(--line); padding: 28px 0 0; }
+  .starter-buy > strong { font-size: 48px; margin-top: 16px; }
+  .starter-buy > p { margin-block: 12px 20px; }
+  .starter-buy > small { margin-top: 16px; }
+  .pricing-intro { padding-block: 48px 36px; }
+  .pricing-intro h1 { font-size: 60px; margin-block: 20px 24px; }
+  .pricing-intro-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .pricing-intro-bottom p { font-size: 14px; }
+  .pricing-grid { grid-template-columns: 1fr; gap: 24px; }
+  .package-panel { padding: 28px 24px 16px; }
+  .package-purpose { margin-block: 12px 24px; min-height: auto; }
+  .package-price > strong { font-size: 46px; }
+  .package-price { padding-bottom: 24px; }
+  .package-features { margin-block: 24px; }
+  .package-features li { margin-bottom: 12px; }
+  .package-panel > .button { font-size: 12px; padding-inline: 18px; }
+  .pricing-conditions { flex-direction: column; gap: 12px; }
+  .custom-project { grid-template-columns: 1fr; gap: 32px; padding-block: 48px; margin-top: 48px; }
+  .custom-project h2 { font-size: 40px; }
+  .custom-project p { font-size: 13px; }
+  .custom-action .button { margin-top: 20px; }
+  .pricing-faq { grid-template-columns: 1fr; gap: 16px; padding-block: 56px; }
+  .pricing-faq h2 { font-size: 32px; margin-block: 16px 12px; }
+  .faq-list summary { font-size: 13px; min-height: 68px; }
+  .enquiry-form select { font-size: 16px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .site-shell *,.site-shell *::before,.site-shell *::after { transition: none !important; }
+}
+.service-quote { display: block; margin-top: 8px; color: var(--muted); font-size: 11px; line-height: 1.5; font-weight: 400; letter-spacing: 0; }
+@media(max-width:760px) { .studio-nav .nav-link { min-width: 44px; justify-content: center; } .studio-nav .nav-right { gap: 12px; } .service-quote { font-size: 10px; margin-top: 6px; } }

@@ -1,3 +1,5 @@
+import { getWebsitePackage, budgetOptions, getConceptName } from "@/data/packages";
+
 const CONTACT_EMAIL =
   process.env.CONTACT_EMAIL?.trim() || "adewalemchel@gmail.com";
 
@@ -30,6 +32,9 @@ export async function POST(request: Request) {
 
   let body: {
     projectType?: string;
+    packageId?: string;
+    budget?: string;
+    concept?: string;
     name?: string;
     email?: string;
     company?: string;
@@ -39,6 +44,10 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
+    return Response.json({ error: "Invalid request." }, { status: 400 });
+  }
+
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
     return Response.json({ error: "Invalid request." }, { status: 400 });
   }
 
@@ -54,6 +63,11 @@ export async function POST(request: Request) {
       { status: 400 }
     );
   }
+
+  const selectedPackage = projectType === "Website" && typeof body.packageId === "string" ? getWebsitePackage(body.packageId) : undefined;
+  const packageName = selectedPackage?.name || "No package selected";
+  const budget = typeof body.budget === "string" && budgetOptions.some(option => option === body.budget) ? body.budget : "Not provided";
+  const concept = typeof body.concept === "string" ? getConceptName(body.concept) || "Not provided" : "Not provided";
 
   const safeName = escapeHtml(name);
   const safeEmail = escapeHtml(email);
@@ -82,6 +96,9 @@ export async function POST(request: Request) {
           </h1>
           <table style="width:100%;border-collapse:collapse;font-size:14px;">
             <tr><td style="padding:10px 0;color:#777;width:130px;">Project</td><td style="padding:10px 0;"><strong>${safeProjectType}</strong></td></tr>
+            <tr><td style="padding:10px 0;color:#777;">Package</td><td style="padding:10px 0;">${escapeHtml(packageName)}</td></tr>
+            <tr><td style="padding:10px 0;color:#777;">Budget</td><td style="padding:10px 0;">${escapeHtml(budget)}</td></tr>
+            <tr><td style="padding:10px 0;color:#777;">Inspiration</td><td style="padding:10px 0;">${escapeHtml(concept)}</td></tr>
             <tr><td style="padding:10px 0;color:#777;">Name</td><td style="padding:10px 0;">${safeName}</td></tr>
             <tr><td style="padding:10px 0;color:#777;">Email</td><td style="padding:10px 0;"><a href="mailto:${safeEmail}">${safeEmail}</a></td></tr>
             <tr><td style="padding:10px 0;color:#777;">Company</td><td style="padding:10px 0;">${safeCompany}</td></tr>
@@ -96,6 +113,9 @@ export async function POST(request: Request) {
         "PaTH Digital Studio — New project enquiry",
         "",
         `Project: ${projectType}`,
+        `Package: ${packageName}`,
+        `Budget: ${budget}`,
+        `Inspiration: ${concept}`,
         `Name: ${name}`,
         `Email: ${email}`,
         `Company: ${company || "Not provided"}`,
