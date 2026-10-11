@@ -23,5 +23,5 @@ export function StudioNav({ current }: { current?: "pricing" | "contact" }) {
   );
 }
 export function StudioFooter() {
-  return <footer className="footer"><div><Link className="footer-brand" href="/">PaTH<span>↗</span></Link><span>© 2026 PaTH Digital Studio</span></div><div className="footer-links"><Link href="/#work">Work</Link><Link href="/#build">Services</Link><Link href="/pricing">Pricing</Link><Link href="/contact">Start a project ↗</Link></div></footer>;
+  return <footer className="footer"><div><Link className="footer-brand" href="/">PaTH<span>↗</span></Link><span>© 2026 PaTH Digital Studio</span></div><div className="footer-links"><Link href="/#work">Work</Link><Link href="/#build">Services</Link><Link href="/pricing">Pricing</Link><a href="https://www.linkedin.com/company/path-digital-studio/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><Link href="/contact">Start a project ↗</Link></div></footer>;
 }
