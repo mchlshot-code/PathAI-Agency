@@ -319,6 +319,10 @@ img { max-width: 100%; }
 .concept-salon .concept-wordmark { font-family: Georgia,serif; font-weight: 400; }
 .concept-fashion .concept-art { background: #294bd6; }
 .concept-fashion .concept-art > img { object-position: 50% 48%; }
+.concept-clinic .concept-art { background: #4e665b; }
+.concept-clinic .concept-wordmark { font-family: Georgia, serif; font-weight: 400; }
+.concept-property .concept-art { background: #9b624d; }
+.concept-property .concept-wordmark { font-family: Georgia, serif; font-weight: 400; }
 .business-concept-info { display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 24px 0 0; }
 .business-concept-info h3 { margin: 0 0 8px; font-size: 25px; line-height: 1.15; font-weight: 450; letter-spacing: -.035em; }
 .business-concept-info span { color: var(--muted); font-size: 12px; line-height: 1.5; }

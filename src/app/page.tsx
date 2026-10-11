@@ -10,7 +10,9 @@ import { formatNaira, websitePackages } from "@/data/packages";
 const businessConcepts = [
   { slug: "kitchen", name: "Kitchen Concept", category: "Food & restaurants", image: "/concepts/owan/jollof.webp", alt: "Jollof rice and grilled chicken from the Kitchen Concept" },
   { slug: "salon", name: "Salon Concept", category: "Beauty & wellness", image: "/concepts/salon/portrait.webp", alt: "Sculpted hairstyle from the Salon Concept" },
-  { slug: "fashion", name: "Fashion Concept", category: "Fashion & retail", image: "/concepts/fashion/shirt-sand.webp", alt: "Natural linen shirt from the Fashion Concept" }
+  { slug: "fashion", name: "Fashion Concept", category: "Fashion & retail", image: "/concepts/fashion/shirt-sand.webp", alt: "Natural linen shirt from the Fashion Concept" },
+  { slug: "clinic", name: "Clinic Concept", category: "Health & appointments", image: "/concepts/clinic/reception.webp", alt: "Illustrative reception space for a fictional clinic" },
+  { slug: "property", name: "Property Concept", category: "Homes & listings", image: "/concepts/property/interior.webp", alt: "Illustrative apartment interior for a fictional property business" }
 ];
 
 export default function Home() {

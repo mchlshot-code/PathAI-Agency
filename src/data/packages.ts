@@ -30,7 +30,8 @@ export function formatNaira(value: number) {
 export const budgetOptions = ["Under ₦100k", "₦100k–under ₦300k", "₦300k–under ₦700k", "₦700k+", "Not sure"] as const;
 export const conceptNames: Record<string, string> = {
   "kitchen-concept": "Kitchen Concept", "path-kitchen": "Kitchen Concept", "owan-kitchen": "Kitchen Concept",
-  "salon-concept": "Salon Concept", "fashion-concept": "Fashion Concept"
+  "salon-concept": "Salon Concept", "fashion-concept": "Fashion Concept",
+  "clinic-concept": "Clinic Concept", "property-concept": "Property Concept"
 };
 
 export function getConceptName(value?: string): string | undefined {
