@@ -32,12 +32,17 @@ export function HeroMotion({ children }: { children: ReactNode }) {
         item.style.removeProperty("transform");
         item.style.removeProperty("opacity");
       }
+      fashion.inert = false;
+      product.inert = false;
+      stamp.inert = false;
+      copy.inert = false;
     };
 
     const update = () => {
       frame = 0;
       if (reducedMotion.matches) return;
       const top = element.getBoundingClientRect().top;
+      if (top < -element.offsetHeight || top > window.innerHeight) return;
       if (!query.matches) {
         const progress = clamp((76 - top) / Math.max(1, element.offsetHeight * 0.75));
         fashion.style.transform = `translate3d(0, ${-20 * progress}px, 0) rotate(${6 - 3 * progress}deg) scale(${1 + 0.08 * progress})`;
@@ -51,6 +56,7 @@ export function HeroMotion({ children }: { children: ReactNode }) {
       const focus = ease(0.3, 0.96, progress);
 
       fashion.style.transform = `translate3d(${-Math.min(230, window.innerWidth * 0.18) * focus}px, ${62 * focus}px, 0) rotate(${6 * (1 - focus)}deg) scale(${1 + 1.72 * focus})`;
+      fashion.style.opacity = String(1 - 0.84 * ease(0.78, 1, progress));
       product.style.transform = `translate3d(${-72 * approach}px, ${115 * approach}px, 0) rotate(${-6 - 8 * approach}deg) scale(${1 - 0.17 * approach})`;
       product.style.opacity = String(1 - ease(0.42, 0.77, progress));
       orbit.style.transform = `translate3d(${22 * approach}px, ${-30 * approach}px, 0) scale(${1 + 0.28 * approach})`;
@@ -58,6 +64,11 @@ export function HeroMotion({ children }: { children: ReactNode }) {
       stamp.style.opacity = String(1 - ease(0.28, 0.64, progress));
       copy.style.transform = `translate3d(0, ${-28 * approach}px, 0)`;
       copy.style.opacity = String(1 - 0.72 * ease(0.34, 0.82, progress));
+      // Hidden preview links should not receive an invisible keyboard focus.
+      product.inert = progress > 0.78 && !product.contains(document.activeElement);
+      stamp.inert = progress > 0.67 && !stamp.contains(document.activeElement);
+      fashion.inert = progress > 0.98 && !fashion.contains(document.activeElement);
+      copy.inert = progress > 0.9 && !copy.contains(document.activeElement);
     };
 
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
