@@ -16,7 +16,7 @@ export default async function Contact({ searchParams }: { searchParams: Promise<
   const service = typeof query.service === "string" && enquiryTypes.some(type => type === query.service) ? query.service : undefined;
   return <main className="site-shell contact-shell"><div className="wrap">
     <StudioNav current="contact" />
-    <section className="contact-content" aria-labelledby="contact-title">
+    <section className="contact-content" id="main-content" tabIndex={-1} aria-labelledby="contact-title">
       <div className="contact-intro"><span className="eyebrow">Start a project</span><h1 id="contact-title">Let&apos;s make<br /><em>something good.</em></h1><p>Tell us a little about your idea.<br />We&apos;ll reply by email.</p><a className="contact-email" href="mailto:adewalemchel@gmail.com">adewalemchel@gmail.com ↗</a></div>
       <ProjectEnquiry key={`${packageId || ""}:${service || ""}:${concept || ""}`} packageId={packageId} service={service} concept={concept} />
     </section><StudioFooter />

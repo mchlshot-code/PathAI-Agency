@@ -1,16 +1,18 @@
 import type { Project } from "@/data/projects";
 import { ArrowIcon } from "./ArrowIcon";
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
   return (
     <a
       className={`project-card project-${project.size}`}
+      data-project={project.slug}
       href={project.url}
       target="_blank"
       rel="noreferrer"
       aria-label={`Open ${project.name}`}
     >
       <div className="project-shot">
+        <span className="project-label">0{index + 1} / {project.name}</span>
         <div className="project-window">
           <div className="project-browser" aria-hidden="true"><span /><span /><span /></div>
           <img
@@ -28,6 +30,7 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
         <ArrowIcon size={20} />
       </div>
+      <div className="project-capabilities">{project.capabilities.map(capability => <span key={capability}>{capability}</span>)}</div>
     </a>
   );
 }

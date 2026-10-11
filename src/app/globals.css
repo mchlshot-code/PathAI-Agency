@@ -507,16 +507,6 @@ img { max-width: 100%; }
 .service-quote { display: block; margin-top: 8px; color: var(--muted); font-size: 11px; line-height: 1.5; font-weight: 400; letter-spacing: 0; }
 @media(max-width:760px) { .studio-nav .nav-link { min-width: 44px; justify-content: center; } .studio-nav .nav-right { gap: 12px; } .service-quote { font-size: 10px; margin-top: 6px; } }
 
-/* One short scroll chapter lets the existing project previews become the focal point. */
-.hero-chapter { position: relative; }
-.hero-chapter-motion { height: 170svh; overflow: clip; }
-.hero-chapter-motion .hero { position: sticky; top: 88px; min-height: calc(100svh - 88px); margin: 0; }
-.hero-chapter-motion .hero-copy,.hero-chapter-motion .showcase-orbit,
-.hero-chapter-motion .showcase-fashion,.hero-chapter-motion .showcase-product,
-.hero-chapter-motion .showcase-stamp { will-change: transform, opacity; }
-.hero-chapter-motion .showcase-fashion,.hero-chapter-motion .showcase-product { transition: none; }
-.hero-chapter-mobile-motion .showcase-fashion,.hero-chapter-mobile-motion .showcase-product { transition: none; }
+/* Shared native gallery progress. */
 .gallery-progress { width: clamp(72px, 11vw, 156px); height: 2px; margin-left: auto; overflow: hidden; background: var(--line); }
 .gallery-progress > span { display: block; width: 100%; height: 100%; background: var(--accent); transform: scaleX(.12); transform-origin: left center; }
-@media(max-width:760px) { .gallery-progress { width: 60px; } }
-@media(prefers-reduced-motion:reduce) { .hero-chapter-motion { height: auto; overflow: visible; } .hero-chapter-motion .hero { position: static; min-height: 0; } }

@@ -19,7 +19,7 @@ const faqs = [
 export default function Pricing() {
   return <main className="site-shell pricing-shell"><div className="wrap">
     <StudioNav current="pricing" />
-    <section className="pricing-intro" aria-labelledby="pricing-title">
+    <section className="pricing-intro" id="main-content" tabIndex={-1} aria-labelledby="pricing-title">
       <span className="eyebrow">Website packages</span>
       <h1 id="pricing-title">A clear place<br /><em>to start.</em></h1>
       <div className="pricing-intro-bottom"><p>Choose a website for your business.<br />Have something bigger in mind? We&apos;ll quote it.</p><a className="text-link" href="#custom">Explore custom projects <ArrowIcon size={15} /></a></div>

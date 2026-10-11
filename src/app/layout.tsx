@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./exhibition.css";
+import { StudioExperience } from "@/components/StudioExperience";
 
 export const metadata: Metadata = {
   title: "PaTH Digital Studio — Software for brands and businesses",
@@ -14,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body><StudioExperience />{children}</body>
     </html>
   );
 }
