@@ -4,12 +4,19 @@ import { Children, useEffect, useRef, useState, type ReactNode } from "react";
 
 export function HorizontalGallery({ label, className, children }: { label: string; className: string; children: ReactNode }) {
   const rail = useRef<HTMLDivElement>(null);
+  const progress = useRef<HTMLSpanElement>(null);
   const [edges, setEdges] = useState({ start: true, end: true });
 
   useEffect(() => {
     const element = rail.current;
     if (!element) return;
-    const update = () => setEdges({ start: element.scrollLeft <= 6, end: element.scrollLeft + element.clientWidth >= element.scrollWidth - 6 });
+    const update = () => {
+      const distance = Math.max(0, element.scrollWidth - element.clientWidth);
+      const start = element.scrollLeft <= 6;
+      const end = element.scrollLeft >= distance - 6;
+      setEdges(previous => previous.start === start && previous.end === end ? previous : { start, end });
+      if (progress.current) progress.current.style.transform = `scaleX(${distance ? Math.max(0.12, Math.min(1, element.scrollLeft / distance)) : 1})`;
+    };
     const observer = new ResizeObserver(update);
     observer.observe(element);
     element.addEventListener("scroll", update, { passive: true });
@@ -34,6 +41,7 @@ export function HorizontalGallery({ label, className, children }: { label: strin
     }}>{children}</div>
     <div className="gallery-footer">
       <span>{Children.count(children)} {className === "work-grid" ? "projects" : "concepts"}</span>
+      <div className="gallery-progress" aria-hidden="true"><span ref={progress} /></div>
       {!(edges.start && edges.end) && <div className="gallery-controls">
         <button type="button" aria-label={`Previous ${label.toLowerCase()}`} aria-controls={`${className}-rail`} disabled={edges.start} onClick={() => move(-1)}>←</button>
         <button type="button" aria-label={`Next ${label.toLowerCase()}`} aria-controls={`${className}-rail`} disabled={edges.end} onClick={() => move(1)}>→</button>

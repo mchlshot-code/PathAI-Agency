@@ -1,6 +1,7 @@
 import { ArrowIcon } from "@/components/ArrowIcon";
 import { ProjectCard } from "@/components/ProjectCard";
 import { HorizontalGallery } from "@/components/HorizontalGallery";
+import { HeroMotion } from "@/components/HeroMotion";
 import { featuredProjects } from "@/data/projects";
 import { needs } from "@/data/services";
 import Link from "next/link";
@@ -21,7 +22,7 @@ export default function Home() {
       <div className="wrap">
         <StudioNav />
 
-        <section className="hero" id="top">
+        <HeroMotion><section className="hero" id="top">
           <div className="hero-copy">
             <span className="eyebrow hero-eyebrow">Independent studio · Design &amp; technology</span>
             <h1 className="hero-title">
@@ -59,7 +60,7 @@ export default function Home() {
             <Link className="showcase-stamp" href="#concepts" aria-label="Explore our interactive business concepts"><span>Ideas you<br />can interact with.</span><ArrowIcon size={23} /></Link>
             <span className="showcase-caption"><span>Design that feels right.</span><span>Built to work beautifully.</span></span>
           </div>
-        </section>
+        </section></HeroMotion>
 
         <section className="section work-section" id="work">
           <HorizontalGallery label="Selected work" className="work-grid">
