@@ -1,9 +1,8 @@
 /* A shared editorial grid; independent concept palettes remain in their own styles. */
 .site-shell { --max: 1440px; --accent: #e9d86e; --muted: #b2b3a8; }
 .site-shell .wrap { width: min(calc(100% - 96px), var(--max)); }
-.site-shell .studio-nav { min-height: 88px; background: #101010; border-color: #34352f; transition: background .25s, border-color .25s, color .25s; }
-.site-shell .studio-nav.nav-light { --ink: #171913; --muted: #5d6053; --accent: #4e5842; background: #eeeee4; border-color: #cccdbf; color: var(--ink); }
-.site-shell .studio-nav.nav-light:before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); background: inherit; z-index: -1; pointer-events: none; }
+/* Paint a full-width bar while keeping its contents on the page grid. */
+.site-shell .studio-nav { min-height: 88px; background: #101010; border-color: #34352f; box-shadow: 0 0 0 100vmax #101010; clip-path: inset(0 -100vmax); }
 .site-shell .studio-nav .nav-right { gap: 28px; }
 .site-shell .nav-link { position: relative; font-size: 12px; }
 .site-shell .nav-link:after { position: absolute; content: ''; bottom: 12px; left: 0; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .3s; }

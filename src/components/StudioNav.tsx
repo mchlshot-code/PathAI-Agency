@@ -1,11 +1,9 @@
 import Link from "next/link";
 import { MotionControl } from "./MotionControl";
-import { StudioNavTone } from "./StudioNavTone";
 
 export function StudioNav({ current }: { current?: "pricing" | "contact" }) {
   return (
     <nav className="nav studio-nav" aria-label="Main navigation">
-      <StudioNavTone />
       <a className="skip-link" href="#main-content">Skip to content</a>
       <Link href="/" className="brand" aria-label="PaTH Digital Studio home">
         <svg className="brand-mark" viewBox="0 0 72 52" aria-hidden="true" focusable="false">
