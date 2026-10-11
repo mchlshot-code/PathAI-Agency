@@ -50,10 +50,11 @@
 .exhibition-shell .horizontal-rail { gap: 32px; padding: 8px 5px 12px; margin-inline: -5px; scroll-padding-inline: 5px; align-items: flex-start; }
 .exhibition-shell .work-grid > .project-card { flex-basis: 65%; }
 .exhibition-shell .work-grid > .project-card:nth-child(even) { flex-basis: 43%; padding-top: 72px; }
-.exhibition-shell .project-shot { position: relative; aspect-ratio: 1.47; padding: 68px 36px 42px; border-radius: 6px; background: #d9d8ce; }
-.exhibition-shell .project-card:nth-child(even) .project-shot { aspect-ratio: 1.04; padding: 60px 28px 28px; }
-.exhibition-shell .project-label { position: absolute; top: 22px; left: 28px; right: 28px; color: #3a3d35; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
-.exhibition-shell .project-window { aspect-ratio: 1.65; width: 100%; border-radius: 4px; transform: translateX(var(--gallery-pan, 0px)); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.exhibition-shell .project-shot { position: relative; aspect-ratio: 1.5; padding: 52px 24px 24px; border-radius: 4px; background: #d9d8ce; }
+.exhibition-shell .project-card:nth-child(even) .project-shot { aspect-ratio: 1.37; padding: 48px 20px 20px; }
+.exhibition-shell .project-label { position: absolute; top: 20px; left: 24px; right: 24px; color: #3a3d35; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.project-visit { display: inline-flex; align-items: center; gap: 8px; }
+.exhibition-shell .project-window { aspect-ratio: 1.65; width: 100%; border-radius: 3px; transform: translateX(var(--gallery-pan, 0px)); transition: transform .5s cubic-bezier(.2,.7,.2,1); box-shadow: 0 12px 24px #10101018; }
 .exhibition-shell .project-card:hover .project-window { transform: translateX(var(--gallery-pan, 0px)) translateY(-8px) rotate(-1deg); }
 .exhibition-shell .project-info { padding-top: 24px; }
 .exhibition-shell .project-info h3 { font-size: clamp(28px, 3vw, 44px); letter-spacing: -.055em; font-weight: 450; }
@@ -69,6 +70,14 @@
 .gallery-index { font-variant-numeric: tabular-nums; letter-spacing: .06em; }
 .gallery-index b { color: var(--ink); font-weight: 500; }
 .gallery-hint { margin-left: 24px; }
+.gallery-index > span { margin-left: 12px; letter-spacing: 0; }
+.category-navigation { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: -8px 0 32px; padding: 6px 3px; scroll-padding-inline: 3px; }
+.category-navigation::-webkit-scrollbar { display: none; }
+.category-navigation button { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; min-height: 44px; padding: 0 20px; border: 1px solid #bfc3b3; border-radius: 999px; background: transparent; color: #373d2e; font-size: 12px; cursor: pointer; transition: background .25s,color .25s,border-color .25s; }
+.category-navigation button > span { font-size: 9px; font-variant-numeric: tabular-nums; }
+.category-navigation button[aria-pressed='true'] { background: #263020; border-color: #263020; color: #f6f7ed; }
+.category-navigation button:hover { border-color: #263020; }
+.category-navigation button:focus-visible { outline-offset: 3px; }
 .exhibition-shell .gallery-progress { width: 180px; background: var(--line); }
 .exhibition-shell .gallery-controls { gap: 8px; }
 .exhibition-shell .gallery-controls button { width: 48px; height: 48px; }
@@ -198,7 +207,7 @@
   .site-shell .studio-nav { min-height: 76px; gap: 8px; }
   .site-shell .brand-mark { width: 38px; }
   .site-shell .studio-nav .nav-right { gap: 8px; }
-  .site-shell .studio-nav .nav-link { font-size: 10px; min-width: 38px; }
+  .site-shell .studio-nav .nav-link { font-size: 11px; min-width: 38px; }
   .site-shell .motion-control { min-width: 32px; }
   .exhibition-shell .hero { grid-template-columns: 1fr; gap: 20px; padding-top: 40px; }
   .exhibition-shell .hero-copy { order: 0; }
@@ -209,14 +218,15 @@
   .exhibition-shell .hero-actions { gap: 12px 20px; }
   .exhibition-shell .hero-actions .button { padding-inline: 18px; min-height: 48px; font-size: 11px; }
   .exhibition-shell .hero-actions .text-link { font-size: 11px; }
-  .exhibition-shell .hero-showcase { width: 94%; margin: 44px auto 20px; aspect-ratio: 1.06; order: 1; }
+  .exhibition-shell .hero-showcase { width: 100%; margin: 32px auto 12px; aspect-ratio: 1.06; order: 1; }
   .exhibition-shell .showcase-fashion { height: 64%; }
-  .exhibition-shell .showcase-caption { font-size: 8px; bottom: -7%; }
+  .exhibition-shell .showcase-caption { display: none; }
   .exhibition-shell .showcase-note { top: -5%; font-size: 7px; }
   .exhibition-shell .showcase-stamp { width: 66px; height: 66px; font-size: 10px; top: 0; left: 0; }
   .exhibition-shell .showcase-stamp svg { width: 19px; height: 19px; }
   .exhibition-shell .showcase-orbit > span { display: none; }
-  .hero-foot { order: 2; margin-top: 32px; min-height: 60px; font-size: 9px; gap: 12px; }
+  .hero-foot { order: 2; margin-top: 24px; min-height: 56px; font-size: 10px; gap: 12px; justify-content: flex-end; }
+  .hero-foot > span { display: none; }
   .hero-foot a { gap: 12px; }
   .exhibition-shell .section,.exhibition-shell .section + .section { padding-block: 64px; }
   .exhibition-shell .gallery-heading { display: block; margin-bottom: 28px; }
@@ -224,15 +234,19 @@
   .exhibition-shell .gallery-jump { margin-top: 20px; min-height: 44px; font-size: 11px; }
   .exhibition-shell .horizontal-rail { gap: 20px; padding-bottom: 12px; }
   .exhibition-shell .work-grid > .project-card,.exhibition-shell .work-grid > .project-card:nth-child(even) { flex-basis: 88%; padding-top: 0; }
-  .exhibition-shell .project-shot,.exhibition-shell .project-card:nth-child(even) .project-shot { aspect-ratio: 1.12; padding: 56px 20px 24px; }
-  .exhibition-shell .project-label { top: 20px; left: 20px; }
+  .exhibition-shell .project-shot,.exhibition-shell .project-card:nth-child(even) .project-shot { aspect-ratio: 1.32; padding: 42px 12px 16px; }
+  .exhibition-shell .project-label { top: 16px; left: 14px; right: 14px; font-size: 9px; }
+  .project-visit { font-size: 8px; gap: 5px; letter-spacing: .03em; }
   .exhibition-shell .project-info { padding-top: 20px; }
   .exhibition-shell .project-info h3 { font-size: 30px; }
   .project-capabilities { margin-top: 12px; gap: 12px; }
   .project-capabilities span + span:before { margin-right: 12px; }
   .exhibition-shell .gallery-footer { margin-top: 24px; gap: 16px; }
   .gallery-hint { display: none; }
-  .exhibition-shell .gallery-progress { width: 60px; }
+  .exhibition-shell .gallery-progress { flex: 1; max-width: 68px; width: auto; }
+  .gallery-index > span { display: none; }
+  .category-navigation { margin: -4px -20px 24px; padding: 6px 20px; gap: 8px; scroll-padding-inline: 20px; }
+  .category-navigation button { padding-inline: 16px; gap: 8px; font-size: 11px; }
   .exhibition-shell .gallery-controls button { width: 44px; height: 44px; }
   .exhibition-shell .concept-section { margin-inline: -20px; padding-inline: 20px; border-radius: 4px; }
   .exhibition-shell .concept-section .gallery-title { font-size: clamp(48px,13vw,72px); }
@@ -256,12 +270,13 @@
   .exhibition-shell .need-card strong { font-size: 27px; }
   .exhibition-shell .need-card .service-quote { display: block; font-size: 10px; }
   .exhibition-shell .need-prompt { font-size: 11px; }
-  .exhibition-shell .philosophy { grid-template-columns: 1fr; gap: 40px; padding-top: 56px; }
-  .studio-symbol { width: 58%; margin: 0 auto; }
-  .studio-symbol > span { font-size: 6px; }
+  .exhibition-shell .philosophy { position: relative; grid-template-columns: 1fr; gap: 0; padding-block: 64px; }
+  .studio-symbol { position: absolute; width: 190px; right: -88px; top: 50px; opacity: .22; pointer-events: none; }
+  .studio-symbol > span { display: none; }
+  .studio-copy { position: relative; z-index: 1; }
   .exhibition-shell .philosophy h2 { font-size: clamp(44px,12vw,66px); margin-top: 24px; }
   .exhibition-shell .philosophy p { font-size: 14px; margin-block: 24px 32px; }
-  .closing-link { font-size: 18px; padding-block: 24px; }
+  .closing-link { font-size: 18px; padding-block: 24px; margin-top: 40px; }
   .site-shell .footer { min-height: 200px; align-items: flex-start; gap: 24px; padding-block: 32px; }
   .footer-brand { font-size: 40px; }
   .site-shell .footer-links { gap: 20px; flex-wrap: wrap; }

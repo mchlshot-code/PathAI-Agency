@@ -2,9 +2,10 @@
 
 import { Children, useEffect, useRef, useState, type ReactNode } from "react";
 
-export function HorizontalGallery({ label, className, children }: { label: string; className: string; children: ReactNode }) {
+export function HorizontalGallery({ label, className, children, categories }: { label: string; className: string; children: ReactNode; categories?: string[] }) {
   const rail = useRef<HTMLDivElement>(null);
   const progress = useRef<HTMLSpanElement>(null);
+  const selection = useRef<number | null>(null);
   const [position, setPosition] = useState({ start: true, end: true, index: 1 });
   const count = Children.count(children);
   const work = className === "work-grid";
@@ -31,18 +32,35 @@ export function HorizontalGallery({ label, className, children }: { label: strin
       const start = element.scrollLeft <= 6;
       const end = element.scrollLeft >= distance - 6;
       if (end && distance > 0) index = count;
+      if (selection.current !== null) index = selection.current;
       setPosition(previous => previous.start === start && previous.end === end && previous.index === index ? previous : { start, end, index });
-      if (progress.current) progress.current.style.transform = `scaleX(${distance ? Math.max(1 / count, Math.min(1, (element.scrollLeft + element.clientWidth / count) / distance)) : 1})`;
+      if (progress.current) progress.current.style.transform = `scaleX(${distance ? 1 / count + Math.min(1, element.scrollLeft / distance) * (1 - 1 / count) : 1})`;
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
-    const observer = new ResizeObserver(schedule);
+    const manualScroll = () => { selection.current = null; schedule(); };
+    const observer = new ResizeObserver(manualScroll);
     observer.observe(element);
     element.addEventListener("scroll", schedule, { passive: true });
+    element.addEventListener("wheel", manualScroll, { passive: true });
+    element.addEventListener("touchstart", manualScroll, { passive: true });
     query.addEventListener("change", schedule);
     window.addEventListener("studio-motion-change", schedule);
     update();
-    return () => { cancelAnimationFrame(frame); observer.disconnect(); element.removeEventListener("scroll", schedule); query.removeEventListener("change", schedule); window.removeEventListener("studio-motion-change", schedule); };
+    return () => { cancelAnimationFrame(frame); observer.disconnect(); element.removeEventListener("scroll", schedule); element.removeEventListener("wheel", manualScroll); element.removeEventListener("touchstart", manualScroll); query.removeEventListener("change", schedule); window.removeEventListener("studio-motion-change", schedule); };
   }, [count]);
+
+  function goTo(index: number) {
+    const element = rail.current;
+    if (!element) return;
+    const cards = Array.from(element.children) as HTMLElement[];
+    const left = element.getBoundingClientRect().left;
+    const selected = Math.max(0, Math.min(cards.length - 1, index));
+    const target = cards[selected];
+    selection.current = selected + 1;
+    setPosition(previous => ({ ...previous, index: selected + 1 }));
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches || document.documentElement.dataset.studioMotion === "off";
+    element.scrollTo({ left: element.scrollLeft + target.getBoundingClientRect().left - left, behavior: reduced ? "instant" : "smooth" });
+  }
 
   function move(direction: number) {
     const element = rail.current;
@@ -50,21 +68,25 @@ export function HorizontalGallery({ label, className, children }: { label: strin
     const cards = Array.from(element.children) as HTMLElement[];
     const left = element.getBoundingClientRect().left;
     const current = cards.reduce((best, card, index) => Math.abs(card.getBoundingClientRect().left - left) < Math.abs(cards[best].getBoundingClientRect().left - left) ? index : best, 0);
-    const target = cards[Math.max(0, Math.min(cards.length - 1, current + direction))];
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches || document.documentElement.dataset.studioMotion === "off";
-    element.scrollTo({ left: element.scrollLeft + target.getBoundingClientRect().left - left, behavior: reduced ? "instant" : "smooth" });
+    goTo(current + direction);
   }
 
   return <>
     <div className="section-head gallery-heading">
-      <div><span className="eyebrow">{work ? "01 / Selected projects" : "02 / Interactive concepts"}</span><h2 className="gallery-title" data-scene-title>{work ? <>Selected<br /><em>work.</em></> : <>Your business.<br /><em>In a new light.</em></>}</h2></div>
+      <div><span className="eyebrow">{work ? "01 / Selected projects" : "02 / Interactive concepts"}</span><h2 className="gallery-title" data-scene-title>{work ? <>Selected<br /><em>work.</em></> : <>Explore by<br /><em>business.</em></>}</h2></div>
       <a className="gallery-jump text-link" href={work ? "#concepts" : "/contact"}>{work ? "Try our concepts" : "Discuss your business"}<span aria-hidden="true">↗</span></a>
     </div>
-    <div ref={rail} id={`${className}-rail`} className={`horizontal-rail ${className}`} role="region" aria-label={label} tabIndex={0} onKeyDown={event => {
+    {categories && <div className="category-navigation" role="group" aria-label="Choose a business category">
+      {categories.map((category, index) => <button key={category} type="button" aria-pressed={position.index === index + 1} aria-controls={`${className}-rail`} onClick={() => goTo(index)}><span>{String(index + 1).padStart(2, "0")}</span>{category}</button>)}
+    </div>}
+    <div ref={rail} id={`${className}-rail`} className={`horizontal-rail ${className}`} role="region" aria-label={label} tabIndex={0} onFocusCapture={event => {
+      const index = Array.from(event.currentTarget.children).findIndex(card => card.contains(event.target));
+      if (index >= 0) { selection.current = index + 1; setPosition(previous => ({ ...previous, index: index + 1 })); }
+    }} onKeyDown={event => {
       if (event.target === event.currentTarget && (event.key === "ArrowLeft" || event.key === "ArrowRight")) { event.preventDefault(); move(event.key === "ArrowRight" ? 1 : -1); }
     }}>{children}</div>
     <div className="gallery-footer">
-      <span className="gallery-index"><b>{String(position.index).padStart(2, "0")}</b> / {String(count).padStart(2, "0")}</span>
+      <span className="gallery-index" aria-live="polite" aria-atomic="true"><b>{String(position.index).padStart(2, "0")}</b> / {String(count).padStart(2, "0")} <span>{work ? "projects" : "concepts"}</span></span>
       <span className="gallery-hint">Swipe or use the arrows</span>
       <div className="gallery-progress" aria-hidden="true"><span ref={progress} /></div>
       {!(position.start && position.end) && <div className="gallery-controls">

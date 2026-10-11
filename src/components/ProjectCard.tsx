@@ -12,7 +12,7 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
       aria-label={`Open ${project.name}`}
     >
       <div className="project-shot">
-        <span className="project-label">0{index + 1} / {project.name}</span>
+        <span className="project-label"><span>0{index + 1} / {project.name}</span><span className="project-visit">View live <ArrowIcon size={12} /></span></span>
         <div className="project-window">
           <div className="project-browser" aria-hidden="true"><span /><span /><span /></div>
           <img

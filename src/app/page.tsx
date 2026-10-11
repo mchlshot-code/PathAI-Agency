@@ -48,7 +48,7 @@ export default function Home() {
     </section>
 
     <section className="section concept-section" id="concepts" data-scene>
-      <HorizontalGallery label="Explore by business" className="concept-rail">{businessConcepts.map((concept, index) => <div className={`business-concept concept-${concept.slug}`} key={concept.slug}>
+      <HorizontalGallery label="Explore by business" className="concept-rail" categories={["Kitchen", "Salon", "Fashion", "Clinic", "Property"]}>{businessConcepts.map((concept, index) => <div className={`business-concept concept-${concept.slug}`} key={concept.slug}>
         <ConceptPortal href={`/concepts/${concept.slug}-concept`} label={`Explore the ${concept.name} demo`}>
           <div className="concept-art"><img src={concept.image} alt={concept.alt} loading="lazy" /><span className="concept-number">0{index + 1} / Concept</span><span className="concept-wordmark" aria-hidden="true">{concept.slug}.</span><span className="concept-open" aria-hidden="true"><ArrowIcon size={24} /></span></div>
           <div className="business-concept-info"><div><h3>{concept.name}</h3><span>{concept.category}</span></div><span className="concept-try">Try demo ↗</span></div>
@@ -59,7 +59,7 @@ export default function Home() {
 
     <section className="section starter-section" data-scene aria-labelledby="starter-title">
       <div className="starter-offer">
-        <div className="starter-copy"><span className="eyebrow">03 / A simple place to start</span><h2 id="starter-title" data-scene-title>A website.<br /><em>Your next chapter.</em></h2>
+        <div className="starter-copy"><span className="eyebrow">03 / A simple place to start</span><h2 id="starter-title" data-scene-title>A website for<br /><em>your business.</em></h2>
           <ul className="starter-inclusions"><li>Up to 3 pages</li><li>Mobile-ready</li><li>WhatsApp enquiries</li><li>Basic SEO</li></ul><Link className="text-link" href="/pricing">Compare packages <ArrowIcon size={15} /></Link>
         </div>
         <div className="starter-buy"><span className="eyebrow">Starter website</span><strong>{formatNaira(websitePackages[0].price)}</strong><p>{formatNaira(websitePackages[0].price / 2)} deposit · 5–7 working days</p><Link className="button" href="/contact?package=starter">Start your website <ArrowIcon size={16} /></Link><small>After deposit and supplied content.<br />Domain and hosting quoted separately.</small></div>
@@ -71,7 +71,7 @@ export default function Home() {
 
     <section className="section philosophy" id="studio" data-scene aria-labelledby="studio-title">
       <div className="studio-symbol" data-depth aria-hidden="true"><svg viewBox="0 0 72 52"><path d="M6 42.5 20.2 9.5h26.3c7.6 0 12.5 4 12.5 10.8 0 9.5-7.1 15.2-18 15.2H29.5l-3 7H6Zm27.7-19.2h9.5c3.3 0 5.3-1.2 5.3-3.4 0-1.8-1.5-2.8-4.6-2.8H36.4l-2.7 6.2Z" fill="currentColor" /><path d="M45.8 42.5 55.3 26h10.2L56 42.5H45.8Z" fill="currentColor" /></svg><span>Design / Develop / Deliver</span></div>
-      <div className="studio-copy"><span className="eyebrow">05 / PaTH Digital Studio</span><h2 id="studio-title" data-scene-title>Small studio.<br /><em>Big perspective.</em></h2><p>Design and engineering, together.<br />From your first idea to the final detail.</p><Link className="closing-link" href="/contact">Your project could be next.<ArrowIcon size={38} /></Link></div>
+      <div className="studio-copy"><span className="eyebrow">05 / Your next move</span><h2 id="studio-title" data-scene-title>Your idea.<br /><em>Let&apos;s build it.</em></h2><Link className="closing-link" href="/contact">Start a project<ArrowIcon size={38} /></Link></div>
     </section>
     <StudioFooter />
   </div></main>;
